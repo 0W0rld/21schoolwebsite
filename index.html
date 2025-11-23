@@ -73,7 +73,6 @@
     <section id="gallery" class="section fade">
         <div class="container">
             <h3>Фотогалерея</h3>
-
             <div class="gallery-grid">
                 <img src="https://via.placeholder.com/300x200?text=Фото+1">
                 <img src="https://via.placeholder.com/300x200?text=Фото+2">
@@ -88,31 +87,30 @@
             <h3>Викторина</h3>
 
             <form id="quiz-form">
-    <p>Какой предмет является основным?</p>
+                <p>Какой предмет является основным?</p>
 
-    <label class="quiz-option">
-        <div class="option-circle"></div>
-        <input type="radio" name="question1" value="math">
-        Математика
-    </label>
+                <label class="quiz-option">
+                    <div class="option-circle"></div>
+                    <input type="radio" name="question1" value="math">
+                    Математика
+                </label>
 
-    <label class="quiz-option">
-        <div class="option-circle"></div>
-        <input type="radio" name="question1" value="russian">
-        Русский язык
-    </label>
+                <label class="quiz-option">
+                    <div class="option-circle"></div>
+                    <input type="radio" name="question1" value="russian">
+                    Русский язык
+                </label>
 
-    <label class="quiz-option">
-        <div class="option-circle"></div>
-        <input type="radio" name="question1" value="history">
-        История
-    </label>
+                <label class="quiz-option">
+                    <div class="option-circle"></div>
+                    <input type="radio" name="question1" value="history">
+                    История
+                </label>
 
-    <button type="submit">Ответить</button>
-</form>
+                <button type="submit">Ответить</button>
+            </form>
 
-<div id="quiz-result"></div>
-
+            <div id="quiz-result"></div>
         </div>
     </section>
 
@@ -128,9 +126,8 @@
 
     <!-- Футер -->
     <footer>
-        <p>© 2025 Школа №21 г. Нижнекамск</p>
+        <p>© 2024 Школа №21 г. Нижнекамска</p>
     </footer>
-
 
 <!-- Скрипты -->
 <script>
@@ -144,35 +141,57 @@ window.addEventListener("scroll", () => {
 // ---------- АНИМАЦИИ ПОЯВЛЕНИЯ ----------
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-        }
+        if (entry.isIntersecting) entry.target.classList.add("show");
     });
 });
 document.querySelectorAll('.fade').forEach(el => observer.observe(el));
 
+
+// ---------- ВЫБОР ОТВЕТОВ ----------
+document.querySelectorAll(".quiz-option").forEach(option => {
+    option.addEventListener("click", function () {
+        document.querySelectorAll(".quiz-option").forEach(o => o.classList.remove("selected"));
+        this.classList.add("selected");
+        this.querySelector("input").checked = true;
+    });
+});
+
+
 // ---------- ВИКТОРИНА ----------
-document.getElementById("quiz-form").addEventListener("submit", function(e){
+document.getElementById("quiz-form").addEventListener("submit", function (e) {
     e.preventDefault();
 
+    const resultBox = document.getElementById("quiz-result");
     const answer = document.querySelector("input[name='question1']:checked");
-    const result = document.getElementById("quiz-result");
 
-    if(!answer) {
-        result.innerHTML = "<p class='wrong'>Выберите ответ</p>";
+    resultBox.innerHTML = "";
+
+    if (!answer) {
+        resultBox.innerHTML = `
+            <span class="result-icon wrong-icon show">✖</span>
+            <div class="result-text">Выберите ответ</div>
+        `;
         return;
     }
 
-    if(answer.value === "math") {
-        result.innerHTML = "<p class='correct'>Правильно!</p>";
+    if (answer.value === "math") {
+        resultBox.innerHTML = `
+            <span class="result-icon correct-icon show">✔</span>
+            <div class="result-text">Правильно!</div>
+        `;
     } else {
-        result.innerHTML = "<p class='wrong'>Неправильно</p>";
+        resultBox.innerHTML = `
+            <span class="result-icon wrong-icon show">✖</span>
+            <div class="result-text">Неправильно</div>
+        `;
     }
 });
 </script>
 
 </body>
 </html>
+
+
 
 
 
