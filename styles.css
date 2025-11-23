@@ -16,9 +16,14 @@ nav ul li a { color:white; text-decoration:none; font-weight:600; }
 nav ul li a:hover { text-decoration:underline; }
 
 /* Секции */
-.section { padding:60px 20px; }
-.section h2,h3,h4 { text-align:center; margin-bottom:15px; }
-.section p { text-align:center; max-width:800px; margin:0 auto 20px auto; font-size:18px; }
+.section {
+  padding: 60px 20px;
+  background: #e0e0e0;   /* светло-серый фон */
+  border-radius: 15px;    /* чтобы не сливалось с остальным */
+  margin: 20px auto;
+  max-width: 1000px;
+}
+
 
 /* Появление при скролле */
 .fade { opacity:0; transform:translateY(50px); transition:all 0.8s ease; }
@@ -46,6 +51,7 @@ nav ul li a:hover { text-decoration:underline; }
 .school-info { flex:3; background:#f2f7ff; padding:15px; border-radius:15px;
               box-shadow:0 6px 15px rgba(0,0,0,0.1); }
 .school-info button { margin-top:15px; padding:10px 20px; cursor:pointer; }
+
 
 
 
