@@ -100,7 +100,6 @@ document.getElementById("back-main").addEventListener("click",()=>{
   }
   document.getElementById("school").style.display="none";
   document.querySelectorAll("section").forEach(sec=>{ if(sec.id!=="school") sec.style.display="block"; });
-  // плавное появление всех блоков
   document.querySelectorAll('.fade').forEach(el=>el.classList.remove("show"));
   setTimeout(()=>{ document.querySelectorAll('.fade').forEach(el=>el.classList.add("show")); },50);
 });
@@ -116,3 +115,4 @@ document.querySelectorAll("header nav ul li a").forEach(link=>{
     setTimeout(()=>target.classList.remove("highlight"),1000);
   });
 });
+
