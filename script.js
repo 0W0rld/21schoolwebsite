@@ -16,7 +16,7 @@ const quizResult=document.getElementById("quiz-result");
 const quizQuestion=document.getElementById("quiz-question");
 
 const quizData=[
-  {question:"Какой предмет является основным?", options:["М","Р","И"], correct:0},
+  {question:"Какой предмет является основным?", options:["","",""], correct:0},
   {question:"Сколько дней в неделе?", options:["5","7","6"], correct:1}
 ];
 let currentQuiz=0;
