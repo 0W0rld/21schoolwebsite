@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Сайт школы №21</title>
-
-<!-- Современный красивый шрифт -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
 /* ===========================
    ОБЩИЕ НАСТРОЙКИ
 =========================== */
@@ -100,46 +89,7 @@ p {
 }
 
 /* ===========================
-   КНОПКИ
-=========================== */
-button, .btn {
-  padding: 12px 25px;
-  background: #005fa3;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.4s ease, transform 0.3s ease;
-}
-
-button:hover, .btn:hover {
-  background: white;
-  color: #005fa3;
-  border: 2px solid #005fa3;
-  transform: translateY(-2px);
-}
-
-/* ===========================
-   ФОРМЫ
-=========================== */
-input, textarea, select {
-  width: 100%;
-  padding: 10px 15px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  margin-bottom: 15px;
-  transition: 0.4s ease;
-}
-
-input:focus, textarea:focus, select:focus {
-  border-color: #007acc;
-  outline: none;
-}
-
-/* ===========================
-   КАРТОЧКИ ЗАДАНИЙ
+   КАРТОЧКИ
 =========================== */
 .card {
   background: white;
@@ -147,11 +97,9 @@ input:focus, textarea:focus, select:focus {
   border-radius: 15px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
   margin-bottom: 20px;
-  transition: 0.4s ease, transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
 }
 
 /* ===========================
@@ -169,13 +117,9 @@ input:focus, textarea:focus, select:focus {
   max-width: 500px;
   text-align: center;
   margin: 0 auto;
-  transition: 0.4s ease;
-}
-
-#quiz p {
-  font-size: 22px;
-  font-weight: 700;
-  color: #003366;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
 }
 
 .quiz-option {
@@ -184,11 +128,11 @@ input:focus, textarea:focus, select:focus {
   border-radius: 15px;
   border: 2px solid transparent;
   cursor: pointer;
-  transition: 0.4s ease, transform 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
+  transition: 0.4s ease, transform 0.3s ease;
 }
 
 .quiz-option:hover {
@@ -257,116 +201,21 @@ footer {
   margin-top: 40px;
   font-size: 14px;
 }
-</style>
-</head>
-<body>
 
-<!-- ЛИПКАЯ ПАНЕЛЬ -->
-<header>
-  <div class="nav-container">
-    <div class="logo">Сайт школы №21</div>
-    <nav>
-      <a href="#home">Главная</a>
-      <a href="#about">О школе</a>
-      <a href="#quiz">Викторина</a>
-      <a href="#contact">Контакты</a>
-    </nav>
-  </div>
-</header>
-
-<!-- КОНТЕНТ -->
-<div class="container" id="home">
-  <h1>Добро пожаловать на сайт школы №21!</h1>
-  <p>У нас вы найдёте всю информацию о школе, задания и увлекательные викторины.</p>
-
-  <div class="card">
-    <h2>Наши новости</h2>
-    <p>Сегодня у нас был день науки с интересными экспериментами!</p>
-  </div>
-
-  <div class="card">
-    <h2>Расписание занятий</h2>
-    <p>Здесь вы можете увидеть актуальное расписание уроков.</p>
-  </div>
-
-  <!-- ВИКТОРИНА -->
-  <div id="quiz">
-    <form>
-      <p>Вопрос: Сколько будет 2 + 2?</p>
-      <label class="quiz-option">
-        <input type="radio" name="q1" value="3">
-        <span class="option-circle"></span> 3
-      </label>
-      <label class="quiz-option">
-        <input type="radio" name="q1" value="4">
-        <span class="option-circle"></span> 4
-      </label>
-      <label class="quiz-option">
-        <input type="radio" name="q1" value="5">
-        <span class="option-circle"></span> 5
-      </label>
-      <button type="button" id="quiz-btn" onclick="checkAnswer()">Ответить</button>
-      <div class="result-icon correct-icon">✔</div>
-      <div class="result-icon wrong-icon">✖</div>
-      <div class="result-text"></div>
-    </form>
-  </div>
-</div>
-
-<!-- ФУТЕР -->
-<footer>
-  &copy; 2025 Школа №21. Все права защищены.
-</footer>
-
-<script>
-// ===========================
-// ВИКТОРИНА
-// ===========================
-const options = document.querySelectorAll('.quiz-option');
-const correctAnswer = "4";
-let answered = false;
-const quizBtn = document.getElementById('quiz-btn');
-const correctIcon = document.querySelector('.correct-icon');
-const wrongIcon = document.querySelector('.wrong-icon');
-const resultText = document.querySelector('.result-text');
-
-options.forEach(opt => {
-  opt.addEventListener('click', () => {
-    options.forEach(o => o.classList.remove('selected'));
-    opt.classList.add('selected');
-  });
-});
-
-function checkAnswer() {
-  if (answered) return;
-  const selected = document.querySelector('.quiz-option.selected input');
-  if (!selected) return alert('Выберите вариант ответа!');
-  answered = true;
-
-  if (selected.value === correctAnswer) {
-    correctIcon.classList.add('show');
-    wrongIcon.classList.remove('show');
-    resultText.textContent = "Верно!";
-    quizBtn.style.display = "none"; // скрываем кнопку
-  } else {
-    wrongIcon.classList.add('show');
-    correctIcon.classList.remove('show');
-    resultText.textContent = "Неверно!";
-    quizBtn.disabled = true;
-    quizBtn.textContent = "Все уроки важны и нужны";
-    setTimeout(() => {
-      quizBtn.disabled = false;
-      quizBtn.textContent = "Ответить";
-      answered = false;
-      wrongIcon.classList.remove('show');
-      resultText.textContent = "";
-    }, 3000);
-  }
+/* ===========================
+   АНИМАЦИЯ ПРИ СКРОЛЛЕ
+=========================== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
 }
-</script>
 
-</body>
-</html>
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 
 
