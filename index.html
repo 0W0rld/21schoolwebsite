@@ -88,16 +88,31 @@
             <h3>Викторина</h3>
 
             <form id="quiz-form">
-                <p>Какой предмет является основным?</p>
+    <p>Какой предмет является основным?</p>
 
-                <label><input type="radio" name="question1" value="math"> Математика</label><br>
-                <label><input type="radio" name="question1" value="russian"> Русский язык</label><br>
-                <label><input type="radio" name="question1" value="history"> История</label><br>
+    <label class="quiz-option">
+        <div class="option-circle"></div>
+        <input type="radio" name="question1" value="math">
+        Математика
+    </label>
 
-                <button type="submit">Ответить</button>
-            </form>
+    <label class="quiz-option">
+        <div class="option-circle"></div>
+        <input type="radio" name="question1" value="russian">
+        Русский язык
+    </label>
 
-            <div id="quiz-result"></div>
+    <label class="quiz-option">
+        <div class="option-circle"></div>
+        <input type="radio" name="question1" value="history">
+        История
+    </label>
+
+    <button type="submit">Ответить</button>
+</form>
+
+<div id="quiz-result"></div>
+
         </div>
     </section>
 
@@ -158,5 +173,6 @@ document.getElementById("quiz-form").addEventListener("submit", function(e){
 
 </body>
 </html>
+
 
 
