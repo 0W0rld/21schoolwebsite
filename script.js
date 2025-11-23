@@ -56,19 +56,22 @@ document.querySelectorAll('.quiz-option').forEach(opt=>{
 });
 
 // Переход на внутреннюю страницу школы
-document.getElementById("school-btn").addEventListener("click",e=>{
+document.getElementById("school-btn").addEventListener("click", e => {
   e.preventDefault();
-  document.querySelectorAll("section").forEach(sec=>sec.style.display="none");
-  const schoolSec=document.getElementById("school");
-  schoolSec.style.display="flex";
-  setTimeout(()=>schoolSec.classList.add("show"),50);
+  document.querySelectorAll("section").forEach(sec => sec.style.display = "none");
+  const schoolSec = document.getElementById("school");
+  schoolSec.style.display = "block";   // исправлено
+  setTimeout(() => schoolSec.classList.add("show"), 50);
   initMap();
 });
 
 // Кнопка "Назад"
-document.getElementById("back-main").addEventListener("click",()=>{
-  document.getElementById("school").style.display="none";
-  document.querySelectorAll("section").forEach(sec=>{ if(sec.id!=="school") sec.style.display="block"; });
+document.getElementById("back-main").addEventListener("click", () => {
+  const schoolSec = document.getElementById("school");
+  schoolSec.style.display = "none";
+  document.querySelectorAll("section").forEach(sec => {
+    if (sec.id !== "school") sec.style.display = "block";
+  });
 });
 
 // Инициализация карты
@@ -90,7 +93,7 @@ function initMap(){
   });
 }
 
-// Панорама (можно заменить на Google Street View)
+// Панорама
 function initPanorama(point){
   const panoramaDiv=document.getElementById("panorama");
   panoramaDiv.innerHTML=`<p>Панорама для ${point.name}</p>
