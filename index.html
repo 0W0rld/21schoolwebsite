@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Школа №21 г. Нижнекамска</title>
   <link rel="stylesheet" href="styles.css">
-  <!-- Leaflet для карты -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css"/>
 </head>
 <body>
 
@@ -119,49 +118,33 @@
     </div>
   </section>
 
-  <!-- ШКОЛА ИЗНУТРИ -->
-<section id="inside" class="section fade" style="display:none;">
-    <div class="container">
-        <h3>Школа изнутри</h3>
-
-        <div id="school-container">
-            <div id="panorama-box">
-                <iframe id="panorama"
-                    src=""
-                    frameborder="0"
-                    allowfullscreen
-                    loading="lazy">
-                </iframe>
-            </div>
-
-            <div id="info-content">
-                <p>Выберите локацию для просмотра панорамы:</p>
-
-                <button class="location-btn" data-src="https://yandex.ru/map-widget/v1/-/CDaE5KTT">
-                    Вход в школу
-                </button>
-
-                <button class="location-btn" data-src="https://yandex.ru/map-widget/v1/-/CDaE5KUU">
-                    Спортивная площадка
-                </button>
-
-                <button class="location-btn" data-src="https://yandex.ru/map-widget/v1/-/CDaE5K9A">
-                    Задний двор
-                </button>
-            </div>
+  <!-- Внутренняя страница школы -->
+  <section id="school" class="section fade" style="display:none;">
+    <div class="container school-container">
+      <div class="school-map">
+        <div id="map" style="width:100%; height:400px;"></div>
+      </div>
+      <div class="school-info">
+        <h3>Информация о классе</h3>
+        <div id="info-content">
+          <p>Нажмите на точку на карте, чтобы увидеть сведения</p>
         </div>
+        <div id="panorama" style="width:100%; height:500px;"></div>
+        <button id="back-main">Назад</button>
+      </div>
     </div>
-</section>
-
+  </section>
 
   <footer>
     <p>© 2025 Школа №21 г. Нижнекамска</p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
