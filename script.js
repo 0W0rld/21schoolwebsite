@@ -1,19 +1,27 @@
-// ---------- ПРИЛИПАЮЩЕЕ МЕНЮ ----------
+// ------------------------------
+// Липкая шапка
+// ------------------------------
 window.addEventListener("scroll", () => {
   const header = document.getElementById("header");
-  if (window.scrollY > 10) header.classList.add("scrolled");
+  if(window.scrollY > 10) header.classList.add("scrolled");
   else header.classList.remove("scrolled");
 });
 
-// ---------- АНИМАЦИИ ПОЯВЛЕНИЯ ----------
-const observer = new IntersectionObserver((entries) => {
+// ------------------------------
+// Появление при скролле
+// ------------------------------
+const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add("show");
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
   });
 });
 document.querySelectorAll('.fade').forEach(el => observer.observe(el));
 
-// ---------- ВИКТОРИНА ----------
+// ------------------------------
+// Викторина
+// ------------------------------
 const quizForm = document.getElementById("quiz-form");
 const quizResult = document.getElementById("quiz-result");
 let answered = false;
@@ -30,11 +38,19 @@ quizForm.addEventListener("submit", function(e){
 
   answered = true;
 
+  // убираем старые галочки
+  document.querySelectorAll('.option-circle').forEach(c => c.classList.remove('correct','wrong'));
+  document.querySelectorAll('.quiz-option').forEach(opt => opt.style.pointerEvents='none');
+
+  const correctOption = quizForm.querySelector("label[data-correct='true']");
+
   if(selected.value === "math"){ // правильный ответ
-    quizResult.innerHTML = "<div class='result-icon correct-icon show'>✔</div><p class='correct'>Правильно!</p>";
-    quizForm.querySelector("button").style.display = "none";
-  } else { // неправильный ответ
-    quizResult.innerHTML = "<div class='result-icon wrong-icon show'>✖</div><p class='wrong'>Неверно</p>";
+    selected.closest('label').querySelector('.option-circle').classList.add('correct');
+    quizResult.innerHTML = "<p class='correct'>Правильно!</p>";
+  } else { // неправильный
+    selected.closest('label').querySelector('.option-circle').classList.add('wrong');
+    correctOption.querySelector('.option-circle').classList.add('correct');
+
     const btn = quizForm.querySelector("button");
     btn.disabled = true;
     btn.textContent = "Все уроки важны и нужны";
@@ -42,8 +58,19 @@ quizForm.addEventListener("submit", function(e){
       btn.disabled = false;
       btn.textContent = "Ответить";
       quizResult.innerHTML = "";
+      document.querySelectorAll('.option-circle').forEach(c => c.classList.remove('correct','wrong'));
+      document.querySelectorAll('.quiz-option').forEach(opt => opt.style.pointerEvents='auto');
       answered = false;
     }, 3000);
   }
 });
 
+// Выбор опции при клике (добавляем визуально selected)
+document.querySelectorAll('.quiz-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    if(answered) return;
+    document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+    opt.querySelector("input").checked = true;
+  });
+});
