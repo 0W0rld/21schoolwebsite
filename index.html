@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Сайт школы №21</title>
 
-  <!-- Современный шрифт -->
+  <!-- Шрифт -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Внешний CSS -->
+  <!-- Подключаем CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -113,31 +113,24 @@ quizBtn.addEventListener('click', () => {
 });
 
 // ===========================
-// ПЛАВНОЕ ПОЯВЛЕНИЕ ПРИ СКРОЛЛЕ
+// ПЛАВНОЕ ПОЯВЛЕНИЕ КАРТОЧЕК
 // ===========================
 const faders = document.querySelectorAll('.fade-in');
+const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
 
-const appearOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px"
-};
-
-const appearOnScroll = new IntersectionObserver((entries, appearOnScroll) => {
+const appearOnScroll = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
     entry.target.classList.add('show');
-    appearOnScroll.unobserve(entry.target);
+    observer.unobserve(entry.target);
   });
 }, appearOptions);
 
-faders.forEach(fader => {
-  appearOnScroll.observe(fader);
-});
+faders.forEach(fader => appearOnScroll.observe(fader));
 </script>
 
 </body>
 </html>
-
 
 
 
