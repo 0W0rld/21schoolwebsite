@@ -1,127 +1,90 @@
-// Липкая шапка
-window.addEventListener("scroll", () => {
-  const header = document.getElementById("header");
-  window.scrollY>10?header.classList.add("scrolled"):header.classList.remove("scrolled");
+// Начальные данные школы
+const schoolCenter = [55.6317, 51.8207]; // приблизительные координаты школы №21
+
+// Инициализация карты MapLibre
+const map = new maplibregl.Map({
+  container: 'map',
+  style: 'https://demotiles.maplibre.org/style.json', // открытый стиль
+  center: schoolCenter,
+  zoom: 17,
+  maxZoom: 19,
+  minZoom: 15,
+  maxBounds: [
+    [ schoolCenter[1] - 0.005, schoolCenter[0] - 0.005 ], // минимальные долгота, широта
+    [ schoolCenter[1] + 0.005, schoolCenter[0] + 0.005 ]  // максимальные долгота, широта
+  ]
 });
 
-// Появление при скролле
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add("show"); });
-});
-document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
-
-// Викторина
-const quizForm=document.getElementById("quiz-form");
-const quizResult=document.getElementById("quiz-result");
-let answered=false;
-
-quizForm.addEventListener("submit",function(e){
-  e.preventDefault();
-  if(answered) return;
-  const selected=quizForm.querySelector("input[name='question1']:checked");
-  if(!selected){ quizResult.innerHTML="<p class='wrong'>Выберите ответ</p>"; return; }
-
-  answered=true;
-  document.querySelectorAll('.option-circle').forEach(c=>c.classList.remove('correct','wrong'));
-  document.querySelectorAll('.quiz-option').forEach(opt=>opt.style.pointerEvents='none');
-
-  const correctOption=quizForm.querySelector("label[data-correct='true']");
-
-  if(selected.value==="math"){
-    selected.closest('label').querySelector('.option-circle').classList.add('correct');
-    quizResult.innerHTML="<p class='correct'>Правильно!</p>";
-  }else{
-    selected.closest('label').querySelector('.option-circle').classList.add('wrong');
-    correctOption.querySelector('.option-circle').classList.add('correct');
-
-    const btn=quizForm.querySelector("button");
-    btn.disabled=true; btn.textContent="Все уроки важны и нужны";
-    setTimeout(()=>{
-      btn.disabled=false; btn.textContent="Ответить"; quizResult.innerHTML="";
-      document.querySelectorAll('.option-circle').forEach(c=>c.classList.remove('correct','wrong'));
-      document.querySelectorAll('.quiz-option').forEach(opt=>opt.style.pointerEvents='auto');
-      answered=false;
-    },3000);
+// Пример точек на карте (локации класса)
+const points = [
+  {
+    coords: [55.6318, 51.8209],
+    name: "Класс 1",
+    info: "Преподаёт Иванов И.И.",
+    panorama: "https://pannellum.org/images/alma.jpg"
+  },
+  {
+    coords: [55.6316, 51.8205],
+    name: "Класс 2",
+    info: "Преподаёт Петров П.П.",
+    panorama: "https://pannellum.org/images/alma.jpg"
   }
-});
+];
 
-// Выбор опции
-document.querySelectorAll('.quiz-option').forEach(opt=>{
-  opt.addEventListener('click',()=>{
-    if(answered) return;
-    document.querySelectorAll('.quiz-option').forEach(o=>o.classList.remove('selected'));
-    opt.classList.add('selected');
-    opt.querySelector("input").checked=true;
-  });
-});
+// Добавляем маркеры
+points.forEach(p => {
+  const el = document.createElement('div');
+  el.className = 'marker';
+  el.style.width = '20px';
+  el.style.height = '20px';
+  el.style.background = 'red';
+  el.style.borderRadius = '50%';
+  el.style.cursor = 'pointer';
 
-// Внутренняя страница школы
-let panoramaActive = false;
-let panoramaInstance;
-
-document.getElementById("school-btn").addEventListener("click", e => {
-  e.preventDefault();
-  document.querySelectorAll("section").forEach(sec => sec.style.display = "none");
-  const schoolSec = document.getElementById("school");
-  schoolSec.style.display = "block";
-  setTimeout(()=>schoolSec.classList.add("show"),50);
-  initMap();
-});
-
-document.getElementById("back-main").addEventListener("click",()=>{
-  if(panoramaActive){
-    const confirmExit = confirm("Вы точно хотите закончить исследовать нашу школу и вернуться назад?");
-    if(!confirmExit) return;
-    panoramaActive=false;
-    panoramaInstance.destroy();
-  }
-  const schoolSec = document.getElementById("school");
-  schoolSec.style.display = "none";
-  document.querySelectorAll("section").forEach(sec=>{if(sec.id!=="school") sec.style.display="block"});
-});
-
-// Навигация с подтверждением выхода из панорамы
-document.querySelectorAll('nav ul li a').forEach(navLink=>{
-  navLink.addEventListener('click', e=>{
-    const targetId = navLink.getAttribute('href').substring(1);
-    if(panoramaActive && targetId){
-      e.preventDefault();
-      const confirmExit = confirm("Вы точно хотите закончить исследовать нашу школу и вернуться назад?");
-      if(!confirmExit) return;
-      panoramaActive=false;
-      panoramaInstance.destroy();
-      document.querySelectorAll("section").forEach(sec=>sec.style.display="none");
-      document.getElementById(targetId).style.display="block";
-    }
-  });
-});
-
-// Инициализация карты и панорамы
-function initMap(){
-  const map=L.map('map').setView([55.632,51.821],17);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:22}).addTo(map);
-
-  const points=[
-    {coords:[55.632,51.821], name:"Класс 1", info:"Преподаёт Иванов И.И.", panorama:"https://pannellum.org/images/alma.jpg"},
-    {coords:[55.6325,51.822], name:"Класс 2", info:"Преподаёт Петров П.П.", panorama:"https://pannellum.org/images/alma.jpg"}
-  ];
-
-  points.forEach(p=>{
-    const marker=L.marker(p.coords).addTo(map);
-    marker.on("click",()=>{
-      document.getElementById("info-content").innerHTML=`<h4>${p.name}</h4><p>${p.info}</p>`;
-      initPanorama(p);
+  new maplibregl.Marker(el)
+    .setLngLat([p[1], p[0]])
+    .addTo(map)
+    .getElement()
+    .addEventListener('click', () => {
+      showLocationInfo(p);
     });
+});
+
+// Функция показать информацию + панораму
+function showLocationInfo(loc) {
+  document.getElementById('info-content').innerHTML = `<h4>${loc.name}</h4><p>${loc.info}</p>`;
+  initPanorama(loc);
+}
+
+// Панель с панорамой через Pannellum
+let panoViewer = null;
+let panoramaActive = false;
+
+function initPanorama(loc) {
+  panoramaActive = true;
+  const pan = document.getElementById('panorama');
+  pan.innerHTML = ''; // очистить
+  panoViewer = pannellum.viewer('panorama', {
+    type: 'equirectangular',
+    panorama: loc.panorama,
+    autoLoad: true
   });
 }
 
-function initPanorama(point){
-  panoramaActive=true;
-  const panoramaDiv=document.getElementById("panorama");
-  panoramaDiv.innerHTML="";
-  panoramaInstance = pannellum.viewer('panorama',{
-      "type":"equirectangular",
-      "panorama": point.panorama,
-      "autoLoad": true
-  });
-}
+// Кнопка назад (в шапке)
+document.getElementById('back-to-main').addEventListener('click', (e) => {
+  if (panoramaActive) {
+    const confirmExit = confirm("Вы точно хотите завершить просмотр школы и вернуться назад?");
+    if (!confirmExit) {
+      e.preventDefault();
+      return;
+    }
+    // Уничтожаем панораму
+    panoViewer.destroy();
+    panoramaActive = false;
+  }
+
+  // Можно здесь сделать логику перехода на главную секцию сайта
+  // Например, скрыть секцию карты и показать другие секции
+});
+
