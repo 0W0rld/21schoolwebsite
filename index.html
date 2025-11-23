@@ -1,132 +1,174 @@
-<!DOCTYPE html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Сайт школы №21</title>
-
-  <!-- Шрифт -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Подключаем CSS -->
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Школа №21 г. Нижнекамска</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<header>
-  <div class="nav-container">
-    <div class="logo">Сайт школы №21</div>
-    <nav>
-      <a href="#home">Главная</a>
-      <a href="#about">О школе</a>
-      <a href="#quiz">Викторина</a>
-      <a href="#contact">Контакты</a>
-    </nav>
-  </div>
-</header>
+    <!-- Шапка -->
+    <header id="header">
+        <div class="container header-flex">
+            <h1>Школа №21 г. Нижнекамска</h1>
+            <nav>
+                <ul>
+                    <li><a href="#main">Главная</a></li>
+                    <li><a href="#about">О школе</a></li>
+                    <li><a href="#history">История</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                    <li><a href="#quiz">Викторина</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<div class="container" id="home">
-  <h1 class="fade-in">Добро пожаловать на сайт школы №21!</h1>
-  <p class="fade-in">У нас вы найдёте всю информацию о школе, задания и увлекательные викторины.</p>
+    <!-- Главная -->
+    <section id="main" class="section hero fade">
+        <div class="container">
+            <h2>Добро пожаловать в школу №21</h2>
+            <p class="subtitle">Узнайте историю, достижения и жизнь нашей школы</p>
+        </div>
+    </section>
 
-  <div class="card fade-in">
-    <h2>Наши новости</h2>
-    <p>Сегодня у нас был день науки с интересными экспериментами!</p>
-  </div>
+    <!-- О школе -->
+    <section id="about" class="section fade">
+        <div class="container">
+            <h3>О школе</h3>
+            <p>
+                МБОУ «СОШ №21» открыта 1 сентября 1986 года.
+                В начале школа приняла 2242 учащихся по адресу: улица Мурадьяна, 18А.
+            </p>
+        </div>
+    </section>
 
-  <div class="card fade-in">
-    <h2>Расписание занятий</h2>
-    <p>Здесь вы можете увидеть актуальное расписание уроков.</p>
-  </div>
+    <!-- История -->
+    <section id="history" class="section fade">
+        <div class="container">
+            <h3>История школы</h3>
+            <div class="timeline">
+                <div class="timeline-item fade">
+                    <h4>1986 — Основание</h4>
+                    <p>Начало работы школы, первые ученики, первые уроки.</p>
+                </div>
 
-  <div id="quiz" class="fade-in">
-    <form>
-      <p>Вопрос: Сколько будет 2 + 2?</p>
-      <label class="quiz-option">
-        <input type="radio" name="q1" value="3">
-        <span class="option-circle"></span> 3
-      </label>
-      <label class="quiz-option">
-        <input type="radio" name="q1" value="4">
-        <span class="option-circle"></span> 4
-      </label>
-      <label class="quiz-option">
-        <input type="radio" name="q1" value="5">
-        <span class="option-circle"></span> 5
-      </label>
-      <button type="button" id="quiz-btn">Ответить</button>
-      <div class="result-icon correct-icon">✔</div>
-      <div class="result-icon wrong-icon">✖</div>
-      <div class="result-text"></div>
-    </form>
-  </div>
-</div>
+                <div class="timeline-item fade">
+                    <h4>1990–2000 — Развитие</h4>
+                    <p>Расширение базы, новые кабинеты, первые выпускники.</p>
+                </div>
 
-<footer>
-  &copy; 2025 Школа №21. Все права защищены.
-</footer>
+                <div class="timeline-item fade">
+                    <h4>2000–2018 — Модернизация</h4>
+                    <p>Ремонт, современное оборудование, цифровые технологии.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Галерея -->
+    <section id="gallery" class="section fade">
+        <div class="container">
+            <h3>Фотогалерея</h3>
+
+            <div class="gallery-grid">
+                <img src="https://via.placeholder.com/300x200?text=Фото+1">
+                <img src="https://via.placeholder.com/300x200?text=Фото+2">
+                <img src="https://via.placeholder.com/300x200?text=Фото+3">
+            </div>
+        </div>
+    </section>
+
+    <!-- Викторина -->
+    <section id="quiz" class="section fade">
+        <div class="container">
+            <h3>Викторина</h3>
+
+            <form id="quiz-form">
+    <p>Какой предмет является основным?</p>
+
+    <label class="quiz-option">
+        <div class="option-circle"></div>
+        <input type="radio" name="question1" value="math">
+        Математика
+    </label>
+
+    <label class="quiz-option">
+        <div class="option-circle"></div>
+        <input type="radio" name="question1" value="russian">
+        Русский язык
+    </label>
+
+    <label class="quiz-option">
+        <div class="option-circle"></div>
+        <input type="radio" name="question1" value="history">
+        История
+    </label>
+
+    <button type="submit">Ответить</button>
+</form>
+
+<div id="quiz-result"></div>
+
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contacts" class="section fade">
+        <div class="container">
+            <h3>Контакты</h3>
+            <p>Адрес: ул. Мурадьяна 18А, г. Нижнекамск</p>
+            <p>Телефон: +7 (XXX) XXX-XX-XX</p>
+            <p>Email: info@school21.ru</p>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <p>© 2024 Школа №21 г. Нижнекамска</p>
+    </footer>
+
+
+<!-- Скрипты -->
 <script>
-// ===========================
-// ВИКТОРИНА
-// ===========================
-const options = document.querySelectorAll('.quiz-option');
-const correctAnswer = "4";
-let answered = false;
-const quizBtn = document.getElementById('quiz-btn');
-const correctIcon = document.querySelector('.correct-icon');
-const wrongIcon = document.querySelector('.wrong-icon');
-const resultText = document.querySelector('.result-text');
-
-options.forEach(opt => {
-  opt.addEventListener('click', () => {
-    options.forEach(o => o.classList.remove('selected'));
-    opt.classList.add('selected');
-  });
+// ---------- ПРИЛИПАЮЩЕЕ МЕНЮ ----------
+window.addEventListener("scroll", () => {
+    const header = document.getElementById("header");
+    if (window.scrollY > 10) header.classList.add("scrolled");
+    else header.classList.remove("scrolled");
 });
 
-quizBtn.addEventListener('click', () => {
-  if (answered) return;
-  const selected = document.querySelector('.quiz-option.selected input');
-  if (!selected) return alert('Выберите вариант ответа!');
-  answered = true;
-
-  if (selected.value === correctAnswer) {
-    correctIcon.classList.add('show');
-    wrongIcon.classList.remove('show');
-    resultText.textContent = "Верно!";
-    quizBtn.style.display = "none";
-  } else {
-    wrongIcon.classList.add('show');
-    correctIcon.classList.remove('show');
-    resultText.textContent = "Неверно!";
-    quizBtn.disabled = true;
-    quizBtn.textContent = "Все уроки важны и нужны";
-    setTimeout(() => {
-      quizBtn.disabled = false;
-      quizBtn.textContent = "Ответить";
-      answered = false;
-      wrongIcon.classList.remove('show');
-      resultText.textContent = "";
-    }, 3000);
-  }
+// ---------- АНИМАЦИИ ПОЯВЛЕНИЯ ----------
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
 });
+document.querySelectorAll('.fade').forEach(el => observer.observe(el));
 
-// ===========================
-// ПЛАВНОЕ ПОЯВЛЕНИЕ КАРТОЧЕК
-// ===========================
-const faders = document.querySelectorAll('.fade-in');
-const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+// ---------- ВИКТОРИНА ----------
+document.getElementById("quiz-form").addEventListener("submit", function(e){
+    e.preventDefault();
 
-const appearOnScroll = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add('show');
-    observer.unobserve(entry.target);
-  });
-}, appearOptions);
+    const answer = document.querySelector("input[name='question1']:checked");
+    const result = document.getElementById("quiz-result");
 
-faders.forEach(fader => appearOnScroll.observe(fader));
+    if(!answer) {
+        result.innerHTML = "<p class='wrong'>Выберите ответ</p>";
+        return;
+    }
+
+    if(answer.value === "math") {
+        result.innerHTML = "<p class='correct'>Правильно!</p>";
+    } else {
+        result.innerHTML = "<p class='wrong'>Неправильно</p>";
+    }
+});
 </script>
 
 </body>
