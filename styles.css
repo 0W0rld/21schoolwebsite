@@ -16,7 +16,7 @@ body {
 }
 
 /* ===========================
-   ЛИПКАЯ НАВИГАЦИЯ
+   ПАНЕЛЬ НАВИГАЦИИ
 =========================== */
 header {
   position: sticky;
@@ -141,9 +141,7 @@ p {
   transform: translateY(-3px);
 }
 
-.quiz-option input {
-  display: none;
-}
+.quiz-option input { display: none; }
 
 .option-circle {
   width: 20px;
@@ -153,9 +151,7 @@ p {
   transition: 0.4s ease;
 }
 
-.quiz-option.selected .option-circle {
-  background: #007acc;
-}
+.quiz-option.selected .option-circle { background: #007acc; }
 
 /* ===========================
    ИКОНКИ РЕЗУЛЬТАТА
@@ -174,13 +170,8 @@ p {
   transform: scale(1) rotate(0deg);
 }
 
-.correct-icon {
-  color: #00b347;
-}
-
-.wrong-icon {
-  color: #d90000;
-}
+.correct-icon { color: #00b347; }
+.wrong-icon { color: #d90000; }
 
 .result-text {
   font-size: 22px;
