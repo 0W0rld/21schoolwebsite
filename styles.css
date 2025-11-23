@@ -1,49 +1,174 @@
-/* Убираем выделение текста при клике */
+/* ===========================
+   ОБЩИЕ НАСТРОЙКИ
+=========================== */
 * {
-  -webkit-tap-highlight-color: transparent;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
   user-select: none;
 }
 
-/* Контейнер викторины */
+body {
+  background: #f0f4ff;
+  color: #003366;
+  line-height: 1.6;
+}
+
+/* ===========================
+   КОНТЕЙНЕР
+=========================== */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ===========================
+   ЗАГОЛОВКИ И ТЕКСТ
+=========================== */
+h1, h2, h3, h4, h5 {
+  color: #003366;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* ===========================
+   НАВИГАЦИЯ
+=========================== */
+nav {
+  background: #005fa3;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* ===========================
+   КНОПКИ
+=========================== */
+button, .btn {
+  padding: 12px 25px;
+  background: #005fa3;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s, transform 0.2s ease;
+}
+
+button:hover, .btn:hover {
+  background: white;
+  color: #005fa3;
+  border: 2px solid #005fa3;
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   ФОРМЫ
+=========================== */
+input, textarea, select {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  transition: 0.3s;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #007acc;
+  outline: none;
+}
+
+/* ===========================
+   КАРТОЧКИ ЗАДАНИЙ
+=========================== */
+.card {
+  background: white;
+  padding: 20px 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  transition: 0.3s, transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* ===========================
+   ВИКТОРИНА
+=========================== */
 #quiz form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
+  background: white;
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  margin: 0 auto;
 }
 
 #quiz p {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
+  color: #003366;
 }
 
-/* Красивые варианты ответов */
 .quiz-option {
   background: #f2f7ff;
-  padding: 12px 15px;
-  border-radius: 10px;
+  padding: 15px 20px;
+  border-radius: 12px;
   border: 2px solid transparent;
   cursor: pointer;
-  transition: 0.25s ease;
+  transition: 0.3s, transform 0.2s ease;
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 12px;
 }
 
 .quiz-option:hover {
   background: #e6f1ff;
   border-color: #007acc;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
-/* Скрываем стандартные радио-кнопки */
 .quiz-option input {
   display: none;
 }
 
-/* Кружочек перед ответом */
 .option-circle {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   border: 2px solid #007acc;
   border-radius: 50%;
   transition: 0.3s;
@@ -53,18 +178,17 @@
   background: #007acc;
 }
 
-/* Кнопка отправить */
 #quiz button {
-  margin-top: 10px;
-  padding: 12px 25px;
+  margin-top: 20px;
+  padding: 14px 30px;
   background: #005fa3;
   color: white;
   border: none;
-  border-radius: 10px;
-  font-size: 16px;
+  border-radius: 12px;
+  font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s, transform 0.2s ease;
 }
 
 #quiz button:hover {
@@ -74,9 +198,8 @@
   transform: translateY(-3px);
 }
 
-/* Анимации галочки и крестика */
 .result-icon {
-  font-size: 40px;
+  font-size: 48px;
   font-weight: bold;
   display: inline-block;
   opacity: 0;
@@ -97,11 +220,25 @@
   color: #d90000;
 }
 
-/* Текст рядом с иконкой */
 .result-text {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 15px;
+  color: #003366;
 }
+
+/* ===========================
+   ФУТЕР
+=========================== */
+footer {
+  background: #003366;
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+
 
 
