@@ -81,22 +81,22 @@
     <div class="container">
       <h3>Викторина</h3>
       <form id="quiz-form">
-        <p id="quiz-question">Какой предмет является основным?</p>
+        <p id="quiz-question"></p>
         <div class="quiz-options">
-          <label class="quiz-option" data-correct="true">
+          <label class="quiz-option">
             <div class="option-circle"></div>
-            <input type="radio" name="question" value="math">
-            Математика
+            <input type="radio" name="question" value="0">
+            <span class="option-text"></span>
           </label>
           <label class="quiz-option">
             <div class="option-circle"></div>
-            <input type="radio" name="question" value="russian">
-            Русский язык
+            <input type="radio" name="question" value="1">
+            <span class="option-text"></span>
           </label>
           <label class="quiz-option">
             <div class="option-circle"></div>
-            <input type="radio" name="question" value="history">
-            История
+            <input type="radio" name="question" value="2">
+            <span class="option-text"></span>
           </label>
         </div>
         <button type="submit">Ответить</button>
@@ -115,7 +115,7 @@
     </div>
   </section>
 
-  <!-- Внутренняя страница школы -->
+  <!-- Внутренняя панорама школы -->
   <section id="school" class="section fade" style="display:none;">
     <div class="container school-container">
       <div id="panorama" class="panorama"></div>
