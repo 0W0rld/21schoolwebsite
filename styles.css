@@ -15,15 +15,18 @@ nav ul { display:flex; list-style:none; gap:20px; }
 nav ul li a { color:white; text-decoration:none; font-weight:600; }
 nav ul li a:hover { text-decoration:underline; }
 
-/* Секции */
+/* Секции с затемнением */
 .section {
   padding: 60px 20px;
-  background: #e0e0e0;   /* светло-серый фон */
-  border-radius: 15px;    /* чтобы не сливалось с остальным */
+  background: rgba(224,224,224,0.9);   /* светло-серый с легким прозрачным затемнением */
+  border-radius: 15px;
   margin: 20px auto;
   max-width: 1000px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transition: 0.5s;
 }
-
+.section h2,h3,h4 { text-align:center; margin-bottom:15px; }
+.section p { text-align:center; max-width:800px; margin:0 auto 20px auto; font-size:18px; }
 
 /* Появление при скролле */
 .fade { opacity:0; transform:translateY(50px); transition:all 0.8s ease; }
@@ -31,7 +34,7 @@ nav ul li a:hover { text-decoration:underline; }
 
 /* Викторина */
 #quiz form { display:flex; flex-direction:column; gap:15px; max-width:500px; margin:0 auto; padding:25px;
-            background:#f2f7ff; border-radius:15px; box-shadow:0 6px 15px rgba(0,0,0,0.1); text-align:center; }
+            background:rgba(242,247,255,0.95); border-radius:15px; box-shadow:0 6px 15px rgba(0,0,0,0.1); text-align:center; }
 .quiz-option { display:flex; align-items:center; gap:10px; padding:12px 15px; background:white;
               border-radius:10px; cursor:pointer; border:2px solid transparent; transition:all 0.3s; }
 .quiz-option:hover { transform:translateY(-2px); border-color:#007acc; }
@@ -47,11 +50,15 @@ nav ul li a:hover { text-decoration:underline; }
 
 /* Внутренняя страница школы */
 .school-container { display:flex; gap:20px; flex-wrap:wrap; }
-.school-map { flex:7; }
-.school-info { flex:3; background:#f2f7ff; padding:15px; border-radius:15px;
-              box-shadow:0 6px 15px rgba(0,0,0,0.1); }
-.school-info button { margin-top:15px; padding:10px 20px; cursor:pointer; }
-
-
+.school-map { flex:1 1 100%; min-height:400px; }
+.school-info { flex:1 1 100%; background:rgba(242,247,255,0.95); padding:15px; border-radius:15px;
+              box-shadow:0 6px 15px rgba(0,0,0,0.1); transition:0.5s; }
+@media (min-width:768px){
+    .school-container { flex-wrap:nowrap; }
+    .school-map { flex:7; }
+    .school-info { flex:3; }
+}
+#panorama { width:100%; height:500px; border-radius:10px; margin-top:10px; }
+.school-info button { margin-top:15px; padding:10px 20px; font-size:16px; cursor:pointer; }
 
 
