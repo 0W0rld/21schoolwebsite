@@ -1,244 +1,158 @@
-/* =========================== */
-/*         ОСНОВНОЕ            */
-/* =========================== */
+/* Убираем выделение */
+* {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f4f4f4;
+    background: linear-gradient(135deg, #e6eef7, #d4e2f0);
     color: #222;
 }
 
-h1, h2, h3, p {
-    margin: 0 0 15px;
-}
-
-/* =========================== */
-/*      ВЕРХНЯЯ ПАНЕЛЬ         */
-/* =========================== */
-
+/* ВЕРХНЕЕ МЕНЮ */
 .topbar {
+    position: fixed;
+    top: 0;
     width: 100%;
-    background: #1e3a8a;
-    color: white;
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(8px);
     display: flex;
     justify-content: space-between;
-    padding: 15px 25px;
-    align-items: center;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    padding: 10px 15px;
+    z-index: 1000;
+    border-bottom: 1px solid #ccc;
 }
 
 .logo {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
 }
 
 .menu {
     display: flex;
-    gap: 10px;
+    gap: 8px;
 }
 
 .menu-btn {
-    background: white;
+    background: none;
     border: none;
-    padding: 10px 15px;
+    padding: 8px 12px;
     border-radius: 8px;
     cursor: pointer;
-    transition: 0.25s;
-    font-weight: bold;
+    font-size: 14px;
+    transition: 0.2s;
 }
 
 .menu-btn:hover {
-    background: #dce3ff;
-    transform: scale(1.05);
+    background: rgba(0, 121, 255, 0.25);
 }
 
 .menu-btn:active {
-    transform: scale(0.95);
+    background: rgba(0, 121, 255, 0.45);
 }
 
-/* =========================== */
-/*         СЕКЦИИ              */
-/* =========================== */
+/* Адаптация для телефона */
+@media (max-width: 500px) {
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
 
+/* СЕКЦИИ */
 .content-section {
     display: none;
-    padding: 35px;
-    animation: fadeSection 0.4s ease;
+    opacity: 0;
+    padding: 100px 20px 50px;
+    animation: fadeIn 0.7s ease forwards;
+    margin: 20px auto;
+    max-width: 900px;
+    background: rgba(255,255,255,0.65);
+    border-radius: 20px;
 }
 
-.content-section.visible {
+.visible {
     display: block;
 }
 
-@keyframes fadeSection {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* =========================== */
-/*      АНИМАЦИЯ В ИСТОРИИ     */
-/* =========================== */
-
-.fade-item {
+/* Эффект плавного появления */
+.fade {
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(20px);
     transition: 0.6s ease;
 }
 
-.fade-item.visible {
+.fade.show {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* =========================== */
-/*     СЕТКА УЧИТЕЛЕЙ          */
-/* =========================== */
-
-.teacher-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
-    margin: 25px 0;
-}
-
-.teacher-card {
-    background: white;
-    padding: 15px;
+/* ВИКТОРИНА */
+.quiz-option {
+    background: #f2f7ff;
+    padding: 12px 15px;
     border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 0 12px rgba(0,0,0,0.1);
-}
-
-.teacher-card img {
-    width: 100%;
-    border-radius: 12px;
-    margin-bottom: 10px;
-}
-
-/* =========================== */
-/*        ВИКТОРИНА            */
-/* =========================== */
-
-.quiz-container {
-    max-width: 600px;
-    margin: 40px auto;
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.1);
-}
-
-.quiz-title {
-    font-size: 26px;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.question-text {
-    font-size: 20px;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-.answers {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.answer-btn {
-    padding: 12px 18px;
-    background: rgb(200, 200, 200);
-    border: none;
-    border-radius: 12px;
-    font-size: 18px;
+    border: 2px solid transparent;
     cursor: pointer;
-    transition: 0.25s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: 0.3s;
 }
 
-.answer-btn:hover:not(.disabled) {
-    background: white;
-    transform: scale(1.03);
+.quiz-option:hover {
+    background: #e6f1ff;
+    border-color: #007acc;
 }
 
-.answer-btn.disabled {
-    opacity: 0.5;
-    pointer-events: none;
-}
-
-.answer-wrapper {
-    position: relative;
-}
-
-/* ===== АНИМАЦИЯ ГАЛОЧКИ ===== */
-
-.checkmark {
-    display: inline-block;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: 3px solid #22c55e;
-    position: absolute;
-    right: -40px;
-    top: 50%;
-    transform: translateY(-50%) scale(0);
-    animation: pop 0.35s forwards;
-}
-
-.checkmark::after {
-    content: "✓";
-    position: absolute;
-    font-size: 18px;
-    font-weight: bold;
-    color: #22c55e;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-@keyframes pop {
-    0% { transform: translateY(-50%) scale(0) rotate(-180deg); opacity: 0; }
-    60% { transform: translateY(-50%) scale(1.2) rotate(20deg); opacity: 1; }
-    100% { transform: translateY(-50%) scale(1) rotate(0deg); }
-}
-
-/* ===== КРУЖОК (фикс размера) ===== */
-
-.answer-ring {
-    position: absolute;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    border: 4px solid #22c55e;
-    pointer-events: none;
-    transform: scale(0);
-    opacity: 0;
-    animation: ringPop 0.45s ease-out forwards;
-}
-
-@keyframes ringPop {
-    0% { transform: scale(0); opacity: 0; }
-    50% { transform: scale(1.4); opacity: 0.85; }
-    100% { transform: scale(1); opacity: 0; }
-}
-
-/* =========================== */
-/*          МОДАЛКА            */
-/* =========================== */
-
-.modal {
+.quiz-option input {
     display: none;
+}
+
+/* фиксируем "широкий кружок" */
+.option-circle {
+    width: 20px;
+    height: 20px;
+    border: 3px solid #007acc;
+    border-radius: 50%;
+    transition: 0.3s ease;
+}
+
+.quiz-option.selected .option-circle {
+    background: #007acc;
+    transform: scale(1.1);
+}
+
+.correct {
+    color: #00c045;
+}
+
+.wrong {
+    color: #c40000;
+}
+
+/* МОДАЛЬНОЕ ОКНО */
+.modal {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.55);
+    display: none;
     justify-content: center;
     align-items: center;
 }
 
 .modal-box {
     background: white;
-    padding: 25px;
+    padding: 20px;
     border-radius: 12px;
     text-align: center;
 }
+
+/* Плавное появление */
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
