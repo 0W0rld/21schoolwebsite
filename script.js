@@ -1,26 +1,16 @@
-// Липкая шапка
-window.addEventListener("scroll", () => {
-  const header = document.getElementById("header");
-  window.scrollY>10?header.classList.add("scrolled"):header.classList.remove("scrolled");
-});
-
-// Появление при скролле
-// Появление секций при скролле
+// Intersection Observer для плавного появления секций
 const observer = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add("show"); });
+  entries.forEach(entry=>{
+    if(entry.isIntersecting) entry.target.classList.add("show");
+  });
 });
 document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
 
 // Викторина
-const quizForm=document.getElementById("quiz-form");
-const quizResult=document.getElementById("quiz-result");
-const quizQuestion=document.getElementById("quiz-question");
 const quizForm = document.getElementById("quiz-form");
 const quizResult = document.getElementById("quiz-result");
 const quizQuestion = document.getElementById("quiz-question");
 
-const quizData=[
-  {question:"Какой предмет является основным?", options:["","",""], correct:0},
 const quizData = [
   {question:"Какой предмет является основным?", options:["Математика","Русский язык","История"], correct:0},
   {question:"Сколько дней в неделе?", options:["5","7","6"], correct:1}
@@ -34,14 +24,11 @@ function loadQuiz(){
   quizQuestion.textContent=data.question;
   const labels=document.querySelectorAll(".quiz-option");
   labels.forEach((label,i)=>{
-    label.querySelector("input").checked=false;
-    label.querySelector(".option-circle").classList.remove("correct","wrong");
-    label.childNodes[2].textContent=data.options[i];
     const input=label.querySelector("input");
     const circle=label.querySelector(".option-circle");
     const textSpan=label.querySelector(".option-text");
     input.checked=false;
-    circle.classList.remove("correct","wrong");
+    circle.classList.remove("correct","wrong","show");
     label.classList.remove("selected");
     textSpan.textContent=data.options[i];
   });
@@ -55,35 +42,28 @@ quizForm.addEventListener("submit",function(e){
   if(answered) return;
   const selected=quizForm.querySelector("input[name='question']:checked");
   if(!selected){ quizResult.innerHTML="<p class='wrong'>Выберите ответ</p>"; return; }
-
   answered=true;
   const selectedIndex=[...quizForm.querySelectorAll("input[name='question']")].indexOf(selected);
   const labels=document.querySelectorAll(".quiz-option");
-  if(selectedIndex===quizData[currentQuiz].correct){
-    labels[selectedIndex].querySelector(".option-circle").classList.add("correct");
+  const correctIndex=quizData[currentQuiz].correct;
+
+  if(selectedIndex===correctIndex){
+    labels[selectedIndex].querySelector(".option-circle").classList.add("correct","show");
     quizResult.innerHTML="<p class='correct'>Правильно!</p>";
     setTimeout(()=>{
       currentQuiz++;
-      if(currentQuiz>=quizData.length){ quizResult.innerHTML="<p>Викторина завершена!</p>"; return;}
       if(currentQuiz>=quizData.length){ quizResult.innerHTML="<p>Викторина завершена!</p>"; return; }
       loadQuiz();
     },1000);
-  }else{
-    labels[selectedIndex].querySelector(".option-circle").classList.add("wrong");
-    labels[quizData[currentQuiz].correct].querySelector(".option-circle").classList.add("correct");
+  } else {
+    labels[selectedIndex].querySelector(".option-circle").classList.add("wrong","show");
+    labels[correctIndex].querySelector(".option-circle").classList.add("correct","show");
     quizResult.innerHTML="<p class='wrong'>Неправильно</p>";
-    setTimeout(()=>{
-      loadQuiz();
-      quizResult.innerHTML="";
-    },3000);
     setTimeout(()=>{ loadQuiz(); },3000);
   }
 });
 
-// Панорама
-let panoViewer = null;
-let panoramaActive=false;
-// Подсветка выбранного варианта на ПК
+// Подсветка выбранного варианта
 document.querySelectorAll(".quiz-option").forEach(option=>{
   option.addEventListener("click",()=>{
     if(answered) return;
@@ -102,10 +82,6 @@ document.getElementById("school-btn").addEventListener("click", e=>{
   const schoolSec=document.getElementById("school");
   schoolSec.style.display="block";
   setTimeout(()=>schoolSec.classList.add("show"),50);
-  initPanorama();
-});
-
-function initPanorama(){
   panoramaActive=true;
   const pan=document.getElementById('panorama');
   pan.innerHTML="";
@@ -114,17 +90,29 @@ function initPanorama(){
     panorama:'https://pannellum.org/images/alma.jpg',
     autoLoad:true
   });
-}
 });
 
 document.getElementById("back-main").addEventListener("click",()=>{
   if(panoramaActive){
-    const confirmExit=confirm("Вы точно хотите завершить просмотр школы и вернуться назад?");
-    if(!confirmExit) return;
     if(!confirm("Вы точно хотите завершить просмотр школы и вернуться назад?")) return;
     panoViewer.destroy();
     panoramaActive=false;
   }
   document.getElementById("school").style.display="none";
   document.querySelectorAll("section").forEach(sec=>{ if(sec.id!=="school") sec.style.display="block"; });
+  // плавное появление всех блоков
+  document.querySelectorAll('.fade').forEach(el=>el.classList.remove("show"));
+  setTimeout(()=>{ document.querySelectorAll('.fade').forEach(el=>el.classList.add("show")); },50);
+});
+
+// Плавная прокрутка и подсветка секций при навигации
+document.querySelectorAll("header nav ul li a").forEach(link=>{
+  link.addEventListener("click", e=>{
+    if(link.id==="school-btn") return;
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute("href"));
+    target.scrollIntoView({behavior:"smooth"});
+    target.classList.add("highlight");
+    setTimeout(()=>target.classList.remove("highlight"),1000);
+  });
 });
