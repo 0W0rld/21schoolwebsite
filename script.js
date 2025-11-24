@@ -1,56 +1,45 @@
-// Плавное появление секций
+// Плавное появление
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if(entry.isIntersecting) entry.target.classList.add("show");
     });
 });
-document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
 
-// Управление разделами
+// Разделы
 const sections = document.querySelectorAll("section");
-document.querySelectorAll("header nav ul li a").forEach(link => {
-    link.addEventListener("click", e => {
-        e.preventDefault();
-        const targetId = link.getAttribute("href").substring(1);
-        const target = document.getElementById(targetId);
 
-        // Скрываем все секции
-        sections.forEach(sec => sec.style.display = "none");
-
-        // Показываем выбранную
-        target.style.display = "block";
-
-        // Анимация появления
-        setTimeout(() => target.classList.add("show"), 50);
-    });
+// История отдельный раздел
+document.getElementById("history-btn").addEventListener("click",()=>{
+    sections.forEach(sec=>sec.style.display="none");
+    const hist = document.getElementById("history");
+    hist.style.display="block";
+    setTimeout(()=>hist.classList.add("show"),50);
+});
+document.getElementById("back-main-history").addEventListener("click",()=>{
+    document.getElementById("history").style.display="none";
+    document.getElementById("main").style.display="block";
 });
 
-// Панорама школы
+// Панорама
 let panoViewer = null;
-document.getElementById("school-btn").addEventListener("click", e => {
-    e.preventDefault();
-    sections.forEach(sec => sec.style.display = "none");
+document.getElementById("school-btn").addEventListener("click",()=>{
+    sections.forEach(sec=>sec.style.display="none");
     const schoolSec = document.getElementById("school");
-    schoolSec.style.display = "block";
-    setTimeout(() => schoolSec.classList.add("show"), 50);
-
+    schoolSec.style.display="block";
+    setTimeout(()=>schoolSec.classList.add("show"),50);
     const pan = document.getElementById('panorama');
     pan.innerHTML = "";
-    panoViewer = pannellum.viewer('panorama', {
-        type: 'equirectangular',
-        panorama: 'https://pannellum.org/images/alma.jpg',
-        autoLoad: true
+    panoViewer = pannellum.viewer('panorama',{
+        type:'equirectangular',
+        panorama:'https://pannellum.org/images/alma.jpg',
+        autoLoad:true
     });
 });
-
-document.getElementById("back-main").addEventListener("click", () => {
-    if(panoViewer){
-        if(!confirm("Вы точно хотите завершить просмотр школы и вернуться назад?")) return;
-        panoViewer.destroy();
-        panoViewer = null;
-    }
-    document.getElementById("school").style.display = "none";
-    document.getElementById("main").style.display = "block";
+document.getElementById("back-main-school").addEventListener("click",()=>{
+    if(panoViewer){panoViewer.destroy(); panoViewer=null;}
+    document.getElementById("school").style.display="none";
+    document.getElementById("main").style.display="block";
 });
 
 // Викторина
@@ -70,26 +59,26 @@ function loadQuiz(){
     const data = quizData[currentQuiz];
     quizQuestion.textContent = data.question;
     const labels = document.querySelectorAll(".quiz-option");
-    labels.forEach((label, i) => {
+    labels.forEach((label,i)=>{
         const input = label.querySelector("input");
         const circle = label.querySelector(".option-circle");
         const textSpan = label.querySelector(".option-text");
-        input.checked = false;
+        input.checked=false;
         circle.classList.remove("correct","wrong","show");
         label.classList.remove("selected");
         textSpan.textContent = data.options[i];
     });
-    answered = false;
-    quizResult.innerHTML = "";
+    answered=false;
+    quizResult.innerHTML="";
 }
 loadQuiz();
 
-quizForm.addEventListener("submit", function(e){
+quizForm.addEventListener("submit",function(e){
     e.preventDefault();
     if(answered) return;
     const selected = quizForm.querySelector("input[name='question']:checked");
     if(!selected){ quizResult.innerHTML="<p class='wrong'>Выберите ответ</p>"; return; }
-    answered = true;
+    answered=true;
     const selectedIndex = [...quizForm.querySelectorAll("input[name='question']")].indexOf(selected);
     const labels = document.querySelectorAll(".quiz-option");
     const correctIndex = quizData[currentQuiz].correct;
@@ -97,9 +86,9 @@ quizForm.addEventListener("submit", function(e){
     if(selectedIndex === correctIndex){
         labels[selectedIndex].querySelector(".option-circle").classList.add("correct","show");
         quizResult.innerHTML="<p class='correct'>Правильно!</p>";
-        setTimeout(() => {
+        setTimeout(()=>{
             currentQuiz++;
-            if(currentQuiz >= quizData.length){ quizResult.innerHTML="<p>Викторина завершена!</p>"; return; }
+            if(currentQuiz>=quizData.length){ quizResult.innerHTML="<p>Викторина завершена!</p>"; return;}
             loadQuiz();
         },1000);
     } else {
@@ -115,6 +104,6 @@ document.querySelectorAll(".quiz-option").forEach(option=>{
         if(answered) return;
         document.querySelectorAll(".quiz-option").forEach(o=>o.classList.remove("selected"));
         option.classList.add("selected");
-        option.querySelector("input").checked = true;
+        option.querySelector("input").checked=true;
     });
 });
