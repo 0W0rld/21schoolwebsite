@@ -1,120 +1,130 @@
-// Плавное появление при скролле
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(el => {
-        if (el.isIntersecting) el.target.classList.add("show");
-    });
-});
-document.querySelectorAll(".fade").forEach(el => observer.observe(el));
-
-
-// ПЕРЕКЛЮЧЕНИЕ СЕКЦИЙ
-const sections = document.querySelectorAll(".content-section");
-const buttons = document.querySelectorAll(".menu-btn");
-
-buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-
-        const id = btn.dataset.section;
-
-        // Показ нужной секции
-        sections.forEach(sec => sec.classList.remove("visible"));
-        document.getElementById(id).classList.add("visible");
-
-        // Плавное появление
-        setTimeout(() => {
-            document.getElementById(id).classList.add("show");
-        }, 50);
-
-        // Подсветка кнопки
-        btn.style.background = "rgba(0, 121, 255, 0.35)";
-        setTimeout(() => btn.style.background = "none", 300);
-    });
+// Липкая шапка
+window.addEventListener("scroll", () => {
+  const header = document.getElementById("header");
+  window.scrollY>10?header.classList.add("scrolled"):header.classList.remove("scrolled");
 });
 
+// Появление при скролле
+// Появление секций при скролле
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add("show"); });
+});
+document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
 
-// ❗ УБИРАЕМ ВСЕ АВТОПЕРЕКЛЮЧЕНИЯ НА ИСТОРИЮ
-// Ничего больше не переключает страницы автоматически.
+// Викторина
+const quizForm=document.getElementById("quiz-form");
+const quizResult=document.getElementById("quiz-result");
+const quizQuestion=document.getElementById("quiz-question");
+const quizForm = document.getElementById("quiz-form");
+const quizResult = document.getElementById("quiz-result");
+const quizQuestion = document.getElementById("quiz-question");
 
-
-// ВИКТОРИНА
-const quizContainer = document.getElementById("quizContainer");
-
-let quizIndex = 0;
-
-const questions = [
-    {
-        text: "Какой предмет является основным?",
-        answers: [
-            {text: "Математика", correct: true},
-            {text: "Русский язык", correct: false},
-            {text: "История", correct: false}
-        ]
-    },
-    {
-        text: "Сколько лет учатся в средней школе?",
-        answers: [
-            {text: "9 лет", correct: true},
-            {text: "7 лет", correct: false},
-            {text: "11 лет", correct: false}
-        ]
-    }
+const quizData=[
+  {question:"Какой предмет является основным?", options:["","",""], correct:0},
+const quizData = [
+  {question:"Какой предмет является основным?", options:["Математика","Русский язык","История"], correct:0},
+  {question:"Сколько дней в неделе?", options:["5","7","6"], correct:1}
 ];
 
-function renderQuiz() {
-    const q = questions[quizIndex];
+let currentQuiz=0;
+let answered=false;
 
-    quizContainer.innerHTML = `
-        <p>${q.text}</p>
-        ${q.answers.map((a, i)=>`
-            <label class="quiz-option" data-id="${i}">
-                <div class="option-circle"></div>
-                <input type="radio" name="q">
-                ${a.text}
-            </label>
-        `).join("")}
-        <button id="answerBtn">Ответить</button>
-    `;
-
-    document.querySelectorAll(".quiz-option").forEach(op => {
-        op.addEventListener("click", () => {
-            document.querySelectorAll(".quiz-option").forEach(o => o.classList.remove("selected"));
-            op.classList.add("selected");
-        });
-    });
-
-    document.getElementById("answerBtn").onclick = checkAnswer;
+function loadQuiz(){
+  const data=quizData[currentQuiz];
+  quizQuestion.textContent=data.question;
+  const labels=document.querySelectorAll(".quiz-option");
+  labels.forEach((label,i)=>{
+    label.querySelector("input").checked=false;
+    label.querySelector(".option-circle").classList.remove("correct","wrong");
+    label.childNodes[2].textContent=data.options[i];
+    const input=label.querySelector("input");
+    const circle=label.querySelector(".option-circle");
+    const textSpan=label.querySelector(".option-text");
+    input.checked=false;
+    circle.classList.remove("correct","wrong");
+    label.classList.remove("selected");
+    textSpan.textContent=data.options[i];
+  });
+  answered=false;
+  quizResult.innerHTML="";
 }
+loadQuiz();
 
-function checkAnswer() {
+quizForm.addEventListener("submit",function(e){
+  e.preventDefault();
+  if(answered) return;
+  const selected=quizForm.querySelector("input[name='question']:checked");
+  if(!selected){ quizResult.innerHTML="<p class='wrong'>Выберите ответ</p>"; return; }
 
-    const selected = document.querySelector(".quiz-option.selected");
-    if (!selected) return;
+  answered=true;
+  const selectedIndex=[...quizForm.querySelectorAll("input[name='question']")].indexOf(selected);
+  const labels=document.querySelectorAll(".quiz-option");
+  if(selectedIndex===quizData[currentQuiz].correct){
+    labels[selectedIndex].querySelector(".option-circle").classList.add("correct");
+    quizResult.innerHTML="<p class='correct'>Правильно!</p>";
+    setTimeout(()=>{
+      currentQuiz++;
+      if(currentQuiz>=quizData.length){ quizResult.innerHTML="<p>Викторина завершена!</p>"; return;}
+      if(currentQuiz>=quizData.length){ quizResult.innerHTML="<p>Викторина завершена!</p>"; return; }
+      loadQuiz();
+    },1000);
+  }else{
+    labels[selectedIndex].querySelector(".option-circle").classList.add("wrong");
+    labels[quizData[currentQuiz].correct].querySelector(".option-circle").classList.add("correct");
+    quizResult.innerHTML="<p class='wrong'>Неправильно</p>";
+    setTimeout(()=>{
+      loadQuiz();
+      quizResult.innerHTML="";
+    },3000);
+    setTimeout(()=>{ loadQuiz(); },3000);
+  }
+});
 
-    const answerId = selected.dataset.id;
-    const correct = questions[quizIndex].answers[answerId].correct;
+// Панорама
+let panoViewer = null;
+let panoramaActive=false;
+// Подсветка выбранного варианта на ПК
+document.querySelectorAll(".quiz-option").forEach(option=>{
+  option.addEventListener("click",()=>{
+    if(answered) return;
+    document.querySelectorAll(".quiz-option").forEach(o=>o.classList.remove("selected"));
+    option.classList.add("selected");
+    option.querySelector("input").checked=true;
+  });
+});
 
-    if (correct) {
-        quizContainer.innerHTML = "<p class='correct'>Правильно! 🎉</p>";
+// Панорама школы
+let panoViewer=null;
+let panoramaActive=false;
+document.getElementById("school-btn").addEventListener("click", e=>{
+  e.preventDefault();
+  document.querySelectorAll("section").forEach(sec=>sec.style.display="none");
+  const schoolSec=document.getElementById("school");
+  schoolSec.style.display="block";
+  setTimeout(()=>schoolSec.classList.add("show"),50);
+  initPanorama();
+});
 
-        setTimeout(() => {
-            quizIndex++;
-            if (quizIndex < questions.length) renderQuiz();
-            else quizContainer.innerHTML = "<p>Викторина завершена!</p>";
-        }, 1200);
-
-    } else {
-        selected.style.borderColor = "#d90000";
-        selected.querySelector(".option-circle").style.background = "#d90000";
-
-        const btn = document.getElementById("answerBtn");
-        btn.textContent = "Все уроки важны и нужны!";
-        btn.disabled = true;
-
-        setTimeout(() => {
-            btn.textContent = "Ответить";
-            btn.disabled = false;
-        }, 3000);
-    }
+function initPanorama(){
+  panoramaActive=true;
+  const pan=document.getElementById('panorama');
+  pan.innerHTML="";
+  panoViewer=pannellum.viewer('panorama',{
+    type:'equirectangular',
+    panorama:'https://pannellum.org/images/alma.jpg',
+    autoLoad:true
+  });
 }
+});
 
-renderQuiz();
+document.getElementById("back-main").addEventListener("click",()=>{
+  if(panoramaActive){
+    const confirmExit=confirm("Вы точно хотите завершить просмотр школы и вернуться назад?");
+    if(!confirmExit) return;
+    if(!confirm("Вы точно хотите завершить просмотр школы и вернуться назад?")) return;
+    panoViewer.destroy();
+    panoramaActive=false;
+  }
+  document.getElementById("school").style.display="none";
+  document.querySelectorAll("section").forEach(sec=>{ if(sec.id!=="school") sec.style.display="block"; });
+});
