@@ -1,145 +1,120 @@
-// =====================
+// Плавное появление при скролле
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+        if (el.isIntersecting) el.target.classList.add("show");
+    });
+});
+document.querySelectorAll(".fade").forEach(el => observer.observe(el));
+
+
 // ПЕРЕКЛЮЧЕНИЕ СЕКЦИЙ
-// =====================
-
-let currentSection = "mainSection";
-let pendingSection = null;
-
 const sections = document.querySelectorAll(".content-section");
 const buttons = document.querySelectorAll(".menu-btn");
 
-const modal = document.getElementById("confirmExit");
-const yesExit = document.getElementById("yesExit");
-const noExit = document.getElementById("noExit");
-
-// Клик на кнопку меню
 buttons.forEach(btn => {
     btn.addEventListener("click", () => {
-        const next = btn.dataset.section;
 
-        highlightButton(btn);
+        const id = btn.dataset.section;
 
-        if (currentSection === "historySection" && next !== "historySection") {
-            pendingSection = next;
-            modal.style.display = "flex";
-            return;
-        }
+        // Показ нужной секции
+        sections.forEach(sec => sec.classList.remove("visible"));
+        document.getElementById(id).classList.add("visible");
 
-        switchSection(next);
+        // Плавное появление
+        setTimeout(() => {
+            document.getElementById(id).classList.add("show");
+        }, 50);
+
+        // Подсветка кнопки
+        btn.style.background = "rgba(0, 121, 255, 0.35)";
+        setTimeout(() => btn.style.background = "none", 300);
     });
 });
 
-// Подсветка кнопки панели
-function highlightButton(btn) {
-    buttons.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-}
 
-// Переключение секций
-function switchSection(id) {
-    sections.forEach(sec => sec.classList.remove("visible"));
+// ❗ УБИРАЕМ ВСЕ АВТОПЕРЕКЛЮЧЕНИЯ НА ИСТОРИЮ
+// Ничего больше не переключает страницы автоматически.
 
-    setTimeout(() => {
-        document.getElementById(id).classList.add("visible");
-    }, 150);
 
-    currentSection = id;
-}
-
-// Работа модалки
-yesExit.onclick = () => {
-    modal.style.display = "none";
-    switchSection(pendingSection);
-};
-noExit.onclick = () => {
-    pendingSection = null;
-    modal.style.display = "none";
-};
-
-// =====================
 // ВИКТОРИНА
-// =====================
+const quizContainer = document.getElementById("quizContainer");
 
-const quizData = [
+let quizIndex = 0;
+
+const questions = [
     {
-        q: "Какой предмет ведёт важную роль?",
-        options: ["Математика", "Русский язык", "История"],
-        correct: 0
+        text: "Какой предмет является основным?",
+        answers: [
+            {text: "Математика", correct: true},
+            {text: "Русский язык", correct: false},
+            {text: "История", correct: false}
+        ]
     },
     {
-        q: "Основатель школы №21?",
-        options: ["Ученики", "Учителя", "Город"],
-        correct: 1
+        text: "Сколько лет учатся в средней школе?",
+        answers: [
+            {text: "9 лет", correct: true},
+            {text: "7 лет", correct: false},
+            {text: "11 лет", correct: false}
+        ]
     }
 ];
 
-let quizIndex = 0;
-const quizContainer = document.getElementById("quizContainer");
-
-loadQuiz();
-
-function loadQuiz() {
-    const data = quizData[quizIndex];
+function renderQuiz() {
+    const q = questions[quizIndex];
 
     quizContainer.innerHTML = `
-    <form id="quiz">
-        <p>${data.q}</p>
-
-        ${data.options
-            .map((opt, i) => `
-            <label class="quiz-option">
+        <p>${q.text}</p>
+        ${q.answers.map((a, i)=>`
+            <label class="quiz-option" data-id="${i}">
                 <div class="option-circle"></div>
-                <input name="answer" type="radio" value="${i}">
-                ${opt}
+                <input type="radio" name="q">
+                ${a.text}
             </label>
         `).join("")}
-
-        <button>Ответить</button>
-    </form>
+        <button id="answerBtn">Ответить</button>
     `;
 
-    const form = document.getElementById("quiz");
-    const options = document.querySelectorAll(".quiz-option");
-
-    options.forEach(opt => {
-        opt.addEventListener("click", () => {
-            options.forEach(o => o.classList.remove("selected"));
-            opt.classList.add("selected");
-            opt.querySelector("input").checked = true;
+    document.querySelectorAll(".quiz-option").forEach(op => {
+        op.addEventListener("click", () => {
+            document.querySelectorAll(".quiz-option").forEach(o => o.classList.remove("selected"));
+            op.classList.add("selected");
         });
     });
 
-    form.addEventListener("submit", e => {
-        e.preventDefault();
-
-        const answer = form.answer.value;
-        if (answer === "") return;
-
-        checkAnswer(answer);
-    });
+    document.getElementById("answerBtn").onclick = checkAnswer;
 }
 
-function checkAnswer(value) {
-    const correct = quizData[quizIndex].correct;
+function checkAnswer() {
 
-    quizContainer.innerHTML = `
-        <div class="result-block">
-            <span class="result-icon ${value == correct ? "correct-icon" : "wrong-icon"} show">
-                ${value == correct ? "✔" : "✖"}
-            </span>
-        </div>
-    `;
+    const selected = document.querySelector(".quiz-option.selected");
+    if (!selected) return;
 
-    if (value == correct) {
+    const answerId = selected.dataset.id;
+    const correct = questions[quizIndex].answers[answerId].correct;
+
+    if (correct) {
+        quizContainer.innerHTML = "<p class='correct'>Правильно! 🎉</p>";
+
         setTimeout(() => {
             quizIndex++;
-            if (quizIndex >= quizData.length) quizIndex = 0;
-            loadQuiz();
-        }, 1400);
+            if (quizIndex < questions.length) renderQuiz();
+            else quizContainer.innerHTML = "<p>Викторина завершена!</p>";
+        }, 1200);
+
     } else {
+        selected.style.borderColor = "#d90000";
+        selected.querySelector(".option-circle").style.background = "#d90000";
+
+        const btn = document.getElementById("answerBtn");
+        btn.textContent = "Все уроки важны и нужны!";
+        btn.disabled = true;
+
         setTimeout(() => {
-            loadQuiz();
-        }, 1600);
+            btn.textContent = "Ответить";
+            btn.disabled = false;
+        }, 3000);
     }
 }
 
+renderQuiz();
