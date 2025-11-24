@@ -1,129 +1,86 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Школа №21 г. Нижнекамска</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Школа №21 г. Нижнекамска</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css"/>
 </head>
 <body>
 
-  <!-- Шапка -->
-  <header id="header">
-    <div class="nav-container">
-      <div class="logo">Школа №21 г. Нижнекамска</div>
-      <nav>
-        <ul>
-          <li><a href="#main">Главная</a></li>
-          <li><a href="#about">О школе</a></li>
-          <li><a href="#history">История</a></li>
-          <li><a href="#gallery">Галерея</a></li>
-          <li><a href="#quiz">Викторина</a></li>
-          <li><a href="#contacts">Контакты</a></li>
-          <li><a href="#" id="school-btn">Школа</a></li>
-        </ul>
-      </nav>
+<!-- Шапка -->
+<header id="header">
+  <div class="nav-container">
+    <div class="logo">Школа №21 г. Нижнекамска</div>
+    <nav>
+      <ul>
+        <li><a href="#mainSection">Главная</a></li>
+        <li><a href="#aboutSection">О школе</a></li>
+        <li><button class="menu-btn" data-section="historySection">История</button></li>
+        <li><a href="#gallerySection">Галерея</a></li>
+        <li><a href="#quizSection">Викторина</a></li>
+        <li><button id="school-btn">Панорама школы</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Секции -->
+<section id="mainSection" class="content-section fade show">
+  <h1>Добро пожаловать!</h1>
+  <p>Это главный экран сайта.</p>
+</section>
+
+<section id="aboutSection" class="content-section fade">
+  <h1>О школе</h1>
+  <p>МБОУ «СОШ №21» открыта 1 сентября 1986 года.</p>
+</section>
+
+<section id="gallerySection" class="content-section fade">
+  <h1>Фотогалерея</h1>
+  <div class="gallery-grid">
+    <img src="https://via.placeholder.com/300x200?text=Фото+1" alt="">
+    <img src="https://via.placeholder.com/300x200?text=Фото+2" alt="">
+    <img src="https://via.placeholder.com/300x200?text=Фото+3" alt="">
+  </div>
+</section>
+
+<section id="quizSection" class="content-section fade">
+  <h1>Викторина</h1>
+  <form id="quiz-form">
+    <p id="quiz-question"></p>
+    <div class="quiz-options">
+      <label class="quiz-option"><div class="option-circle"></div><input type="radio" name="question"><span class="option-text"></span></label>
+      <label class="quiz-option"><div class="option-circle"></div><input type="radio" name="question"><span class="option-text"></span></label>
+      <label class="quiz-option"><div class="option-circle"></div><input type="radio" name="question"><span class="option-text"></span></label>
     </div>
-  </header>
+    <button type="submit">Ответить</button>
+  </form>
+  <div id="quiz-result"></div>
+</section>
 
-  <!-- Главная -->
-  <section id="main" class="section fade">
-    <div class="container">
-      <h2>Добро пожаловать в школу №21</h2>
-      <p class="subtitle">Узнайте историю, достижения и жизнь нашей школы</p>
+<!-- История (отдельный экран) -->
+<section id="historySection" class="content-section fade" style="display:none;">
+  <h1>История школы</h1>
+  <p>Здесь будет текст истории школы, главы, годы, фотографии и т.д.</p>
+  <button class="back-btn">Назад</button>
+</section>
+
+<!-- Панорама школы (отдельный экран) -->
+<section id="school" class="content-section fade" style="display:none;">
+  <div class="school-container">
+    <div id="panorama" class="panorama"></div>
+    <div class="school-info">
+      <h3>Информация о классе</h3>
+      <div id="info-content"><p>Выберите класс на карте для просмотра информации.</p></div>
+      <button id="back-main">Назад</button>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- О школе -->
-  <section id="about" class="section fade">
-    <div class="container">
-      <h3>О школе</h3>
-      <p>МБОУ «СОШ №21» открыта 1 сентября 1986 года.</p>
-    </div>
-  </section>
-
-  <!-- История -->
-  <section id="history" class="section fade">
-    <div class="container">
-      <h3>История школы</h3>
-
-      <div class="timeline">
-        <div class="timeline-item fade">
-          <h4>1986 — Основание</h4>
-          <p>Начало работы школы, первые ученики, первые уроки.</p>
-        </div>
-
-        <div class="timeline-item fade">
-          <h4>1990–2000 — Развитие</h4>
-          <p>Расширение базы, новые кабинеты, первые выпускники.</p>
-        </div>
-
-        <div class="timeline-item fade">
-          <h4>2000–2018 — Модернизация</h4>
-          <p>Ремонт, современное оборудование, цифровые технологии.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Галерея -->
-  <section id="gallery" class="section fade">
-    <div class="container">
-      <h3>Фотогалерея</h3>
-      <div class="gallery-grid">
-        <img src="https://via.placeholder.com/300x200?text=Фото+1">
-        <img src="https://via.placeholder.com/300x200?text=Фото+2">
-        <img src="https://via.placeholder.com/300x200?text=Фото+3">
-      </div>
-    </div>
-  </section>
-
-  <!-- Викторина -->
-  <section id="quiz" class="section fade">
-    <div class="container">
-      <h3>Викторина</h3>
-
-      <form id="quiz-form">
-
-        <p id="quiz-question"></p>
-
-        <div id="quiz-options"></div>
-
-        <button type="submit">Ответить</button>
-      </form>
-
-      <div id="quiz-result"></div>
-    </div>
-  </section>
-
-  <!-- Контакты -->
-  <section id="contacts" class="section fade">
-    <div class="container">
-      <h3>Контакты</h3>
-      <p>Адрес: ул. Мурадьяна 18А, г. Нижнекамск</p>
-      <p>Телефон: +7 (XXX) XXX-XX-XX</p>
-      <p>Email: info@school21.ru</p>
-    </div>
-  </section>
-
-  <!-- Панорама -->
-  <section id="school" class="section fade" style="display:none;">
-    <div class="container school-container">
-      <div id="panorama" class="panorama"></div>
-
-      <div class="school-info">
-        <h3>Информация о классе</h3>
-        <div id="info-content">
-          <p>Выберите класс на карте для просмотра информации.</p>
-        </div>
-        <button id="back-main">Назад</button>
-      </div>
-    </div>
-  </section>
-
-  <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
-  <script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
 
