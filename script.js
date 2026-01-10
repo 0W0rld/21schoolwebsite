@@ -1,29 +1,39 @@
-// Переключение страниц + корректный скролл
-function showPage(id) {
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-  const page = document.getElementById(id);
-  page.classList.add("active");
-
-  setTimeout(() => {
-    page.scrollIntoView({ behavior: "smooth", block: "start" });
-    window.scrollBy(0, -80);
-  }, 50);
-}
-
-document.querySelectorAll("nav button[data-page]").forEach(btn => {
-  btn.addEventListener("click", () => {
-    showPage(btn.dataset.page);
-  });
-});
-
-// Защита смены темы (3 секунды)
 let lastThemeSwitch = 0;
 const COOLDOWN = 3000;
 
-document.getElementById("themeToggle").addEventListener("click", () => {
+document.getElementById("themeToggle").onclick = () => {
   const now = Date.now();
   if (now - lastThemeSwitch < COOLDOWN) return;
-
   document.body.classList.toggle("dark");
   lastThemeSwitch = now;
+};
+
+function showPage(id) {
+  const current = document.querySelector(".page.active");
+  const next = document.getElementById(id);
+
+  if (current && current.id === "home") {
+    const card = current.querySelector(".home-card");
+    card.style.animation = "homeExit 0.6s forwards";
+    setTimeout(() => {
+      current.classList.remove("active");
+      activateNext(next, id);
+    }, 600);
+  } else {
+    if (current) current.classList.remove("active");
+    activateNext(next, id);
+  }
+}
+
+function activateNext(page, id) {
+  page.classList.add("active");
+
+  if (id === "home") {
+    const card = page.querySelector(".home-card");
+    card.style.animation = "homeEnter 0.8s ease forwards";
+  }
+}
+
+document.querySelectorAll("nav button").forEach(btn => {
+  btn.onclick = () => showPage(btn.dataset.page);
 });
