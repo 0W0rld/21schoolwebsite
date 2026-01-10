@@ -70,4 +70,3 @@ options.forEach((o,i)=>{
 });
 
 loadQuiz();
-
