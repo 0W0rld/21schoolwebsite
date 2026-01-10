@@ -1,4 +1,4 @@
-/* ================== RESET ================== */
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -8,13 +8,12 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* ================== THEME ================== */
+/* ===== THEME ===== */
 :root {
   --bg: linear-gradient(135deg, #e0f7fa, #cfd8dc);
   --card: rgba(242,247,255,0.95);
   --text: #003366;
   --accent: #005fa3;
-  --accent-light: #007acc;
 }
 
 body.dark {
@@ -22,39 +21,33 @@ body.dark {
   --card: #111827;
   --text: #e5e7eb;
   --accent: #38bdf8;
-  --accent-light: #7dd3fc;
 }
 
-/* ================== BASE ================== */
+/* ===== BASE ===== */
 body {
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
-  transition: background 0.5s, color 0.5s;
+  transition: 0.5s;
 }
 
-/* ================== HEADER ================== */
+/* ===== HEADER ===== */
 header {
   position: sticky;
   top: 0;
+  z-index: 1000;
   background: var(--accent);
   color: white;
   padding: 12px 20px;
   border-radius: 0 0 16px 16px;
-  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-header .logo {
-  font-weight: 700;
-  font-size: 18px;
-}
-
 nav {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 nav button {
@@ -76,12 +69,12 @@ nav button:hover {
   background: white;
   color: var(--accent);
   border: none;
-  padding: 6px 10px;
   border-radius: 8px;
+  padding: 6px 10px;
   cursor: pointer;
 }
 
-/* ================== PAGES ================== */
+/* ===== PAGES ===== */
 .page {
   display: none;
   animation: fadeUp 0.7s ease;
@@ -96,7 +89,7 @@ nav button:hover {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ================== CENTER INTRO ================== */
+/* ===== HOME ===== */
 #home {
   min-height: 80vh;
   display: flex;
@@ -113,22 +106,18 @@ nav button:hover {
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
-.center-box h1 {
-  margin-bottom: 15px;
-}
-
 .arrows {
   margin-top: 20px;
-  font-size: 28px;
-  animation: bounce 1s infinite alternate;
+  font-size: 26px;
+  animation: guideUp 1.2s infinite alternate;
 }
 
-@keyframes bounce {
-  from { transform: translateY(0); }
-  to { transform: translateY(12px); }
+@keyframes guideUp {
+  from { transform: translateY(10px); }
+  to { transform: translateY(-10px); }
 }
 
-/* ================== CONTENT BOX ================== */
+/* ===== CONTENT ===== */
 .content-box {
   max-width: 1000px;
   margin: 30px auto;
@@ -138,7 +127,7 @@ nav button:hover {
   box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
-/* ================== GALLERY ================== */
+/* ===== GALLERY ===== */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
@@ -148,50 +137,30 @@ nav button:hover {
 .gallery-grid img {
   width: 100%;
   border-radius: 12px;
-  transition: transform 0.3s;
 }
 
-.gallery-grid img:hover {
-  transform: scale(1.05);
-}
-
-/* ================== QUIZ ================== */
-#quiz select, #quiz button {
-  padding: 12px;
-  border-radius: 10px;
-  border: none;
-  font-size: 16px;
-}
-
-#quiz button {
-  background: var(--accent);
+/* ===== PANORAMA ===== */
+.panorama-box {
+  height: 300px;
+  background: #000;
   color: white;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
 }
 
-#quiz button:hover {
-  background: white;
-  color: var(--accent);
-  border: 2px solid var(--accent);
-}
-
-/* ================== MOBILE ================== */
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
   header {
     flex-wrap: wrap;
     gap: 10px;
   }
 
-  nav {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
   .center-box {
     margin: 20px;
   }
 }
+
 
 
