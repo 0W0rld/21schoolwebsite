@@ -2,110 +2,87 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  user-select: none;
   font-family: 'Poppins', sans-serif;
 }
 
-:root {
-  --bg: linear-gradient(135deg,#e0f7fa,#cfd8dc);
-  --card: rgba(242,247,255,0.95);
-  --text: #003366;
-  --accent: #005fa3;
-}
-
-body.dark {
-  --bg: linear-gradient(135deg,#020617,#0f172a);
-  --card: #111827;
-  --text: #e5e7eb;
-  --accent: #38bdf8;
-}
-
 body {
-  background: var(--bg);
-  color: var(--text);
-  transition: 0.5s;
+  background: linear-gradient(135deg,#020617,#0f172a);
+  color: #e5e7eb;
 }
 
 header {
   position: sticky;
   top: 0;
-  background: var(--accent);
-  color: white;
+  background: #005fa3;
   padding: 12px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1000;
 }
 
-nav button {
-  background: none;
-  border: none;
+nav a {
   color: white;
+  text-decoration: none;
+  margin-right: 12px;
   font-weight: 600;
-  padding: 6px 12px;
-  cursor: pointer;
 }
 
 .page {
   display: none;
   min-height: calc(100vh - 80px);
-}
-
-.page.active {
-  display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* ===== HOME ===== */
-.home {
-  align-items: center;
+.page.active {
+  display: flex;
 }
 
+/* ГЛАВНАЯ КАРТОЧКА */
 .home-card {
-  background: var(--card);
+  background: rgba(17,24,39,0.9);
   padding: 40px;
   border-radius: 20px;
   text-align: center;
-  animation: homeEnter 0.9s ease forwards;
+  animation: homeUp 0.8s ease forwards;
 }
 
-.arrows {
-  font-size: 26px;
-  margin-bottom: 15px;
-  animation: arrowsPulse 1.2s infinite alternate;
+.home-card.hide {
+  animation: homeDown 0.6s ease forwards;
 }
 
-@keyframes arrowsPulse {
-  from { transform: translateY(8px); }
-  to { transform: translateY(-8px); }
-}
-
-/* ===== OTHER PAGES ===== */
-.content-box {
-  background: var(--card);
-  padding: 30px;
-  border-radius: 20px;
-  max-width: 1000px;
-  width: 90%;
-  animation: pageEnter 0.8s ease forwards;
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes homeEnter {
+@keyframes homeUp {
   from { opacity: 0; transform: translateY(80px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes homeExit {
+@keyframes homeDown {
   from { opacity: 1; transform: translateY(0); }
   to { opacity: 0; transform: translateY(120px); }
 }
 
-@keyframes pageEnter {
-  from { opacity: 0; transform: translateY(-80px); }
+/* СТРАНИЦЫ */
+.content-box {
+  background: rgba(17,24,39,0.9);
+  padding: 30px;
+  border-radius: 20px;
+  animation: pageFromTop 0.6s ease forwards;
+}
+
+@keyframes pageFromTop {
+  from { opacity: 0; transform: translateY(-60px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+.arrows {
+  font-size: 24px;
+  margin-bottom: 15px;
+  animation: pulse 1.2s infinite alternate;
+}
+
+@keyframes pulse {
+  from { transform: translateY(6px); }
+  to { transform: translateY(-6px); }
 }
 
 
