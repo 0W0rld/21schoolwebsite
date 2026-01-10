@@ -13,7 +13,9 @@
   <nav>
     <button data-page="home">Главная</button>
     <button data-page="about">О школе</button>
+    <button data-page="history">История</button>
     <button data-page="gallery">Галерея</button>
+    <button data-page="panorama">Панорама</button>
     <button data-page="quiz">Викторина</button>
   </nav>
   <button id="themeToggle">🌙</button>
@@ -25,8 +27,8 @@
   <section id="home" class="page active">
     <div class="center-box">
       <h1>Школа №21 г. Нижнекамска</h1>
-      <p>Следуйте стрелкам для ознакомления с нашей школой</p>
-      <div class="arrows">↓ ↓ ↓</div>
+      <p>Для ознакомления выберите раздел в меню сверху</p>
+      <div class="arrows">↑ ↑ ↑</div>
     </div>
   </section>
 
@@ -34,7 +36,24 @@
   <section id="about" class="page">
     <div class="content-box">
       <h2>О школе</h2>
-      <p>Наша школа открыта 1 сентября 1986 года и является одной из ведущих школ города.</p>
+      <p>
+        МБОУ «СОШ №21» открыта 1 сентября 1986 года.  
+        Школа активно развивается, внедряет современные технологии и создаёт
+        комфортные условия для обучения.
+      </p>
+    </div>
+  </section>
+
+  <!-- ИСТОРИЯ -->
+  <section id="history" class="page">
+    <div class="content-box">
+      <h2>История школы</h2>
+      <ul>
+        <li><b>1986</b> — открытие школы</li>
+        <li><b>1995</b> — первый выпуск</li>
+        <li><b>2005</b> — модернизация классов</li>
+        <li><b>2020+</b> — цифровое развитие</li>
+      </ul>
     </div>
   </section>
 
@@ -50,38 +69,21 @@
     </div>
   </section>
 
+  <!-- ПАНОРАМА -->
+  <section id="panorama" class="page">
+    <div class="content-box">
+      <h2>Панорама школы</h2>
+      <div class="panorama-box">
+        Здесь будет панорама школы (360°)
+      </div>
+    </div>
+  </section>
+
   <!-- ВИКТОРИНА -->
   <section id="quiz" class="page">
     <div class="content-box">
       <h2>Викторина</h2>
-
-      <div id="quiz-step-1">
-        <label>Класс:</label>
-        <select id="qClass">
-          <option value="7">7</option>
-          <option value="8">8</option>
-        </select>
-
-        <label>Оценка:</label>
-        <select id="qGrade">
-          <option value="2">2</option>
-          <option value="4">4</option>
-        </select>
-
-        <label>Предмет:</label>
-        <select id="qSubject">
-          <option value="history">История</option>
-          <option value="russian">Русский</option>
-        </select>
-
-        <button id="startQuiz">Начать</button>
-      </div>
-
-      <div id="quiz-step-2" style="display:none;">
-        <p id="quiz-question"></p>
-        <button class="answer">Ответить</button>
-      </div>
-
+      <p>Функционал викторины будет расширен на следующем этапе.</p>
     </div>
   </section>
 
@@ -90,6 +92,8 @@
 <script src="script.js"></script>
 </body>
 </html>
+
+
 
 
 
