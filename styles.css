@@ -1,11 +1,8 @@
-/* ----------------- БАЗА ----------------- */
 :root {
   --bg: #eef3f8;
   --card: #ffffff;
   --text: #1f2937;
   --accent: #2563eb;
-  --accent-soft: #dbeafe;
-  --shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
 body.dark {
@@ -13,185 +10,97 @@ body.dark {
   --card: #111827;
   --text: #e5e7eb;
   --accent: #38bdf8;
-  --accent-soft: #0f172a;
-}
-
-* {
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   margin: 0;
-  font-family: "Inter", "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(180deg, var(--bg), #dbeafe);
+  font-family: Arial, sans-serif;
+  background: var(--bg);
   color: var(--text);
-  transition: background 0.6s, color 0.6s;
+  transition: 0.5s;
 }
 
-/* ----------------- HEADER ----------------- */
+/* HEADER */
 header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  backdrop-filter: blur(14px);
-  background: rgba(37, 99, 235, 0.9);
-  box-shadow: var(--shadow);
-}
-
-header .logo {
-  font-weight: 700;
-  font-size: 20px;
-}
-
-header nav {
   display: flex;
-  gap: 14px;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--accent);
+  padding: 12px 20px;
+  color: white;
 }
 
-header button {
-  background: transparent;
+nav button, #themeToggle {
+  background: none;
   border: none;
   color: white;
-  font-weight: 600;
   cursor: pointer;
-  padding: 8px 14px;
-  border-radius: 12px;
-  transition: background 0.3s, transform 0.2s;
+  font-weight: bold;
+  margin: 0 6px;
 }
 
-header button:hover {
-  background: rgba(255,255,255,0.2);
-  transform: translateY(-2px);
-}
-
-#themeToggle {
-  font-size: 18px;
-}
-
-/* ----------------- СТРАНИЦЫ ----------------- */
-main {
-  max-width: 1200px;
-  margin: auto;
-  padding: 40px 20px;
-}
-
+/* PAGES */
 .page {
   display: none;
-  animation: fadeSlide 0.6s ease forwards;
+  animation: fade 0.6s ease;
 }
 
 .page.active {
   display: block;
 }
 
-@keyframes fadeSlide {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes fade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* ----------------- ГЛАВНАЯ ----------------- */
+/* CENTER */
 #home {
-  min-height: 70vh;
+  min-height: 80vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.center-box {
+  background: var(--card);
+  padding: 40px;
+  border-radius: 20px;
   text-align: center;
-}
-
-#home h1 {
-  font-size: clamp(32px, 5vw, 56px);
-  margin-bottom: 15px;
-}
-
-.subtitle {
-  opacity: 0.8;
-  font-size: 18px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
 .arrows {
-  margin-top: 30px;
-  font-size: 36px;
-  animation: bounce 1.4s infinite alternate;
+  margin-top: 20px;
+  font-size: 28px;
+  animation: bounce 1.2s infinite alternate;
 }
 
 @keyframes bounce {
   from { transform: translateY(0); }
-  to { transform: translateY(12px); }
+  to { transform: translateY(10px); }
 }
 
-/* ----------------- КАРТОЧКИ ----------------- */
-section {
+/* CONTENT */
+.content-box {
+  max-width: 900px;
+  margin: 40px auto;
   background: var(--card);
-  padding: 35px;
-  border-radius: 28px;
-  box-shadow: var(--shadow);
-  margin-bottom: 40px;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
 }
 
-h2 {
-  margin-top: 0;
-  color: var(--accent);
-}
-
-/* ----------------- ГАЛЕРЕЯ ----------------- */
+/* GALLERY */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 15px;
 }
 
 .gallery-grid img {
   width: 100%;
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-  transition: transform 0.4s;
-}
-
-.gallery-grid img:hover {
-  transform: scale(1.05);
-}
-
-/* ----------------- ВИКТОРИНА ----------------- */
-select, button {
-  padding: 14px 18px;
-  border-radius: 14px;
-  border: none;
-  font-size: 16px;
-  box-shadow: var(--shadow);
-  margin-top: 10px;
-}
-
-button {
-  background: var(--accent);
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-button:hover {
-  background: white;
-  color: var(--accent);
-  transform: translateY(-3px);
-}
-
-/* ----------------- АДАПТИВ ----------------- */
-@media (max-width: 768px) {
-  header nav {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  section {
-    padding: 25px;
-  }
+  border-radius: 12px;
 }
 
 
