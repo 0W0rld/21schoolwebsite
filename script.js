@@ -1,39 +1,34 @@
-let lastThemeSwitch = 0;
-const COOLDOWN = 3000;
+const pages = document.querySelectorAll(".page");
+const homeCard = document.getElementById("homeCard");
 
+// === РОУТЕР ПО ХЭШУ ===
+function renderByHash() {
+  const hash = location.hash.replace("#", "") || "home";
+
+  pages.forEach(p => p.classList.remove("active"));
+
+  if (hash === "home" || hash === "about") {
+    document.getElementById("home").classList.add("active");
+    homeCard.classList.remove("hide");
+    homeCard.style.animation = "homeUp 0.8s ease forwards";
+  } else {
+    homeCard.classList.add("hide");
+
+    setTimeout(() => {
+      document.getElementById(hash)?.classList.add("active");
+    }, 300);
+  }
+}
+
+// === СЛУШАЕМ СМЕНУ ХЭША ===
+window.addEventListener("hashchange", renderByHash);
+window.addEventListener("load", renderByHash);
+
+// === ТЁМНАЯ / СВЕТЛАЯ ТЕМА С КД ===
+let lastSwitch = 0;
 document.getElementById("themeToggle").onclick = () => {
   const now = Date.now();
-  if (now - lastThemeSwitch < COOLDOWN) return;
+  if (now - lastSwitch < 3000) return;
   document.body.classList.toggle("dark");
-  lastThemeSwitch = now;
+  lastSwitch = now;
 };
-
-function showPage(id) {
-  const current = document.querySelector(".page.active");
-  const next = document.getElementById(id);
-
-  if (current && current.id === "home") {
-    const card = current.querySelector(".home-card");
-    card.style.animation = "homeExit 0.6s forwards";
-    setTimeout(() => {
-      current.classList.remove("active");
-      activateNext(next, id);
-    }, 600);
-  } else {
-    if (current) current.classList.remove("active");
-    activateNext(next, id);
-  }
-}
-
-function activateNext(page, id) {
-  page.classList.add("active");
-
-  if (id === "home") {
-    const card = page.querySelector(".home-card");
-    card.style.animation = "homeEnter 0.8s ease forwards";
-  }
-}
-
-document.querySelectorAll("nav button").forEach(btn => {
-  btn.onclick = () => showPage(btn.dataset.page);
-});
