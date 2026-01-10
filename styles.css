@@ -1,106 +1,152 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+/* ===== СБРОС ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  user-select:none;
+  font-family:'Poppins',sans-serif;
 }
 
-body {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #020617, #0f172a);
-  color: #e5e7eb;
-  transition: 0.5s;
+/* ===== BODY ===== */
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#e0f7fa,#cfd8dc);
+  color:#003366;
 }
 
-/* HEADER */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: #005fa3;
-  padding: 12px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* ===== HEADER ===== */
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#005fa3;
+  padding:10px 20px;
+  border-radius:0 0 15px 15px;
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-right: 12px;
-  font-weight: 600;
+.nav-container{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
 }
 
-#themeToggle {
-  background: white;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 8px;
-  cursor: pointer;
+.logo{
+  font-weight:700;
+  color:white;
 }
 
-/* PAGES */
-.page {
-  display: none;
-  min-height: calc(100vh - 80px);
-  justify-content: center;
-  align-items: center;
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:10px;
 }
 
-.page.active {
-  display: flex;
+nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  padding:6px 10px;
+  border-radius:8px;
+  transition:.3s;
 }
 
-/* CARDS */
-.card {
-  background: rgba(17, 24, 39, 0.92);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-  max-width: 900px;
-  width: 90%;
-  text-align: center;
+nav a:hover{
+  background:rgba(255,255,255,.2);
 }
 
-/* HOME */
-.home-card {
-  animation: homeIn 0.8s ease forwards;
+/* ===== ОБЩИЕ СЕКЦИИ ===== */
+section{
+  display:none;
+  min-height:calc(100vh - 80px);
+  justify-content:center;
+  align-items:center;
 }
 
-.home-card.exit {
-  animation: homeOut 0.6s ease forwards;
+/* ===== КАРТОЧКИ ===== */
+.card{
+  background:rgba(242,247,255,.95);
+  padding:40px;
+  border-radius:20px;
+  max-width:900px;
+  width:90%;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+  text-align:center;
 }
 
-/* OTHER PAGES */
-.content-card {
-  animation: fromTop 0.7s ease forwards;
+/* ===== HOME ===== */
+#home{
+  display:flex;
 }
 
-/* ARROWS */
-.arrows {
-  font-size: 26px;
-  margin-bottom: 15px;
-  animation: pulse 1.2s infinite alternate;
+.home-card{
+  animation:homeIn .8s ease forwards;
 }
 
-/* ANIMATIONS */
-@keyframes homeIn {
-  from { opacity: 0; transform: translateY(80px); }
-  to   { opacity: 1; transform: translateY(0); }
+.home-card.exit{
+  animation:homeOut .6s ease forwards;
 }
 
-@keyframes homeOut {
-  from { opacity: 1; transform: translateY(0); }
-  to   { opacity: 0; transform: translateY(140px); }
+.arrows{
+  font-size:26px;
+  margin-bottom:15px;
+  animation:pulse 1.2s infinite alternate;
 }
 
-@keyframes fromTop {
-  from { opacity: 0; transform: translateY(-80px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* ===== ДРУГИЕ КАРТОЧКИ ===== */
+.content-card{
+  animation:fromTop .7s ease forwards;
 }
 
-@keyframes pulse {
-  from { transform: translateY(6px); }
-  to   { transform: translateY(-6px); }
+/* ===== АНИМАЦИИ ===== */
+@keyframes homeIn{
+  from{opacity:0;transform:translateY(80px);}
+  to{opacity:1;transform:translateY(0);}
 }
+
+@keyframes homeOut{
+  from{opacity:1;transform:translateY(0);}
+  to{opacity:0;transform:translateY(140px);}
+}
+
+@keyframes fromTop{
+  from{opacity:0;transform:translateY(-80px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes pulse{
+  from{transform:translateY(6px);}
+  to{transform:translateY(-6px);}
+}
+
+/* ===== ВИКТОРИНА ===== */
+.quiz-option{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 15px;
+  background:white;
+  border-radius:15px;
+  cursor:pointer;
+  border:2px solid transparent;
+  transition:.3s;
+}
+
+.quiz-option:hover,
+.quiz-option.selected{
+  background:#e6f1ff;
+  border-color:#007acc;
+  transform:translateY(-2px);
+}
+
+.option-circle{
+  width:20px;
+  height:20px;
+  border:2px solid #007acc;
+  border-radius:50%;
+}
+
+.option-circle.correct{background:#00b347;}
+.option-circle.wrong{background:#d90000;}
+
 
