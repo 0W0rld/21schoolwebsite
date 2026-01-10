@@ -1,60 +1,102 @@
+/* ================== RESET ================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ================== THEME ================== */
 :root {
-  --bg: #eef3f8;
-  --card: #ffffff;
-  --text: #1f2937;
-  --accent: #2563eb;
+  --bg: linear-gradient(135deg, #e0f7fa, #cfd8dc);
+  --card: rgba(242,247,255,0.95);
+  --text: #003366;
+  --accent: #005fa3;
+  --accent-light: #007acc;
 }
 
 body.dark {
-  --bg: #0f172a;
+  --bg: linear-gradient(135deg, #0f172a, #020617);
   --card: #111827;
   --text: #e5e7eb;
   --accent: #38bdf8;
+  --accent-light: #7dd3fc;
 }
 
+/* ================== BASE ================== */
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
-  transition: 0.5s;
+  line-height: 1.6;
+  transition: background 0.5s, color 0.5s;
 }
 
-/* HEADER */
+/* ================== HEADER ================== */
 header {
+  position: sticky;
+  top: 0;
+  background: var(--accent);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 0 0 16px 16px;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--accent);
-  padding: 12px 20px;
-  color: white;
 }
 
-nav button, #themeToggle {
-  background: none;
+header .logo {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+nav {
+  display: flex;
+  gap: 10px;
+}
+
+nav button {
+  background: transparent;
   border: none;
   color: white;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: bold;
-  margin: 0 6px;
+  transition: 0.3s;
 }
 
-/* PAGES */
+nav button:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+#themeToggle {
+  background: white;
+  color: var(--accent);
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ================== PAGES ================== */
 .page {
   display: none;
-  animation: fade 0.6s ease;
+  animation: fadeUp 0.7s ease;
 }
 
 .page.active {
   display: block;
 }
 
-@keyframes fade {
-  from { opacity: 0; transform: translateY(20px); }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* CENTER */
+/* ================== CENTER INTRO ================== */
 #home {
   min-height: 80vh;
   display: flex;
@@ -67,31 +109,36 @@ nav button, #themeToggle {
   padding: 40px;
   border-radius: 20px;
   text-align: center;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  max-width: 600px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.center-box h1 {
+  margin-bottom: 15px;
 }
 
 .arrows {
   margin-top: 20px;
   font-size: 28px;
-  animation: bounce 1.2s infinite alternate;
+  animation: bounce 1s infinite alternate;
 }
 
 @keyframes bounce {
   from { transform: translateY(0); }
-  to { transform: translateY(10px); }
+  to { transform: translateY(12px); }
 }
 
-/* CONTENT */
+/* ================== CONTENT BOX ================== */
 .content-box {
-  max-width: 900px;
-  margin: 40px auto;
+  max-width: 1000px;
+  margin: 30px auto;
   background: var(--card);
   padding: 30px;
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
-/* GALLERY */
+/* ================== GALLERY ================== */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
@@ -101,6 +148,50 @@ nav button, #themeToggle {
 .gallery-grid img {
   width: 100%;
   border-radius: 12px;
+  transition: transform 0.3s;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* ================== QUIZ ================== */
+#quiz select, #quiz button {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+}
+
+#quiz button {
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+#quiz button:hover {
+  background: white;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+/* ================== MOBILE ================== */
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .center-box {
+    margin: 20px;
+  }
 }
 
 
