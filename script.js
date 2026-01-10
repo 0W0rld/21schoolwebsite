@@ -1,30 +1,31 @@
 const pages = document.querySelectorAll(".page");
 const homeCard = document.getElementById("homeCard");
 
-// === РОУТЕР ПО ХЭШУ ===
-function renderByHash() {
+function showByHash() {
   const hash = location.hash.replace("#", "") || "home";
 
   pages.forEach(p => p.classList.remove("active"));
 
-  if (hash === "home" || hash === "about") {
+  if (hash === "home") {
     document.getElementById("home").classList.add("active");
-    homeCard.classList.remove("hide");
-    homeCard.style.animation = "homeUp 0.8s ease forwards";
+    homeCard.classList.remove("exit");
+    homeCard.style.animation = "homeIn 0.8s ease forwards";
   } else {
-    homeCard.classList.add("hide");
+    if (homeCard) {
+      homeCard.classList.add("exit");
+    }
 
     setTimeout(() => {
-      document.getElementById(hash)?.classList.add("active");
+      const page = document.getElementById(hash);
+      if (page) page.classList.add("active");
     }, 300);
   }
 }
 
-// === СЛУШАЕМ СМЕНУ ХЭША ===
-window.addEventListener("hashchange", renderByHash);
-window.addEventListener("load", renderByHash);
+window.addEventListener("hashchange", showByHash);
+window.addEventListener("load", showByHash);
 
-// === ТЁМНАЯ / СВЕТЛАЯ ТЕМА С КД ===
+/* ТЕМА С КД */
 let lastSwitch = 0;
 document.getElementById("themeToggle").onclick = () => {
   const now = Date.now();
