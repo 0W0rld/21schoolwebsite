@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Школа №21</title>
+  <meta charset="UTF-8">
+  <title>Школа №21 г. Нижнекамска</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,7 +13,6 @@
   <nav>
     <button data-page="home">Главная</button>
     <button data-page="about">О школе</button>
-    <button data-page="history">История</button>
     <button data-page="gallery">Галерея</button>
     <button data-page="quiz">Викторина</button>
   </nav>
@@ -24,59 +23,66 @@
 
   <!-- ГЛАВНАЯ -->
   <section id="home" class="page active">
-    <h1>Школа №21 г. Нижнекамска</h1>
-    <p class="subtitle">Следуйте стрелкам для ознакомления с нашей школой</p>
-    <div class="arrows">↓ ↓ ↓</div>
+    <div class="center-box">
+      <h1>Школа №21 г. Нижнекамска</h1>
+      <p>Следуйте стрелкам для ознакомления с нашей школой</p>
+      <div class="arrows">↓ ↓ ↓</div>
+    </div>
   </section>
 
   <!-- О ШКОЛЕ -->
   <section id="about" class="page">
-    <h2>О школе</h2>
-    <p>Школа открыта 1 сентября 1986 года...</p>
-  </section>
-
-  <!-- ИСТОРИЯ -->
-  <section id="history" class="page">
-    <h2>История</h2>
-    <p>История школы по годам...</p>
+    <div class="content-box">
+      <h2>О школе</h2>
+      <p>Наша школа открыта 1 сентября 1986 года и является одной из ведущих школ города.</p>
+    </div>
   </section>
 
   <!-- ГАЛЕРЕЯ -->
   <section id="gallery" class="page">
-    <h2>Фотогалерея</h2>
-    <div class="gallery-grid">
-      <img src="https://via.placeholder.com/300">
-      <img src="https://via.placeholder.com/300">
+    <div class="content-box">
+      <h2>Фотогалерея</h2>
+      <div class="gallery-grid">
+        <img src="https://via.placeholder.com/300x200">
+        <img src="https://via.placeholder.com/300x200">
+        <img src="https://via.placeholder.com/300x200">
+      </div>
     </div>
   </section>
 
   <!-- ВИКТОРИНА -->
   <section id="quiz" class="page">
-    <h2>Викторина</h2>
+    <div class="content-box">
+      <h2>Викторина</h2>
 
-    <div id="quiz-step-1">
-      <p>Ваш класс:</p>
-      <select id="classSelect">
-        <option value="7">7</option>
-        <option value="8">8</option>
-      </select>
+      <div id="quiz-step-1">
+        <label>Класс:</label>
+        <select id="qClass">
+          <option value="7">7</option>
+          <option value="8">8</option>
+        </select>
 
-      <p>Средняя оценка:</p>
-      <select id="gradeSelect">
-        <option value="2">2</option>
-        <option value="4">4</option>
-      </select>
+        <label>Оценка:</label>
+        <select id="qGrade">
+          <option value="2">2</option>
+          <option value="4">4</option>
+        </select>
 
-      <p>Любимый предмет:</p>
-      <select id="subjectSelect">
-        <option value="history">История</option>
-        <option value="russian">Русский</option>
-      </select>
+        <label>Предмет:</label>
+        <select id="qSubject">
+          <option value="history">История</option>
+          <option value="russian">Русский</option>
+        </select>
 
-      <button id="startQuiz">Начать</button>
+        <button id="startQuiz">Начать</button>
+      </div>
+
+      <div id="quiz-step-2" style="display:none;">
+        <p id="quiz-question"></p>
+        <button class="answer">Ответить</button>
+      </div>
+
     </div>
-
-    <div id="quiz-questions" hidden></div>
   </section>
 
 </main>
