@@ -1,3 +1,4 @@
+/* ===== СБРОС ===== */
 *{
   margin:0;
   padding:0;
@@ -6,12 +7,14 @@
   font-family:'Poppins',sans-serif;
 }
 
+/* ===== BODY ===== */
 body{
   min-height:100vh;
   background:linear-gradient(135deg,#e0f7fa,#cfd8dc);
   color:#003366;
 }
 
+/* ===== HEADER ===== */
 header{
   position:sticky;
   top:0;
@@ -23,53 +26,59 @@ header{
 
 .nav-container{
   display:flex;
-  justify-content:space-between;
+  flex-direction:column;
   align-items:center;
-  flex-wrap:wrap;
 }
 
 .logo{
-  color:white;
   font-weight:800;
+  font-size:22px;
+  color:white;
+  margin-bottom:6px;
 }
 
 nav ul{
   list-style:none;
   display:flex;
   gap:10px;
+  justify-content:center;
 }
 
 nav a{
   color:white;
   text-decoration:none;
   font-weight:600;
-  padding:6px 10px;
+  padding:6px 12px;
   border-radius:8px;
+  transition:.3s;
 }
 
 nav a:hover{
   background:rgba(255,255,255,.2);
 }
 
+/* ===== SECTIONS ===== */
 section{
   display:none;
-  min-height:calc(100vh - 80px);
+  min-height:calc(100vh - 90px);
   justify-content:center;
   align-items:center;
 }
 
 #home{display:flex;}
 
+/* ===== CARD ===== */
 .card{
   background:rgba(242,247,255,.95);
   padding:40px;
   border-radius:20px;
   max-width:900px;
   width:90%;
-  text-align:center;
   box-shadow:0 10px 30px rgba(0,0,0,.15);
+  text-align:center;
 }
 
+/* ===== HOME ===== */
 .school-title{
   font-size:36px;
   font-weight:800;
@@ -77,20 +86,15 @@ section{
 }
 
 .subtitle{
+  opacity:.8;
   margin-bottom:25px;
-}
-
-.arrows{
-  font-size:26px;
-  margin-bottom:15px;
-  animation:pulse 1.2s infinite alternate;
 }
 
 .buttons{
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:15px;
+  gap:14px;
 }
 
 .buttons button{
@@ -104,12 +108,12 @@ section{
   cursor:pointer;
 }
 
+/* ===== THEME CARD ===== */
 .theme-card{
-  margin:30px auto 0;
+  margin-top:30px;
   padding:20px;
-  width:260px;
   border-radius:18px;
-  background:rgba(0,0,0,.05);
+  background:rgba(0,0,0,.06);
 }
 
 .theme-btn{
@@ -123,34 +127,48 @@ section{
   cursor:pointer;
 }
 
-.quiz-option{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-top:15px;
-  padding:12px;
-  background:white;
-  border-radius:15px;
-}
-
-.option-circle{
-  width:20px;
-  height:20px;
-  border-radius:50%;
-  border:2px solid #007acc;
-}
-
+/* ===== FADE ===== */
 .fade{
   opacity:0;
   transform:translateY(50px);
   transition:.8s;
 }
-
 .fade.show{
   opacity:1;
   transform:translateY(0);
 }
 
+/* ===== QUIZ ===== */
+.quiz-option{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 15px;
+  background:white;
+  border-radius:15px;
+  cursor:pointer;
+  border:2px solid transparent;
+  transition:.3s;
+}
+
+.quiz-option:hover,
+.quiz-option.selected{
+  background:#e6f1ff;
+  border-color:#007acc;
+  transform:translateY(-2px);
+}
+
+.option-circle{
+  width:20px;
+  height:20px;
+  border:2px solid #007acc;
+  border-radius:50%;
+}
+
+.option-circle.correct{background:#00b347;}
+.option-circle.wrong{background:#d90000;}
+
+/* ===== DARK THEME ===== */
 body.dark{
   background:linear-gradient(135deg,#0f172a,#020617);
   color:#e5e7eb;
@@ -158,11 +176,7 @@ body.dark{
 
 body.dark .card{
   background:#020617;
-}
-
-@keyframes pulse{
-  from{transform:translateY(6px);}
-  to{transform:translateY(-6px);}
+  color:#e5e7eb;
 }
 
 
