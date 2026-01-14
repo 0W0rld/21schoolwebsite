@@ -1,152 +1,85 @@
-/* ===== СБРОС ===== */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  user-select:none;
-  font-family:'Poppins',sans-serif;
+/* ================= ТЕМА ================= */
+:root{
+  --bg: linear-gradient(135deg,#e0f7fa,#cfd8dc);
+  --card:#f2f7ff;
+  --text:#003366;
+  --accent:#005fa3;
 }
 
-/* ===== BODY ===== */
+[data-theme="dark"]{
+  --bg: linear-gradient(135deg,#0f172a,#020617);
+  --card:#020617;
+  --text:#e5e7eb;
+  --accent:#38bdf8;
+}
+
 body{
-  min-height:100vh;
-  background:linear-gradient(135deg,#e0f7fa,#cfd8dc);
-  color:#003366;
+  background:var(--bg);
+  color:var(--text);
 }
 
-/* ===== HEADER ===== */
-header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:#005fa3;
-  padding:10px 20px;
-  border-radius:0 0 15px 15px;
+/* ================= ЗАГОЛОВОК ================= */
+.school-title{
+  font-size:34px;
+  font-weight:800;
+  margin-bottom:20px;
+  text-shadow:0 4px 10px rgba(0,0,0,.2);
 }
 
-.nav-container{
+/* ================= КАРТОЧКИ ================= */
+.card{
+  background:var(--card);
+  color:var(--text);
+  padding:40px;
+  border-radius:24px;
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
+}
+
+/* ================= КНОПКИ ================= */
+.buttons{
   display:flex;
-  justify-content:space-between;
+  flex-direction:column;
+  gap:15px;
   align-items:center;
-  flex-wrap:wrap;
 }
 
-.logo{
+button{
+  padding:14px 30px;
+  font-size:16px;
   font-weight:700;
+  border-radius:14px;
+  border:none;
+  background:var(--accent);
   color:white;
-}
-
-nav ul{
-  list-style:none;
-  display:flex;
-  gap:10px;
-}
-
-nav a{
-  color:white;
-  text-decoration:none;
-  font-weight:600;
-  padding:6px 10px;
-  border-radius:8px;
+  cursor:pointer;
   transition:.3s;
 }
 
-nav a:hover{
-  background:rgba(255,255,255,.2);
+button:hover{
+  transform:translateY(-3px);
+  background:white;
+  color:var(--accent);
 }
 
-/* ===== ОБЩИЕ СЕКЦИИ ===== */
-section{
-  display:none;
-  min-height:calc(100vh - 80px);
-  justify-content:center;
-  align-items:center;
-}
-
-/* ===== КАРТОЧКИ ===== */
-.card{
-  background:rgba(242,247,255,.95);
-  padding:40px;
-  border-radius:20px;
-  max-width:900px;
-  width:90%;
-  box-shadow:0 10px 30px rgba(0,0,0,.15);
-  text-align:center;
-}
-
-/* ===== HOME ===== */
-#home{
+/* ================= КНОПКА ТЕМЫ ================= */
+.theme-toggle{
+  margin-top:25px;
+  width:60px;
+  height:60px;
+  font-size:28px;
+  border-radius:50%;
   display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--accent);
+  box-shadow:0 10px 25px rgba(0,0,0,.3);
 }
 
-.home-card{
-  animation:homeIn .8s ease forwards;
-}
-
-.home-card.exit{
-  animation:homeOut .6s ease forwards;
-}
-
+/* ================= СТРЕЛКИ ================= */
 .arrows{
-  font-size:26px;
+  font-size:34px;
   margin-bottom:15px;
   animation:pulse 1.2s infinite alternate;
 }
-
-/* ===== ДРУГИЕ КАРТОЧКИ ===== */
-.content-card{
-  animation:fromTop .7s ease forwards;
-}
-
-/* ===== АНИМАЦИИ ===== */
-@keyframes homeIn{
-  from{opacity:0;transform:translateY(80px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-@keyframes homeOut{
-  from{opacity:1;transform:translateY(0);}
-  to{opacity:0;transform:translateY(140px);}
-}
-
-@keyframes fromTop{
-  from{opacity:0;transform:translateY(-80px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-@keyframes pulse{
-  from{transform:translateY(6px);}
-  to{transform:translateY(-6px);}
-}
-
-/* ===== ВИКТОРИНА ===== */
-.quiz-option{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:12px 15px;
-  background:white;
-  border-radius:15px;
-  cursor:pointer;
-  border:2px solid transparent;
-  transition:.3s;
-}
-
-.quiz-option:hover,
-.quiz-option.selected{
-  background:#e6f1ff;
-  border-color:#007acc;
-  transform:translateY(-2px);
-}
-
-.option-circle{
-  width:20px;
-  height:20px;
-  border:2px solid #007acc;
-  border-radius:50%;
-}
-
-.option-circle.correct{background:#00b347;}
-.option-circle.wrong{background:#d90000;}
 
 
