@@ -1,72 +1,92 @@
+/* ================= ТЕМА ================= */
+const themeBtn = document.getElementById("themeToggle");
+let themeCooldown = false;
+
+function setTheme(theme){
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("theme", theme);
+  themeBtn.textContent = theme === "dark" ? "🌙" : "☀️";
+}
+
+themeBtn.addEventListener("click", () => {
+  if(themeCooldown) return;
+
+  themeCooldown = true;
+  setTimeout(()=>themeCooldown=false,3000);
+
+  const current = document.documentElement.getAttribute("data-theme") || "light";
+  setTheme(current === "light" ? "dark" : "light");
+
+  playClick();
+});
+
+setTheme(localStorage.getItem("theme") || "light");
+
+/* ================= НАВИГАЦИЯ ================= */
 const sections = document.querySelectorAll("section");
 const homeCard = document.querySelector(".home-card");
 
 function showSection(){
   const hash = location.hash.replace("#","") || "home";
-
   sections.forEach(s=>s.style.display="none");
 
   if(hash === "home"){
     document.getElementById("home").style.display="flex";
     homeCard.classList.remove("exit");
     homeCard.style.animation="homeIn .8s ease forwards";
-  }else{
+  } else {
     homeCard.classList.add("exit");
     setTimeout(()=>{
       const target = document.getElementById(hash);
-      if(target){
-        target.style.display="flex";
-      }
+      if(target) target.style.display="flex";
     },300);
   }
 }
 
-window.addEventListener("hashchange",showSection);
-window.addEventListener("load",showSection);
+window.addEventListener("hashchange", showSection);
+window.addEventListener("load", showSection);
 
-/* ===== FADE ===== */
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add("show");
-  });
+/* ================= ЗВУКИ ================= */
+const hoverSound = new Audio("hover.mp3");
+const clickSound = new Audio("click.mp3");
+
+function playHover(){ hoverSound.cloneNode().play(); }
+function playClick(){ clickSound.cloneNode().play(); }
+
+document.querySelectorAll("button, a").forEach(el=>{
+  el.addEventListener("mouseenter", playHover);
+  el.addEventListener("click", playClick);
 });
-document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
 
-/* ===== ВИКТОРИНА ===== */
-const quizData=[
-  {q:"Сколько дней в неделе?",a:["5","7","6"],c:1},
-  {q:"Основной предмет?",a:["Математика","Физкультура","ИЗО"],c:0}
-];
+/* ================= ВИКТОРИНА (АДАПТИВ) ================= */
+const quizState = {
+  grade: null,
+  level: null,
+  subject: null
+};
 
-let qIndex=0;
-const qText=document.getElementById("quiz-question");
-const options=document.querySelectorAll(".quiz-option");
+function setQuizOption(type, value){
+  quizState[type] = value;
+  console.log("QUIZ STATE:", quizState);
 
-function loadQuiz(){
-  const d=quizData[qIndex];
-  qText.textContent=d.q;
-  options.forEach((o,i)=>{
-    o.classList.remove("selected");
-    o.querySelector(".option-circle").className="option-circle";
-    o.querySelector(".option-text").textContent=d.a[i];
-  });
+  if(quizState.grade && quizState.level && quizState.subject){
+    loadAdaptiveQuiz();
+  }
 }
 
-options.forEach((o,i)=>{
-  o.onclick=()=>{
-    options.forEach(x=>x.classList.remove("selected"));
-    o.classList.add("selected");
-    const circle=o.querySelector(".option-circle");
-    if(i===quizData[qIndex].c){
-      circle.classList.add("correct");
-      setTimeout(()=>{
-        qIndex++;
-        if(qIndex<quizData.length) loadQuiz();
-      },800);
-    }else{
-      circle.classList.add("wrong");
-    }
-  };
-});
+function loadAdaptiveQuiz(){
+  // пример логики
+  let questions;
 
-loadQuiz();
+  if(quizState.grade <= 7 && quizState.level === "good" && quizState.subject === "history"){
+    questions = [
+      {q:"В каком веке была Куликовская битва?", a:["13","14","15"], c:1}
+    ];
+  } else {
+    questions = [
+      {q:"Сколько дней в неделе?", a:["5","7","6"], c:1}
+    ];
+  }
+
+  console.log("Загружены вопросы:", questions);
+}
