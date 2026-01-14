@@ -2,80 +2,112 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Школа №21 г. Нижнекамска</title>
+  <title>Школа №21</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header>
-  <div class="logo">Школа №21</div>
-  <nav>
-    <a href="#home">Главная</a>
-    <a href="#about">О школе</a>
-    <a href="#history">История</a>
-    <a href="#gallery">Галерея</a>
-    <a href="#panorama">Панорама</a>
-    <a href="#quiz">Викторина</a>
-  </nav>
-  <button id="themeToggle">🌙</button>
+  <div class="nav-container">
+    <div class="logo">Школа №21</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Главная</a></li>
+        <li><a href="#about">О школе</a></li>
+        <li><a href="#gallery">Галерея</a></li>
+        <li><a href="#panorama">Панорама</a></li>
+        <li><a href="#quiz">Викторина</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
-<main>
+<!-- HOME -->
+<section id="home">
+  <div class="card home-card">
+    <div class="arrows">⬆ ⬆ ⬆</div>
 
-  <!-- ГЛАВНАЯ -->
-  <section id="home" class="page">
-    <div id="homeCard" class="card home-card">
-      <div class="arrows">↑ ↑ ↑</div>
-      <h1>Школа №21 г. Нижнекамска</h1>
-      <p>Для ознакомления выберите раздел в меню сверху</p>
+    <h1 class="school-title">Школа №21</h1>
+
+    <p class="subtitle">Следуйте стрелкам для ознакомления с нашей школой</p>
+
+    <div class="buttons">
+      <a href="#about"><button>О школе</button></a>
+      <a href="#gallery"><button>Фотогалерея</button></a>
+      <a href="#panorama"><button>Панорама</button></a>
+      <a href="#quiz"><button>Викторина</button></a>
     </div>
-  </section>
 
-  <!-- О ШКОЛЕ -->
-  <section id="about" class="page">
-    <div class="card content-card">
-      <h2>О школе</h2>
-      <p>Общая информация о школе.</p>
+    <div class="theme-card">
+      <button id="themeToggle" class="theme-btn">☀️</button>
+      <p>Светлая / тёмная тема</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ИСТОРИЯ -->
-  <section id="history" class="page">
-    <div class="card content-card">
-      <h2>История школы</h2>
-      <p>Исторический путь школы.</p>
+<!-- ABOUT -->
+<section id="about">
+  <div class="card content-card fade">
+    <h2>О школе</h2>
+    <p>Наша школа — современное образовательное учреждение с богатой историей.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="card content-card fade">
+    <h2>Фотогалерея</h2>
+    <p>Здесь будут фотографии школы.</p>
+  </div>
+</section>
+
+<!-- PANORAMA -->
+<section id="panorama">
+  <div class="card content-card fade">
+    <h2>Панорама школы</h2>
+    <p>Здесь будет 3D-панорама.</p>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="card content-card fade">
+    <h2>Викторина</h2>
+
+    <div id="quiz-setup">
+      <p>Выберите параметры:</p>
+      <button onclick="setQuizOption('grade',7)">7 класс</button>
+      <button onclick="setQuizOption('grade',8)">8 класс</button>
+      <button onclick="setQuizOption('level','good')">Учусь на 4–5</button>
+      <button onclick="setQuizOption('level','bad')">Учусь на 2–3</button>
+      <button onclick="setQuizOption('subject','history')">История</button>
+      <button onclick="setQuizOption('subject','russian')">Русский</button>
     </div>
-  </section>
 
-  <!-- ГАЛЕРЕЯ -->
-  <section id="gallery" class="page">
-    <div class="card content-card">
-      <h2>Фотогалерея</h2>
+    <div id="quiz-main" style="display:none">
+      <h3 id="quiz-question"></h3>
+      <div class="quiz-option">
+        <div class="option-circle"></div>
+        <span class="option-text"></span>
+      </div>
+      <div class="quiz-option">
+        <div class="option-circle"></div>
+        <span class="option-text"></span>
+      </div>
+      <div class="quiz-option">
+        <div class="option-circle"></div>
+        <span class="option-text"></span>
+      </div>
     </div>
-  </section>
 
-  <!-- ПАНОРАМА -->
-  <section id="panorama" class="page">
-    <div class="card content-card">
-      <h2>Панорама школы</h2>
-    </div>
-  </section>
-
-  <!-- ВИКТОРИНА -->
-  <section id="quiz" class="page">
-    <div class="card content-card">
-      <h2>Викторина</h2>
-      <p>Функционал будет расширен.</p>
-    </div>
-  </section>
-
-</main>
+  </div>
+</section>
 
 <script src="script.js"></script>
 </body>
 </html>
-
 
 
 
