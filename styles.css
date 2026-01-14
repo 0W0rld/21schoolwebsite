@@ -1,85 +1,169 @@
-/* ================= ТЕМА ================= */
-:root{
-  --bg: linear-gradient(135deg,#e0f7fa,#cfd8dc);
-  --card:#f2f7ff;
-  --text:#003366;
-  --accent:#005fa3;
-}
-
-[data-theme="dark"]{
-  --bg: linear-gradient(135deg,#0f172a,#020617);
-  --card:#020617;
-  --text:#e5e7eb;
-  --accent:#38bdf8;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  user-select:none;
+  font-family:'Poppins',sans-serif;
 }
 
 body{
-  background:var(--bg);
-  color:var(--text);
+  min-height:100vh;
+  background:linear-gradient(135deg,#e0f7fa,#cfd8dc);
+  color:#003366;
 }
 
-/* ================= ЗАГОЛОВОК ================= */
-.school-title{
-  font-size:34px;
-  font-weight:800;
-  margin-bottom:20px;
-  text-shadow:0 4px 10px rgba(0,0,0,.2);
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#005fa3;
+  padding:10px 20px;
+  border-radius:0 0 15px 15px;
 }
 
-/* ================= КАРТОЧКИ ================= */
-.card{
-  background:var(--card);
-  color:var(--text);
-  padding:40px;
-  border-radius:24px;
-  box-shadow:0 20px 40px rgba(0,0,0,.25);
-}
-
-/* ================= КНОПКИ ================= */
-.buttons{
+.nav-container{
   display:flex;
-  flex-direction:column;
-  gap:15px;
+  justify-content:space-between;
   align-items:center;
+  flex-wrap:wrap;
 }
 
-button{
-  padding:14px 30px;
-  font-size:16px;
-  font-weight:700;
-  border-radius:14px;
-  border:none;
-  background:var(--accent);
+.logo{
   color:white;
-  cursor:pointer;
-  transition:.3s;
+  font-weight:800;
 }
 
-button:hover{
-  transform:translateY(-3px);
-  background:white;
-  color:var(--accent);
-}
-
-/* ================= КНОПКА ТЕМЫ ================= */
-.theme-toggle{
-  margin-top:25px;
-  width:60px;
-  height:60px;
-  font-size:28px;
-  border-radius:50%;
+nav ul{
+  list-style:none;
   display:flex;
-  align-items:center;
-  justify-content:center;
-  background:var(--accent);
-  box-shadow:0 10px 25px rgba(0,0,0,.3);
+  gap:10px;
 }
 
-/* ================= СТРЕЛКИ ================= */
+nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  padding:6px 10px;
+  border-radius:8px;
+}
+
+nav a:hover{
+  background:rgba(255,255,255,.2);
+}
+
+section{
+  display:none;
+  min-height:calc(100vh - 80px);
+  justify-content:center;
+  align-items:center;
+}
+
+#home{display:flex;}
+
+.card{
+  background:rgba(242,247,255,.95);
+  padding:40px;
+  border-radius:20px;
+  max-width:900px;
+  width:90%;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.school-title{
+  font-size:36px;
+  font-weight:800;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  margin-bottom:25px;
+}
+
 .arrows{
-  font-size:34px;
+  font-size:26px;
   margin-bottom:15px;
   animation:pulse 1.2s infinite alternate;
 }
+
+.buttons{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:15px;
+}
+
+.buttons button{
+  width:240px;
+  padding:12px;
+  border:none;
+  border-radius:12px;
+  background:#005fa3;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.theme-card{
+  margin:30px auto 0;
+  padding:20px;
+  width:260px;
+  border-radius:18px;
+  background:rgba(0,0,0,.05);
+}
+
+.theme-btn{
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  font-size:30px;
+  border:none;
+  background:#005fa3;
+  color:white;
+  cursor:pointer;
+}
+
+.quiz-option{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:15px;
+  padding:12px;
+  background:white;
+  border-radius:15px;
+}
+
+.option-circle{
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  border:2px solid #007acc;
+}
+
+.fade{
+  opacity:0;
+  transform:translateY(50px);
+  transition:.8s;
+}
+
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+body.dark{
+  background:linear-gradient(135deg,#0f172a,#020617);
+  color:#e5e7eb;
+}
+
+body.dark .card{
+  background:#020617;
+}
+
+@keyframes pulse{
+  from{transform:translateY(6px);}
+  to{transform:translateY(-6px);}
+}
+
 
 
