@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Школа №21 — Интерактив</title>
+  <title>Школа №21</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
@@ -37,29 +37,32 @@
   </div>
 </section>
 
+<section id="about">
+  <div class="card content-card fade">
+    <h2>О школе</h2>
+    <p>Наша школа — современное образовательное учреждение.</p>
+  </div>
+</section>
+
 <section id="gallery">
   <div class="card content-card fade">
     <h2>Галерея</h2>
-    <div class="gallery-folders">
-      <div class="folder-card" onclick="openFolder('teachers')">
-        <div class="folder-icon">👨‍🏫</div>
-        <h3>Учителя</h3>
-        <p>Наш педагогический состав</p>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openFolder('teachers')" style="cursor:pointer; border-style: solid;">
+        <span>👨‍🏫 Фотки Учителей</span>
       </div>
-      <div class="folder-card" onclick="openFolder('school-life')">
-        <div class="folder-icon">🏫</div>
-        <h3>Наша школа</h3>
-        <p>Интерьеры и экстерьер</p>
+      <div class="gallery-item" onclick="openFolder('school')" style="cursor:pointer; border-style: solid;">
+        <span>🏫 Фотки нашей школы</span>
       </div>
     </div>
   </div>
 </section>
 
-<div id="folder-view" class="folder-overlay">
+<div id="gallery-overlay" class="folder-overlay" style="display:none;">
   <div class="card folder-content">
-    <button class="back-btn" onclick="closeFolder()">← Назад</button>
-    <h2 id="folder-title"></h2>
-    <div id="folder-grid" class="gallery-grid">
+    <button class="reset-btn" onclick="closeFolder()" style="margin-bottom:20px;">← Назад</button>
+    <h2 id="folder-title">Заголовок</h2>
+    <div id="photo-list" class="gallery-grid">
       </div>
   </div>
 </div>
@@ -67,7 +70,9 @@
 <section id="quiz">
   <div class="card content-card fade">
     <h2>Викторина</h2>
+    
     <div id="quiz-setup">
+      <p>Настройте викторину:</p>
       <div class="setup-group">
         <button class="setup-btn" onclick="setQuizOption(this, 'grade', 7)">7 класс</button>
         <button class="setup-btn" onclick="setQuizOption(this, 'grade', 8)">8 класс</button>
@@ -77,13 +82,13 @@
         <button class="setup-btn" onclick="setQuizOption(this, 'level', 'easy')">Учусь на 2–3</button>
       </div>
       <div class="setup-group">
-        <button class="setup-btn" onclick="setQuizOption(this, 'subject', 'history')">История</button>
         <button class="setup-btn" onclick="setQuizOption(this, 'subject', 'russian')">Русский</button>
+        <button class="setup-btn" onclick="setQuizOption(this, 'subject', 'history')">История</button>
         <button class="setup-btn" onclick="setQuizOption(this, 'subject', 'math')">Математика</button>
       </div>
     </div>
 
-    <div id="quiz-main" style="display:none">
+    <div id="quiz-main" style="display:none; opacity: 0; transition: 0.5s;">
       <h3 id="quiz-question"></h3>
       <div class="quiz-options-container">
         <div class="quiz-option" onclick="handleAnswer(0)">
@@ -99,7 +104,6 @@
           <span class="option-text"></span>
         </div>
       </div>
-      <p id="quiz-progress"></p>
       <button onclick="resetQuiz()" class="reset-btn">Заново</button>
     </div>
   </div>
