@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Школа №21</title>
+  <title>Школа №21 — Официальный сайт</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
@@ -27,20 +27,23 @@
   <div class="card home-card">
     <div class="arrows">⬆ ⬆ ⬆</div>
     <h1 class="school-title">Школа №21</h1>
+    <p class="subtitle">Добро пожаловать в нашу цифровую экосистему</p>
     <div class="buttons">
+      <a href="#about"><button>О школе</button></a>
       <a href="#gallery"><button>Фотогалерея</button></a>
       <a href="#quiz"><button>Викторина</button></a>
     </div>
     <div class="theme-card">
       <button id="themeToggle" class="theme-btn">☀️</button>
+      <p>Сменить тему</p>
     </div>
   </div>
 </section>
 
 <section id="about">
   <div class="card content-card fade">
-    <h2>О школе</h2>
-    <p>Наша школа — современное образовательное учреждение.</p>
+    <h2>О нашей школе</h2>
+    <p>Школа №21 — это место, где традиции встречаются с инновациями. Мы создаем условия для всестороннего развития каждого ученика.</p>
   </div>
 </section>
 
@@ -48,63 +51,54 @@
   <div class="card content-card fade">
     <h2>Галерея</h2>
     <div class="gallery-grid">
-      <div class="gallery-item" onclick="openFolder('teachers')" style="cursor:pointer; border-style: solid;">
-        <span>👨‍🏫 Фотки Учителей</span>
+      <div class="gallery-item folder-type" onclick="openFolder('teachers')">
+        <div class="folder-icon">👨‍🏫</div>
+        <span>Фотки Учителей</span>
       </div>
-      <div class="gallery-item" onclick="openFolder('school')" style="cursor:pointer; border-style: solid;">
-        <span>🏫 Фотки нашей школы</span>
+      <div class="gallery-item folder-type" onclick="openFolder('school')">
+        <div class="folder-icon">🏫</div>
+        <span>Фотки нашей школы</span>
       </div>
     </div>
   </div>
 </section>
 
-<div id="gallery-overlay" class="folder-overlay" style="display:none;">
+<div id="gallery-overlay" class="overlay">
   <div class="card folder-content">
-    <button class="reset-btn" onclick="closeFolder()" style="margin-bottom:20px;">← Назад</button>
-    <h2 id="folder-title">Заголовок</h2>
-    <div id="photo-list" class="gallery-grid">
+    <button class="reset-btn" onclick="closeFolder()">← Назад к папкам</button>
+    <h2 id="folder-title" style="margin-top:15px;"></h2>
+    <div id="photo-container" class="gallery-grid sub-grid">
       </div>
   </div>
 </div>
 
 <section id="quiz">
   <div class="card content-card fade">
-    <h2>Викторина</h2>
+    <h2>Умная Викторина</h2>
     
     <div id="quiz-setup">
-      <p>Настройте викторину:</p>
+      <p>Выберите ваши параметры для подбора вопросов:</p>
       <div class="setup-group">
-        <button class="setup-btn" onclick="setQuizOption(this, 'grade', 7)">7 класс</button>
-        <button class="setup-btn" onclick="setQuizOption(this, 'grade', 8)">8 класс</button>
+        <button class="setup-btn" onclick="setQuizParam(this, 'grade', 7)">7 класс</button>
+        <button class="setup-btn" onclick="setQuizParam(this, 'grade', 8)">8 класс</button>
       </div>
       <div class="setup-group">
-        <button class="setup-btn" onclick="setQuizOption(this, 'level', 'hard')">Учусь на 4–5</button>
-        <button class="setup-btn" onclick="setQuizOption(this, 'level', 'easy')">Учусь на 2–3</button>
+        <button class="setup-btn" onclick="setQuizParam(this, 'level', 'hard')">Учусь на 4–5</button>
+        <button class="setup-btn" onclick="setQuizParam(this, 'level', 'easy')">Учусь на 2–3</button>
       </div>
       <div class="setup-group">
-        <button class="setup-btn" onclick="setQuizOption(this, 'subject', 'russian')">Русский</button>
-        <button class="setup-btn" onclick="setQuizOption(this, 'subject', 'history')">История</button>
-        <button class="setup-btn" onclick="setQuizOption(this, 'subject', 'math')">Математика</button>
+        <button class="setup-btn" onclick="setQuizParam(this, 'subject', 'russian')">Русский язык</button>
+        <button class="setup-btn" onclick="setQuizParam(this, 'subject', 'history')">История</button>
+        <button class="setup-btn" onclick="setQuizParam(this, 'subject', 'math')">Математика</button>
       </div>
     </div>
 
-    <div id="quiz-main" style="display:none; opacity: 0; transition: 0.5s;">
-      <h3 id="quiz-question"></h3>
-      <div class="quiz-options-container">
-        <div class="quiz-option" onclick="handleAnswer(0)">
-          <div class="option-circle"></div>
-          <span class="option-text"></span>
+    <div id="quiz-main" style="display:none;">
+      <h3 id="quiz-question" style="margin-bottom:20px;"></h3>
+      <div class="quiz-options-container" id="options-box">
         </div>
-        <div class="quiz-option" onclick="handleAnswer(1)">
-          <div class="option-circle"></div>
-          <span class="option-text"></span>
-        </div>
-        <div class="quiz-option" onclick="handleAnswer(2)">
-          <div class="option-circle"></div>
-          <span class="option-text"></span>
-        </div>
-      </div>
-      <button onclick="resetQuiz()" class="reset-btn">Заново</button>
+      <div id="quiz-feedback" style="margin-top:15px; font-weight:bold;"></div>
+      <button onclick="resetQuiz()" class="reset-btn" style="margin-top:20px;">Заново</button>
     </div>
   </div>
 </section>
