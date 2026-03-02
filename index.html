@@ -53,10 +53,10 @@
   <div class="card content-card fade">
     <h2>Фотогалерея</h2>
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="#" alt="Фото 1"><span>Школа снаружи</span></div>
-      <div class="gallery-item"><img src="#" alt="Фото 2"><span>Наш спортзал</span></div>
-      <div class="gallery-item"><img src="#" alt="Фото 3"><span>Кабинет физики</span></div>
-      <div class="gallery-item"><img src="#" alt="Фото 4"><span>Столовая</span></div>
+      <div class="gallery-item">Фото 1</div>
+      <div class="gallery-item">Фото 2</div>
+      <div class="gallery-item">Фото 3</div>
+      <div class="gallery-item">Фото 4</div>
     </div>
   </div>
 </section>
@@ -64,7 +64,7 @@
 <section id="panorama">
   <div class="card content-card fade">
     <h2>Панорама школы</h2>
-    <div class="panorama-placeholder">Здесь будет 3D-панорама.</div>
+    <p>Здесь будет 3D-панорама.</p>
   </div>
 </section>
 
@@ -73,7 +73,7 @@
     <h2>Викторина</h2>
 
     <div id="quiz-setup">
-      <p>Выберите параметры:</p>
+      <p>Настройте вопросы под себя:</p>
       <div class="setup-group">
         <button class="setup-btn" onclick="setQuizOption(this, 'grade', 7)">7 класс</button>
         <button class="setup-btn" onclick="setQuizOption(this, 'grade', 8)">8 класс</button>
@@ -88,20 +88,23 @@
       </div>
     </div>
 
-    <div id="quiz-main" style="display:none">
-      <h3 id="quiz-question"></h3>
-      <div class="quiz-option">
-        <div class="option-circle"></div>
-        <span class="option-text"></span>
+    <div id="quiz-main" style="display:none; opacity: 0; transition: opacity 0.5s ease;">
+      <h3 id="quiz-question" style="margin-bottom: 20px;"></h3>
+      <div class="quiz-options-container">
+        <div class="quiz-option" onclick="handleAnswer(0)">
+          <div class="option-circle"></div>
+          <span class="option-text"></span>
+        </div>
+        <div class="quiz-option" onclick="handleAnswer(1)">
+          <div class="option-circle"></div>
+          <span class="option-text"></span>
+        </div>
+        <div class="quiz-option" onclick="handleAnswer(2)">
+          <div class="option-circle"></div>
+          <span class="option-text"></span>
+        </div>
       </div>
-      <div class="quiz-option">
-        <div class="option-circle"></div>
-        <span class="option-text"></span>
-      </div>
-      <div class="quiz-option">
-        <div class="option-circle"></div>
-        <span class="option-text"></span>
-      </div>
+      <p id="quiz-progress" style="margin-top: 15px; font-size: 0.9em; opacity: 0.7;"></p>
       <button onclick="resetQuiz()" class="reset-btn">Начать заново</button>
     </div>
   </div>
