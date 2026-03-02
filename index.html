@@ -27,15 +27,13 @@
   <div class="card home-card">
     <div class="arrows">⬆ ⬆ ⬆</div>
     <h1 class="school-title">Школа №21</h1>
-    <p class="subtitle">Добро пожаловать в нашу цифровую экосистему</p>
     <div class="buttons">
-      <a href="#about"><button>О школе</button></a>
       <a href="#gallery"><button>Фотогалерея</button></a>
       <a href="#quiz"><button>Викторина</button></a>
     </div>
     <div class="theme-card">
       <button id="themeToggle" class="theme-btn">☀️</button>
-      <p>Сменить тему</p>
+      <p>Переключить тему</p>
     </div>
   </div>
 </section>
@@ -43,7 +41,7 @@
 <section id="about">
   <div class="card content-card fade">
     <h2>О нашей школе</h2>
-    <p>Школа №21 — это место, где традиции встречаются с инновациями. Мы создаем условия для всестороннего развития каждого ученика.</p>
+    <p>Мы — современное учебное заведение, ориентированное на успех каждого ученика. Наша школа №21 — это про знания, дружбу и развитие.</p>
   </div>
 </section>
 
@@ -65,9 +63,9 @@
 
 <div id="gallery-overlay" class="overlay">
   <div class="card folder-content">
-    <button class="reset-btn" onclick="closeFolder()">← Назад к папкам</button>
-    <h2 id="folder-title" style="margin-top:15px;"></h2>
-    <div id="photo-container" class="gallery-grid sub-grid">
+    <button class="reset-btn" onclick="closeFolder()">← Назад к выбору</button>
+    <h2 id="folder-title" style="margin: 20px 0;"></h2>
+    <div id="photo-list" class="gallery-grid sub-grid">
       </div>
   </div>
 </div>
@@ -75,29 +73,28 @@
 <section id="quiz">
   <div class="card content-card fade">
     <h2>Умная Викторина</h2>
-    
     <div id="quiz-setup">
-      <p>Выберите ваши параметры для подбора вопросов:</p>
+      <p>Настройте вопросы под себя:</p>
       <div class="setup-group">
-        <button class="setup-btn" onclick="setQuizParam(this, 'grade', 7)">7 класс</button>
-        <button class="setup-btn" onclick="setQuizParam(this, 'grade', 8)">8 класс</button>
+        <button class="setup-btn" onclick="setQuizOption(this, 'grade', 7)">7 класс</button>
+        <button class="setup-btn" onclick="setQuizOption(this, 'grade', 8)">8 класс</button>
       </div>
       <div class="setup-group">
-        <button class="setup-btn" onclick="setQuizParam(this, 'level', 'hard')">Учусь на 4–5</button>
-        <button class="setup-btn" onclick="setQuizParam(this, 'level', 'easy')">Учусь на 2–3</button>
+        <button class="setup-btn" onclick="setQuizOption(this, 'level', 'hard')">Учусь на 4–5</button>
+        <button class="setup-btn" onclick="setQuizOption(this, 'level', 'easy')">Учусь на 2–3</button>
       </div>
       <div class="setup-group">
-        <button class="setup-btn" onclick="setQuizParam(this, 'subject', 'russian')">Русский язык</button>
-        <button class="setup-btn" onclick="setQuizParam(this, 'subject', 'history')">История</button>
-        <button class="setup-btn" onclick="setQuizParam(this, 'subject', 'math')">Математика</button>
+        <button class="setup-btn" onclick="setQuizOption(this, 'subject', 'russian')">Русский</button>
+        <button class="setup-btn" onclick="setQuizOption(this, 'subject', 'history')">История</button>
+        <button class="setup-btn" onclick="setQuizOption(this, 'subject', 'math')">Математика</button>
       </div>
     </div>
 
-    <div id="quiz-main" style="display:none;">
+    <div id="quiz-main" style="display:none; opacity: 1;">
       <h3 id="quiz-question" style="margin-bottom:20px;"></h3>
-      <div class="quiz-options-container" id="options-box">
+      <div id="options-box" class="quiz-options-container">
         </div>
-      <div id="quiz-feedback" style="margin-top:15px; font-weight:bold;"></div>
+      <p id="quiz-info" style="margin-top:15px; font-size: 0.9em; color: #666;"></p>
       <button onclick="resetQuiz()" class="reset-btn" style="margin-top:20px;">Заново</button>
     </div>
   </div>
@@ -106,4 +103,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-
