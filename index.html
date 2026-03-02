@@ -27,18 +27,14 @@
 <section id="home">
   <div class="card home-card">
     <div class="arrows">⬆ ⬆ ⬆</div>
-
     <h1 class="school-title">Школа №21</h1>
-
     <p class="subtitle">Следуйте стрелкам для ознакомления с нашей школой</p>
-
     <div class="buttons">
       <a href="#about"><button>О школе</button></a>
       <a href="#gallery"><button>Фотогалерея</button></a>
       <a href="#panorama"><button>Панорама</button></a>
       <a href="#quiz"><button>Викторина</button></a>
     </div>
-
     <div class="theme-card">
       <button id="themeToggle" class="theme-btn">☀️</button>
       <p>Светлая / тёмная тема</p>
@@ -49,7 +45,7 @@
 <section id="about">
   <div class="card content-card fade">
     <h2>О школе</h2>
-    <p>Наша школа — современное образовательное учреждение с богатой историей. Мы стремимся к знаниям и успеху каждого ученика.</p>
+    <p>Наша школа — современное образовательное учреждение с богатой историей.</p>
   </div>
 </section>
 
@@ -57,10 +53,10 @@
   <div class="card content-card fade">
     <h2>Фотогалерея</h2>
     <div class="gallery-grid">
-      <div class="gallery-item">Здание школы</div>
-      <div class="gallery-item">Наш класс</div>
-      <div class="gallery-item">Спортзал</div>
-      <div class="gallery-item">Библиотека</div>
+      <div class="gallery-item"><img src="#" alt="Фото 1"><span>Школа снаружи</span></div>
+      <div class="gallery-item"><img src="#" alt="Фото 2"><span>Наш спортзал</span></div>
+      <div class="gallery-item"><img src="#" alt="Фото 3"><span>Кабинет физики</span></div>
+      <div class="gallery-item"><img src="#" alt="Фото 4"><span>Столовая</span></div>
     </div>
   </div>
 </section>
@@ -68,10 +64,7 @@
 <section id="panorama">
   <div class="card content-card fade">
     <h2>Панорама школы</h2>
-    <div class="panorama-placeholder">
-       <p>Здесь будет 3D-панорама.</p>
-       <small>(Можно вставить iframe от Google Maps или Яндекс.Панорам)</small>
-    </div>
+    <div class="panorama-placeholder">Здесь будет 3D-панорама.</div>
   </div>
 </section>
 
@@ -80,7 +73,7 @@
     <h2>Викторина</h2>
 
     <div id="quiz-setup">
-      <p>Выберите параметры, чтобы начать:</p>
+      <p>Выберите параметры:</p>
       <div class="setup-group">
         <button class="setup-btn" onclick="setQuizOption(this, 'grade', 7)">7 класс</button>
         <button class="setup-btn" onclick="setQuizOption(this, 'grade', 8)">8 класс</button>
@@ -97,28 +90,26 @@
 
     <div id="quiz-main" style="display:none">
       <h3 id="quiz-question"></h3>
-      <div class="quiz-options-container">
-        <div class="quiz-option">
-          <div class="option-circle"></div>
-          <span class="option-text"></span>
-        </div>
-        <div class="quiz-option">
-          <div class="option-circle"></div>
-          <span class="option-text"></span>
-        </div>
-        <div class="quiz-option">
-          <div class="option-circle"></div>
-          <span class="option-text"></span>
-        </div>
+      <div class="quiz-option">
+        <div class="option-circle"></div>
+        <span class="option-text"></span>
+      </div>
+      <div class="quiz-option">
+        <div class="option-circle"></div>
+        <span class="option-text"></span>
+      </div>
+      <div class="quiz-option">
+        <div class="option-circle"></div>
+        <span class="option-text"></span>
       </div>
       <button onclick="resetQuiz()" class="reset-btn">Начать заново</button>
     </div>
-
   </div>
 </section>
 
 <script src="script.js"></script>
 </body>
 </html>
+
 
 
