@@ -246,6 +246,7 @@ section{
   height:20px;
   border:2px solid #007acc;
   border-radius:50%;
+  transition: background 0.3s;
 }
 
 .option-circle.correct{background:#00b347; border-color: #00b347;}
@@ -259,7 +260,9 @@ section{
   border-radius: 8px;
   cursor: pointer;
   margin-top: 20px;
+  transition: 0.3s;
 }
+.reset-btn:hover { background: rgba(0,95,163,0.1); }
 
 /* ===== DARK THEME ===== */
 body.dark{
@@ -282,7 +285,5 @@ body.dark .setup-btn {
   border-color: #38bdf8;
   color: #38bdf8;
 }
-
-
 
 
