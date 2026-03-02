@@ -24,7 +24,6 @@
   </div>
 </header>
 
-<!-- HOME -->
 <section id="home">
   <div class="card home-card">
     <div class="arrows">⬆ ⬆ ⬆</div>
@@ -47,59 +46,72 @@
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="card content-card fade">
     <h2>О школе</h2>
-    <p>Наша школа — современное образовательное учреждение с богатой историей.</p>
+    <p>Наша школа — современное образовательное учреждение с богатой историей. Мы стремимся к знаниям и успеху каждого ученика.</p>
   </div>
 </section>
 
-<!-- GALLERY -->
 <section id="gallery">
   <div class="card content-card fade">
     <h2>Фотогалерея</h2>
-    <p>Здесь будут фотографии школы.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item">Здание школы</div>
+      <div class="gallery-item">Наш класс</div>
+      <div class="gallery-item">Спортзал</div>
+      <div class="gallery-item">Библиотека</div>
+    </div>
   </div>
 </section>
 
-<!-- PANORAMA -->
 <section id="panorama">
   <div class="card content-card fade">
     <h2>Панорама школы</h2>
-    <p>Здесь будет 3D-панорама.</p>
+    <div class="panorama-placeholder">
+       <p>Здесь будет 3D-панорама.</p>
+       <small>(Можно вставить iframe от Google Maps или Яндекс.Панорам)</small>
+    </div>
   </div>
 </section>
 
-<!-- QUIZ -->
 <section id="quiz">
   <div class="card content-card fade">
     <h2>Викторина</h2>
 
     <div id="quiz-setup">
-      <p>Выберите параметры:</p>
-      <button onclick="setQuizOption('grade',7)">7 класс</button>
-      <button onclick="setQuizOption('grade',8)">8 класс</button>
-      <button onclick="setQuizOption('level','good')">Учусь на 4–5</button>
-      <button onclick="setQuizOption('level','bad')">Учусь на 2–3</button>
-      <button onclick="setQuizOption('subject','history')">История</button>
-      <button onclick="setQuizOption('subject','russian')">Русский</button>
+      <p>Выберите параметры, чтобы начать:</p>
+      <div class="setup-group">
+        <button class="setup-btn" onclick="setQuizOption(this, 'grade', 7)">7 класс</button>
+        <button class="setup-btn" onclick="setQuizOption(this, 'grade', 8)">8 класс</button>
+      </div>
+      <div class="setup-group">
+        <button class="setup-btn" onclick="setQuizOption(this, 'level', 'good')">Учусь на 4–5</button>
+        <button class="setup-btn" onclick="setQuizOption(this, 'level', 'bad')">Учусь на 2–3</button>
+      </div>
+      <div class="setup-group">
+        <button class="setup-btn" onclick="setQuizOption(this, 'subject', 'history')">История</button>
+        <button class="setup-btn" onclick="setQuizOption(this, 'subject', 'russian')">Русский</button>
+      </div>
     </div>
 
     <div id="quiz-main" style="display:none">
       <h3 id="quiz-question"></h3>
-      <div class="quiz-option">
-        <div class="option-circle"></div>
-        <span class="option-text"></span>
+      <div class="quiz-options-container">
+        <div class="quiz-option">
+          <div class="option-circle"></div>
+          <span class="option-text"></span>
+        </div>
+        <div class="quiz-option">
+          <div class="option-circle"></div>
+          <span class="option-text"></span>
+        </div>
+        <div class="quiz-option">
+          <div class="option-circle"></div>
+          <span class="option-text"></span>
+        </div>
       </div>
-      <div class="quiz-option">
-        <div class="option-circle"></div>
-        <span class="option-text"></span>
-      </div>
-      <div class="quiz-option">
-        <div class="option-circle"></div>
-        <span class="option-text"></span>
-      </div>
+      <button onclick="resetQuiz()" class="reset-btn">Начать заново</button>
     </div>
 
   </div>
@@ -108,6 +120,5 @@
 <script src="script.js"></script>
 </body>
 </html>
-
 
 
