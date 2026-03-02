@@ -1,166 +1,159 @@
 /* ================= ДАННЫЕ ГАЛЕРЕИ ================= */
-const galleryContent = {
-  teachers: [
-    { name: "Ф.И.О.", info: "Учитель Русского языка и Литературы.", years: "В школе: 2010 — 2026 гг." },
-    { name: "Ф.И.О.", info: "Учитель Математики и Алгебры.", years: "В школе: 2005 — 2026 гг." },
-    { name: "Ф.И.О.", info: "Учитель Истории и Обществознания.", years: "В школе: 2015 — 2026 гг." },
-    { name: "Ф.И.О.", info: "Учитель Физической культуры.", years: "В школе: 1998 — 2026 гг." },
-    { name: "Ф.И.О.", info: "Учитель Физики и Астрономии.", years: "В школе: 2012 — 2026 гг." },
-    { name: "Ф.И.О.", info: "Педагог-организатор.", years: "В школе: 2020 — 2026 гг." }
-  ],
-  school: [
-    { name: "Центральный вход", info: "Вид на главный фасад здания школы.", years: "Фото: Октябрь 2025" },
-    { name: "Спортивный зал", info: "Современное оборудование для тренировок.", years: "Фото: Сентябрь 2025" },
-    { name: "Школьный музей", info: "Экспозиция, посвященная истории школы.", years: "Фото: Май 2025" },
-    { name: "Столовая", info: "Просторный зал для питания учащихся.", years: "Фото: Январь 2026" },
-    { name: "Кабинет информатики", info: "Новые рабочие станции для программирования.", years: "Фото: Февраль 2026" },
-    { name: "Актовый зал", info: "Место проведения праздников и концертов.", years: "Фото: Декабрь 2025" }
-  ]
+// Убедись, что файлы Images/t1.jpg и т.д. существуют!
+const galleryData = {
+    teachers: [
+        { name: "Ф.И.О.", info: "Учитель Русского языка", years: "В школе: с 2010 по 2026", img: "Images/t1.jpg" },
+        { name: "Ф.И.О.", info: "Учитель Математики", years: "В школе: с 2005 по 2026", img: "Images/t2.jpg" },
+        { name: "Ф.И.О.", info: "Учитель Истории", years: "В школе: с 2015 по 2026", img: "Images/t3.jpg" },
+        { name: "Ф.И.О.", info: "Учитель Физкультуры", years: "В школе: с 2018 по 2026", img: "Images/t4.jpg" },
+        { name: "Ф.И.О.", info: "Учитель Биологии", years: "В школе: с 2012 по 2026", img: "Images/t5.jpg" }
+    ],
+    school: [
+        { name: "Главный вход", info: "Вид на фасад школы", years: "Фото: 2026", img: "Images/s1.jpg" },
+        { name: "Спортзал", info: "Площадка для соревнований", years: "Фото: 2025", img: "Images/s2.jpg" },
+        { name: "Библиотека", info: "Более 20 000 книг", years: "Фото: 2026", img: "Images/s3.jpg" },
+        { name: "Столовая", info: "Уютная зона обедов", years: "Фото: 2026", img: "Images/s4.jpg" },
+        { name: "Кабинет Физики", info: "Лабораторное оборудование", years: "Фото: 2025", img: "Images/s5.jpg" }
+    ]
 };
 
-function openFolder(folder) {
-  const overlay = document.getElementById('gallery-overlay');
-  const title = document.getElementById('folder-title');
-  const container = document.getElementById('photo-container');
-  
-  title.innerText = folder === 'teachers' ? "Наши Учителя" : "Наша Школа";
-  container.innerHTML = "";
+function openFolder(type) {
+    const overlay = document.getElementById('gallery-overlay');
+    const title = document.getElementById('folder-title');
+    const photoList = document.getElementById('photo-list');
 
-  galleryContent[folder].forEach(item => {
-    container.innerHTML += `
-      <div class="photo-card fade show">
-        <div class="photo-img">НЕТ ФОТО</div>
-        <h4 style="color:#005fa3;">${item.name}</h4>
-        <p style="font-size:14px; margin:5px 0;">${item.info}</p>
-        <small style="opacity:0.6;">${item.years}</small>
-      </div>
-    `;
-  });
-  
-  overlay.style.display = 'flex';
+    title.innerText = type === 'teachers' ? "Наши Учителя" : "Наша Школа";
+    photoList.innerHTML = "";
+
+    galleryData[type].forEach(item => {
+        photoList.innerHTML += `
+            <div class="photo-card">
+                <img src="${item.img}" alt="Фото" onerror="this.src='https://via.placeholder.com/300x200?text=Нет+фото'">
+                <h4 style="color:#005fa3">${item.name}</h4>
+                <p style="font-size:14px; margin:5px 0;">${item.info}</p>
+                <small style="opacity:0.6">${item.years}</small>
+            </div>
+        `;
+    });
+
+    overlay.style.display = 'flex';
 }
 
 function closeFolder() {
-  document.getElementById('gallery-overlay').style.display = 'none';
+    document.getElementById('gallery-overlay').style.display = 'none';
 }
 
-/* ================= БАЗА ВОПРОСОВ (УМНАЯ) ================= */
-const questionBank = [
-  // 7 КЛАСС
-  { grade: 7, subject: 'russian', level: 'hard', q: "В каком слове пишется НН?", a: ["Кожа..ый", "Деревя..ый", "Гуси..ый"], c: 1 },
-  { grade: 7, subject: 'russian', level: 'easy', q: "Какая часть речи отвечает на вопрос 'Кто?' / 'Что?'", a: ["Существительное", "Глагол", "Наречие"], c: 0 },
-  { grade: 7, subject: 'history', level: 'hard', q: "Кто был первым царём из династии Романовых?", a: ["Алексей Михайлович", "Михаил Фёдорович", "Иван Грозный"], c: 1 },
-  { grade: 7, subject: 'history', level: 'easy', q: "В каком году было Крещение Руси?", a: ["988", "1147", "1242"], c: 0 },
-  { grade: 7, subject: 'math', level: 'hard', q: "Чему равна сумма углов в треугольнике?", a: ["90°", "180°", "360°"], c: 1 },
-  { grade: 7, subject: 'math', level: 'easy', q: "7 * 8 = ?", a: ["48", "54", "56"], c: 2 },
+/* ================= БАЗА ВОПРОСОВ (4 на каждый случай) ================= */
+const questions = [
+    // 7 КЛАСС - МАТЕМАТИКА
+    { grade: 7, subject: 'math', level: 'hard', q: "Чему равна сумма углов треугольника?", a: ["90°", "180°", "360°"], c: 1 },
+    { grade: 7, subject: 'math', level: 'easy', q: "Как называется результат сложения?", a: ["Сумма", "Разность", "Произведение"], c: 0 },
+    // 7 КЛАСС - РУССКИЙ
+    { grade: 7, subject: 'russian', level: 'hard', q: "В каком слове пишется НН?", a: ["Кожаный", "Стеклянный", "Гусиный"], c: 1 },
+    { grade: 7, subject: 'russian', level: 'easy', q: "Что изучает морфология?", a: ["Звуки", "Части речи", "Запятые"], c: 1 },
+    // 7 КЛАСС - ИСТОРИЯ
+    { grade: 7, subject: 'history', level: 'hard', q: "Кто был первым царём из династии Романовых?", a: ["Михаил Фёдорович", "Пётр I", "Иван Грозный"], c: 0 },
+    { grade: 7, subject: 'history', level: 'easy', q: "В каком году было Крещение Руси?", a: ["988", "1147", "1242"], c: 0 },
 
-  // 8 КЛАСС
-  { grade: 8, subject: 'russian', level: 'hard', q: "Какое предложение является безличным?", a: ["Я иду домой.", "Вечереет.", "Мы слушаем музыку."], c: 1 },
-  { grade: 8, subject: 'russian', level: 'easy', q: "Как пишутся частицы -то, -либо, -нибудь?", a: ["Раздельно", "Слитно", "Через дефис"], c: 2 },
-  { grade: 8, subject: 'history', level: 'hard', q: "В каком году произошла Бородинская битва?", a: ["1709", "1812", "1853"], c: 1 },
-  { grade: 8, subject: 'history', level: 'easy', q: "Кто был императором во время войны 1812 года?", a: ["Александр I", "Николай II", "Петр I"], c: 0 },
-  { grade: 8, subject: 'math', level: 'hard', q: "Решите: x² = 64", a: ["8", "8 и -8", "16"], c: 1 },
-  { grade: 8, subject: 'math', level: 'easy', q: "Периметр квадрата со стороной 5 равен:", a: ["20", "25", "10"], c: 0 }
+    // 8 КЛАСС - МАТЕМАТИКА
+    { grade: 8, subject: 'math', level: 'hard', q: "Решите: x² = 64. Чему равен x?", a: ["8", "8 и -8", "16"], c: 1 },
+    { grade: 8, subject: 'math', level: 'easy', q: "Чему равен корень из 121?", a: ["10", "11", "12"], c: 1 },
+    // 8 КЛАСС - РУССКИЙ
+    { grade: 8, subject: 'russian', level: 'hard', q: "Найдите безличное предложение:", a: ["Я иду домой.", "Вечереет.", "Мы поём."], c: 1 },
+    { grade: 8, subject: 'russian', level: 'easy', q: "Как пишутся частицы -то, -либо, -нибудь?", a: ["Раздельно", "Слитно", "Через дефис"], c: 2 },
+    // 8 КЛАСС - ИСТОРИЯ
+    { grade: 8, subject: 'history', level: 'hard', q: "В каком году произошла Бородинская битва?", a: ["1709", "1812", "1914"], c: 1 },
+    { grade: 8, subject: 'history', level: 'easy', q: "Кто победил в войне 1812 года?", a: ["Франция", "Россия", "Швеция"], c: 1 }
 ];
 
 /* ================= ЛОГИКА ВИКТОРИНЫ ================= */
-let userSelection = { grade: null, level: null, subject: null };
-let currentQuestions = [];
+let quizSet = { grade: null, level: null, subject: null };
+let currentPool = [];
 let qIndex = 0;
 
-function setQuizParam(btn, key, value) {
-  const parent = btn.parentElement;
-  parent.querySelectorAll('.setup-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  userSelection[key] = value;
+function setQuizOption(btn, type, val) {
+    btn.parentElement.querySelectorAll('.setup-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    quizSet[type] = val;
 
-  // Если все 3 параметра выбраны - запускаем
-  if (userSelection.grade && userSelection.level && userSelection.subject) {
-    currentQuestions = questionBank.filter(q => 
-      q.grade === userSelection.grade && 
-      q.subject === userSelection.subject && 
-      q.level === userSelection.level
-    );
-    
-    // Если по уровню не нашли - даем общие по предмету этого класса
-    if(currentQuestions.length === 0) {
-      currentQuestions = questionBank.filter(q => q.grade === userSelection.grade && q.subject === userSelection.subject);
+    if (quizSet.grade && quizSet.level && quizSet.subject) {
+        currentPool = questions.filter(q => 
+            q.grade === quizSet.grade && 
+            q.subject === quizSet.subject && 
+            q.level === quizSet.level
+        );
+
+        // Если точного совпадения уровня нет, берем все вопросы этого класса и предмета
+        if (currentPool.length === 0) {
+            currentPool = questions.filter(q => q.grade === quizSet.grade && q.subject === quizSet.subject);
+        }
+
+        if (currentPool.length > 0) {
+            setTimeout(() => {
+                document.getElementById('quiz-setup').style.display = 'none';
+                document.getElementById('quiz-main').style.display = 'block';
+                qIndex = 0;
+                renderQ();
+            }, 400);
+        }
+    }
+}
+
+function renderQ() {
+    const qBox = document.getElementById('quiz-question');
+    const optBox = document.getElementById('options-box');
+    const info = document.getElementById('quiz-info');
+
+    if (qIndex >= currentPool.length) {
+        qBox.innerText = "Викторина завершена! Ты отлично справляешься!";
+        optBox.innerHTML = "";
+        info.innerText = "";
+        return;
     }
 
-    setTimeout(startQuiz, 500);
-  }
-}
-
-function startQuiz() {
-  document.getElementById('quiz-setup').style.display = 'none';
-  const main = document.getElementById('quiz-main');
-  main.style.display = 'block';
-  qIndex = 0;
-  loadNextQuestion();
-}
-
-function loadNextQuestion() {
-  const qBox = document.getElementById('quiz-question');
-  const optBox = document.getElementById('options-box');
-  const feedback = document.getElementById('quiz-feedback');
-  feedback.innerText = "";
-
-  if (qIndex >= currentQuestions.length) {
-    qBox.innerText = "Викторина завершена! Отличный результат!";
+    const currentQ = currentPool[qIndex];
+    qBox.innerText = currentQ.q;
+    info.innerText = `Вопрос ${qIndex + 1} из ${currentPool.length}`;
     optBox.innerHTML = "";
-    return;
-  }
 
-  const currentQ = currentQuestions[qIndex];
-  qBox.innerText = currentQ.q;
-  optBox.innerHTML = "";
-
-  currentQ.a.forEach((ans, i) => {
-    const div = document.createElement('div');
-    div.className = "quiz-option";
-    div.innerHTML = `<div class="option-circle"></div><span>${ans}</span>`;
-    div.onclick = () => checkAnswer(div, i, currentQ.c);
-    optBox.appendChild(div);
-  });
-}
-
-function checkAnswer(el, chosen, correct) {
-  const circle = el.querySelector('.option-circle');
-  if (chosen === correct) {
-    circle.classList.add('correct');
-    setTimeout(() => {
-      qIndex++;
-      loadNextQuestion();
-    }, 800);
-  } else {
-    circle.classList.add('wrong');
-  }
+    currentQ.a.forEach((txt, i) => {
+        const div = document.createElement('div');
+        div.className = "quiz-option";
+        div.innerHTML = `<div class="option-circle"></div><span>${txt}</span>`;
+        div.onclick = () => {
+            if (i === currentQ.c) {
+                div.querySelector('.option-circle').classList.add('correct');
+                setTimeout(() => { qIndex++; renderQ(); }, 600);
+            } else {
+                div.querySelector('.option-circle').classList.add('wrong');
+            }
+        };
+        optBox.appendChild(div);
+    });
 }
 
 function resetQuiz() {
-  userSelection = { grade: null, level: null, subject: null };
-  document.getElementById('quiz-setup').style.display = 'block';
-  document.getElementById('quiz-main').style.display = 'none';
-  document.querySelectorAll('.setup-btn').forEach(b => b.classList.remove('active'));
+    quizSet = { grade: null, level: null, subject: null };
+    document.getElementById('quiz-setup').style.display = 'block';
+    document.getElementById('quiz-main').style.display = 'none';
+    document.querySelectorAll('.setup-btn').forEach(b => b.classList.remove('active'));
 }
 
-/* ================= НАВИГАЦИЯ И ОБЩЕЕ ================= */
-function updateNav() {
-  const hash = location.hash || "#home";
-  document.querySelectorAll('section').forEach(s => s.style.display = 'none');
-  const target = document.querySelector(hash);
-  if (target) target.style.display = 'flex';
-}
-window.addEventListener('hashchange', updateNav);
-window.addEventListener('load', updateNav);
+/* ================= НАВИГАЦИЯ ================= */
+window.addEventListener("hashchange", () => {
+    const hash = location.hash || "#home";
+    document.querySelectorAll("section").forEach(s => s.style.display = "none");
+    const target = document.querySelector(hash);
+    if (target) target.style.display = "flex";
+});
 
-document.getElementById('themeToggle').onclick = () => {
-  document.body.classList.toggle('dark');
-  document.getElementById('themeToggle').innerText = document.body.classList.contains('dark') ? "🌙" : "☀️";
+document.getElementById("themeToggle").onclick = () => {
+    document.body.classList.toggle("dark");
+    document.getElementById("themeToggle").innerText = document.body.classList.contains("dark") ? "🌙" : "☀️";
 };
 
-// Эффект появления при скролле
-const obs = new IntersectionObserver(ents => {
-  ents.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
+// Intersection Observer для появления
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
 });
-document.querySelectorAll('.fade').forEach(f => obs.observe(f));
+document.querySelectorAll('.fade').forEach(f => observer.observe(f));
