@@ -179,5 +179,57 @@ body.dark .card{
   color:#e5e7eb;
 }
 
+/* Эффект пульсации для стрелок на главной */
+.arrows {
+  font-size: 24px;
+  animation: bounce 2s infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-10px);}
+  60% {transform: translateY(-5px);}
+}
+
+/* Красивые кнопки с эффектом увеличения */
+.buttons button, .quiz-setup button {
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.buttons button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,95,163,0.4);
+}
+
+/* Сетка для галереи */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.gallery-item {
+  width: 100%;
+  height: 150px;
+  background: #ddd;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 12px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: 0.3s;
+}
+
+.gallery-item:hover {
+  border-color: #005fa3;
+  transform: rotate(2deg);
+}
+
 
 
