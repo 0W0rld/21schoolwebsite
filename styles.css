@@ -286,4 +286,45 @@ body.dark .setup-btn {
   color: #38bdf8;
 }
 
+/* Твои стили остаются без изменений, просто добавь это в конец: */
+
+.folder-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 51, 102, 0.9);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.folder-content {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.photo-card {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 120px;
+  background: #eee;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: 12px;
+}
+
 
