@@ -52,3 +52,399 @@ body.dark .quiz-option { background: #334155; border-color: #475569; }
 /* ===== АНИМАЦИЯ ===== */
 .fade { opacity:0; transform:translateY(20px); transition:0.6s; }
 .fade.show { opacity:1; transform:translateY(0); }
+
+/* ===== УЛУЧШЕННЫЙ ДИЗАЙН ДЛЯ РАЗДЕЛА О ШКОЛЕ ===== */
+
+/* Оглавление с рабочими ссылками */
+.toc-block {
+    background: linear-gradient(135deg, #005fa3, #003366);
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    position: sticky;
+    top: 80px;
+    z-index: 100;
+}
+
+.toc-list {
+    list-style: none;
+}
+
+.toc-list li {
+    margin: 10px 0;
+}
+
+.toc-list a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.toc-list a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+}
+
+.toc-list ul {
+    margin-left: 25px;
+    list-style: none;
+}
+
+/* Карточки с иконками */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 25px 0;
+}
+
+.info-card {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 95, 163, 0.15);
+}
+
+body.dark .info-card {
+    background: #334155;
+}
+
+.card-icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.accent-card {
+    border-left: 4px solid #005fa3;
+}
+
+/* Место для фото директора */
+.person-spotlight {
+    display: flex;
+    gap: 30px;
+    background: white;
+    padding: 25px;
+    border-radius: 25px;
+    margin: 30px 0;
+    align-items: center;
+}
+
+body.dark .person-spotlight {
+    background: #334155;
+}
+
+.person-photo-placeholder {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, #e0e0e0, #b0b0b0);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #666;
+    border: 4px solid #005fa3;
+    overflow: hidden;
+}
+
+.person-photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-overlay {
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.person-info {
+    flex: 1;
+}
+
+.person-title {
+    color: #005fa3;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+/* Бейджи наград */
+.awards-mini {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.award-badge {
+    background: #f0f7ff;
+    color: #005fa3;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.expand-awards-btn {
+    background: none;
+    border: 2px solid #005fa3;
+    color: #005fa3;
+    padding: 8px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.expand-awards-btn:hover {
+    background: #005fa3;
+    color: white;
+}
+
+/* Мини-статистика */
+.stats-mini {
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 25px 0;
+}
+
+.stat-mini-item {
+    text-align: center;
+}
+
+.stat-mini-number {
+    display: block;
+    font-size: 28px;
+    font-weight: 800;
+    color: #005fa3;
+}
+
+.stat-mini-label {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* Таймлайн */
+.timeline-mini {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.timeline-mini-item {
+    display: flex;
+    gap: 20px;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.timeline-mini-year {
+    font-weight: 800;
+    color: #005fa3;
+    min-width: 80px;
+}
+
+/* Достижения учителей */
+.teacher-achievement {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 15px;
+    margin: 10px 0;
+}
+
+.teacher-photo-placeholder {
+    width: 50px;
+    height: 50px;
+    background: #005fa3;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+}
+
+/* Директора */
+.directors-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.director-card {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.director-photo {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, #005fa3, #003366);
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 30px;
+    border: 3px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.director-years {
+    color: #666;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.award-tag {
+    display: inline-block;
+    background: #f0f7ff;
+    color: #005fa3;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+/* Улучшенная сетка ветеранов */
+.veterans-grid-enhanced {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.veteran-card-enhanced {
+    display: flex;
+    gap: 15px;
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.veteran-card-enhanced:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,95,163,0.15);
+}
+
+.veteran-photo-box {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #005fa3, #003366);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 30px;
+    flex-shrink: 0;
+}
+
+.photo-placeholder {
+    font-size: 40px;
+}
+
+.veteran-info {
+    flex: 1;
+}
+
+.veteran-info h5 {
+    margin: 0 0 5px 0;
+    color: #005fa3;
+}
+
+.veteran-subject {
+    font-size: 14px;
+    color: #666;
+    margin: 3px 0;
+}
+
+.veteran-experience {
+    font-weight: 600;
+    color: #00b347;
+    margin: 5px 0;
+}
+
+.veteran-award {
+    display: inline-block;
+    background: #f0f7ff;
+    color: #005fa3;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 11px;
+}
+
+/* Заключение */
+.conclusion-stats {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.conclusion-stat-item {
+    text-align: center;
+}
+
+.conclusion-number {
+    display: block;
+    font-size: 48px;
+    font-weight: 800;
+    color: #005fa3;
+    line-height: 1;
+}
+
+.conclusion-text {
+    font-size: 18px;
+    text-align: center;
+    font-style: italic;
+    padding: 20px;
+    background: #f0f7ff;
+    border-radius: 15px;
+}
+
+/* Плавная прокрутка */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+/* Темная тема */
+body.dark .teacher-achievement,
+body.dark .timeline-mini,
+body.dark .stats-mini,
+body.dark .director-card,
+body.dark .veteran-card-enhanced {
+    background: #334155;
+}
+
+body.dark .timeline-mini-item {
+    border-bottom-color: #475569;
+}
+
