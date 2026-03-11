@@ -42,68 +42,84 @@
   <div class="card content-card fade">
     <h2>О нашей школе</h2>
     
-    <!-- Оглавление с рабочими ссылками (ведут на якоря ВНУТРИ этой секции) -->
-    <div class="toc-block">
-      <h3>📋 Содержание</h3>
-      <ul class="toc-list">
-        <li><a href="#about-intro">📖 Введение</a></li>
-        <li><a href="#about-chapter1">📚 Глава I. История школы</a>
-          <ul>
-            <li><a href="#about-chapter1-1">• § 1. С чего все начиналось (1985)</a></li>
-            <li><a href="#about-chapter1-2">• § 2. Новая веха в истории</a></li>
-            <li><a href="#about-chapter1-3">• § 3. Наши ветераны</a></li>
-          </ul>
-        </li>
-        <li><a href="#about-conclusion">📝 Заключение</a></li>
-      </ul>
+    <!-- Оглавление без эмодзи -->
+    <div class="beautiful-toc">
+      <h3 class="toc-title">Содержание</h3>
+      <div class="toc-items">
+        <div class="toc-item">
+          <span class="toc-dot">•</span>
+          <span class="toc-text">Введение</span>
+        </div>
+        <div class="toc-item main-chapter">
+          <span class="toc-dot">▶</span>
+          <span class="toc-text">Глава I. История школы</span>
+        </div>
+        <div class="toc-subitem">
+          <span class="toc-dot">◦</span>
+          <span class="toc-text">§ 1. С чего все начиналось (1985)</span>
+        </div>
+        <div class="toc-subitem">
+          <span class="toc-dot">◦</span>
+          <span class="toc-text">§ 2. Новая веха в истории</span>
+        </div>
+        <div class="toc-subitem">
+          <span class="toc-dot">◦</span>
+          <span class="toc-text">§ 3. Наши ветераны</span>
+        </div>
+        <div class="toc-item">
+          <span class="toc-dot">•</span>
+          <span class="toc-text">Заключение</span>
+        </div>
+      </div>
     </div>
 
-    <!-- Введение -->
-    <div id="about-intro" class="about-section">
-      <h3 class="section-title">📖 Введение</h3>
+    <!-- ВВЕДЕНИЕ -->
+    <div class="about-block">
+      <h3 class="block-title">Введение</h3>
       
-      <div class="intro-text">
-        <p class="highlight-text">Школа - это путь к знаниям и открытиям. Мы сравниваем её с большим кораблем, который уходит в плавание каждый год с первого сентября... За тридцать два года школа совершила очень много таких путешествий.</p>
-        
-        <p>Школа - это самое замечательное время в жизни человека. Меня зовут Екатерина. В этой школе я учусь с первого класса, сейчас я в 10 классе. За всё это время я вспоминаю только самое хорошее и светлое.</p>
+      <div class="quote-box">
+        <p>Школа - это путь к знаниям и открытиям. Мы сравниваем её с большим кораблем, который уходит в плавание каждый год с первого сентября... За тридцать два года школа совершила очень много таких путешествий.</p>
       </div>
+      
+      <p class="regular-text">Школа - это самое замечательное время в жизни человека. Меня зовут Екатерина. В этой школе я учусь с первого класса, сейчас я в 10 классе. За всё это время я вспоминаю только самое хорошее и светлое.</p>
 
-      <!-- Карточки с актуальностью и целями -->
-      <div class="info-grid">
-        <div class="info-card accent-card">
-          <div class="card-icon">🎯</div>
-          <h4>Актуальность</h4>
+      <!-- Карточки с информацией -->
+      <div class="info-cards-container">
+        <div class="info-card-compact">
+          <div class="card-header">
+            <span class="card-icon">◆</span>
+            <h4>Актуальность</h4>
+          </div>
           <p>Вместе с историей школы мы пишем историю своего города. Каждый ученик должен знать историю школы, в которой учится.</p>
         </div>
         
-        <div class="info-card accent-card">
-          <div class="card-icon">⭐</div>
-          <h4>Цель</h4>
+        <div class="info-card-compact">
+          <div class="card-header">
+            <span class="card-icon">◆</span>
+            <h4>Цель</h4>
+          </div>
           <p>Составить странички летописи школы, найти новые интересные факты истории, показать вклад школы в образование города.</p>
         </div>
       </div>
 
-      <div class="info-grid">
-        <div class="info-card">
-          <div class="card-icon">🔍</div>
-          <h4>Объект</h4>
-          <p>Педагогический коллектив, учащиеся, родители</p>
+      <div class="info-cards-container">
+        <div class="mini-card">
+          <span class="mini-label">Объект</span>
+          <span class="mini-value">Педагоги, ученики, родители</span>
         </div>
-        <div class="info-card">
-          <div class="card-icon">📌</div>
-          <h4>Предмет</h4>
-          <p>Вклад участников в формирование имиджа школы</p>
+        <div class="mini-card">
+          <span class="mini-label">Предмет</span>
+          <span class="mini-value">Вклад в имидж школы</span>
         </div>
-        <div class="info-card">
-          <div class="card-icon">💡</div>
-          <h4>Гипотеза</h4>
-          <p>Эффективная работа учителей и учеников оставила глубокий след в истории школы</p>
+        <div class="mini-card">
+          <span class="mini-label">Гипотеза</span>
+          <span class="mini-value">Работа учителей оставила глубокий след</span>
         </div>
       </div>
 
-      <div class="info-card tasks-card">
-        <h4>📋 Задачи исследования:</h4>
-        <ul class="task-list">
+      <div class="tasks-block">
+        <h4>Задачи:</h4>
+        <ul class="tasks-list">
           <li>Изучить архивные материалы и воспоминания сотрудников</li>
           <li>Собрать информацию о руководителях и ветеранах школы</li>
           <li>Восстановить связь с учителями-ветеранами и выпускниками</li>
@@ -112,48 +128,50 @@
       </div>
     </div>
 
-    <!-- Глава 1 -->
-    <div id="about-chapter1" class="about-section">
-      <h3 class="section-title">📚 Глава I. История МБОУ «СОШ № 21»</h3>
+    <!-- ГЛАВА 1 -->
+    <div class="about-block">
+      <h3 class="block-title">Глава I. История МБОУ «СОШ № 21»</h3>
       
-      <!-- §1 -->
-      <div id="about-chapter1-1" class="subsection">
+      <!-- §1 С чего все начиналось -->
+      <div class="subsection-block">
         <h4 class="subsection-title">§ 1. С чего все начиналось... 1985 год</h4>
         
-        <div class="quote-block">
+        <div class="insight-quote">
           <p>«Школа - это открытая книга. Сколько бы лет не было школе, она всегда юная, молодая. Наша школа - это любимый дом, придя в который тебя встретят с любовью и лаской.»</p>
         </div>
 
-        <!-- Блок с историческим документом -->
-        <div class="document-card">
-          <div class="document-icon">📜</div>
-          <div class="document-content">
-            <h5>Решение исполкома №230 от 24.04.1986</h5>
+        <!-- Исторический документ -->
+        <div class="document-mini">
+          <div class="doc-icon">📄</div>
+          <div class="doc-text">
+            <strong>Решение исполкома №230 от 24.04.1986</strong>
             <p>"Об открытии общеобразовательной средней школы №21". 1 сентября 1986 года школа по ул. Мурадьяна 18А приняла 2242 ученика.</p>
           </div>
         </div>
 
-        <!-- Первый директор с местом для фото -->
-        <div class="person-spotlight">
-          <div class="person-photo-placeholder" data-person="galyaveev">
-            <!-- Сюда вставишь фото: <img src="Images/director1.jpg" alt="Галявеев Н.Н."> -->
-            <div class="photo-overlay">📸 Фото директора</div>
+        <!-- Первый директор -->
+        <div class="person-showcase">
+          <div class="person-photo-frame">
+            <!-- СЮДА ФОТО: <img src="Images/galyaveev.jpg" alt="Галявеев Н.Н."> -->
+            <div class="photo-placeholder">Ф</div>
           </div>
-          <div class="person-info">
-            <h4>Галявеев Нургазиз Нургалеевич</h4>
-            <p class="person-title">Первый директор школы (1986-2013)</p>
-            <p class="person-desc">Молодой, талантливый учитель, создавший успешный, дружный коллектив. Председатель Совета директоров. Человек с «Золотым Сердцем».</p>
+          <div class="person-details">
+            <h4 class="person-name-main">Галявеев Нургазиз Нургалеевич</h4>
+            <p class="person-role">Первый директор школы (1986-2013)</p>
+            <p class="person-desc">Молодой, талантливый учитель, создавший успешный, дружный коллектив. Председатель Совета директоров.</p>
             
-            <!-- Награды аккуратным списком -->
-            <div class="awards-mini">
-              <span class="award-badge">🏅 Отличник просвещения</span>
-              <span class="award-badge">🏅 Почетный работник РФ</span>
-              <span class="award-badge">🏅 Медаль 1000-летия Казани</span>
-              <span class="award-badge">🏅 Почетная грамота Минобразования РТ</span>
+            <!-- Награды компактно -->
+            <div class="award-chips">
+              <span class="award-chip">Отличник просвещения</span>
+              <span class="award-chip">Почетный работник РФ</span>
+              <span class="award-chip">Медаль 1000-летия Казани</span>
+              <span class="award-chip">Почетная грамота Минобразования</span>
             </div>
-            <button class="expand-awards-btn" onclick="toggleAwards(this)">📜 Все награды (7)</button>
-            <div class="full-awards-list" style="display: none;">
-              <ul>
+            
+            <!-- Полный список наград (скрыт по умолчанию) -->
+            <details class="awards-details">
+              <summary>Все награды (7)</summary>
+              <ul class="awards-full-list">
                 <li>Значок «Отличник народного просвещения», 1992</li>
                 <li>Почетная грамота Федерации профсоюза РТ, 2001</li>
                 <li>Почетная грамота Администрации города, 2004</li>
@@ -162,224 +180,363 @@
                 <li>Почетная грамота Министерства Образования и науки РТ, 2009</li>
                 <li>Почетная грамота Федерации профсоюза РТ, 2013</li>
               </ul>
-            </div>
+            </details>
           </div>
         </div>
 
         <!-- Статистика -->
-        <div class="stats-mini">
-          <div class="stat-mini-item">
-            <span class="stat-mini-number">1987</span>
-            <span class="stat-mini-label">год</span>
+        <div class="stat-row">
+          <div class="stat-pill">
+            <span class="stat-pill-number">1987</span>
+            <span class="stat-pill-label">год</span>
           </div>
-          <div class="stat-mini-item">
-            <span class="stat-mini-number">2602</span>
-            <span class="stat-mini-label">ученика</span>
+          <div class="stat-pill">
+            <span class="stat-pill-number">2602</span>
+            <span class="stat-pill-label">ученика</span>
           </div>
-          <div class="stat-mini-item">
-            <span class="stat-mini-number">100</span>
-            <span class="stat-mini-label">классов</span>
+          <div class="stat-pill">
+            <span class="stat-pill-number">100</span>
+            <span class="stat-pill-label">классов</span>
           </div>
-          <div class="stat-mini-item">
-            <span class="stat-mini-number">145</span>
-            <span class="stat-mini-label">учителей</span>
-          </div>
-        </div>
-
-        <!-- Важные события в хронологии -->
-        <div class="timeline-mini">
-          <div class="timeline-mini-item">
-            <span class="timeline-mini-year">1986</span>
-            <span class="timeline-mini-event">Первое комсомольское собрание</span>
-          </div>
-          <div class="timeline-mini-item">
-            <span class="timeline-mini-year">1987</span>
-            <span class="timeline-mini-event">Вручение Комсомольского Знамени</span>
-          </div>
-          <div class="timeline-mini-item">
-            <span class="timeline-mini-year">1988-90</span>
-            <span class="timeline-mini-event">Призеры смотра художественной самодеятельности</span>
-          </div>
-          <div class="timeline-mini-item">
-            <span class="timeline-mini-year">1998</span>
-            <span class="timeline-mini-event">Лицензия на коррекционные классы</span>
-          </div>
-          <div class="timeline-mini-item">
-            <span class="timeline-mini-year">2006</span>
-            <span class="timeline-mini-event">Эксперимент «Школа полного дня»</span>
-          </div>
-          <div class="timeline-mini-item">
-            <span class="timeline-mini-year">2010</span>
-            <span class="timeline-mini-event">"Школа, содействующая здоровью"</span>
+          <div class="stat-pill">
+            <span class="stat-pill-number">145</span>
+            <span class="stat-pill-label">учителей</span>
           </div>
         </div>
 
-        <!-- Достижения учителей (тоже с местами под фото) -->
-        <div class="achievements-block">
-          <h5>🏆 Достижения педагогов</h5>
-          <div class="teacher-achievement" data-teacher="rytsova">
-            <div class="teacher-photo-placeholder">📷</div>
+        <!-- Хронология -->
+        <div class="timeline-compact">
+          <div class="timeline-row">
+            <span class="timeline-year">1986</span>
+            <span class="timeline-desc">Первое комсомольское собрание</span>
+          </div>
+          <div class="timeline-row">
+            <span class="timeline-year">1987</span>
+            <span class="timeline-desc">Вручение Комсомольского Знамени</span>
+          </div>
+          <div class="timeline-row">
+            <span class="timeline-year">1988-90</span>
+            <span class="timeline-desc">Призеры смотра художественной самодеятельности</span>
+          </div>
+          <div class="timeline-row">
+            <span class="timeline-year">1998</span>
+            <span class="timeline-desc">Лицензия на коррекционные классы</span>
+          </div>
+          <div class="timeline-row">
+            <span class="timeline-year">2006</span>
+            <span class="timeline-desc">Эксперимент «Школа полного дня»</span>
+          </div>
+          <div class="timeline-row">
+            <span class="timeline-year">2010</span>
+            <span class="timeline-desc">"Школа, содействующая здоровью"</span>
+          </div>
+        </div>
+
+        <!-- Достижения учителей -->
+        <div class="achievements-mini">
+          <h5>Достижения педагогов</h5>
+          
+          <div class="achievement-item">
+            <div class="teacher-mini-photo">У</div>
             <div class="achievement-text">
-              <strong>Рыцова Гульсирень Камиловна</strong> - победитель Гранта «Лучший педагог в области ИКТ», 2012
+              <strong>Рыцова Гульсирень Камиловна</strong> — победитель Гранта «Лучший педагог в области ИКТ», 2012
             </div>
           </div>
-          <div class="teacher-achievement" data-teacher="vakhitova">
-            <div class="teacher-photo-placeholder">📷</div>
+          
+          <div class="achievement-item">
+            <div class="teacher-mini-photo">У</div>
             <div class="achievement-text">
-              <strong>Вахитова Альбина Вильевна</strong> - Диплом "Формула успеха" в конкурсе "Учитель года", 2012
+              <strong>Вахитова Альбина Вильевна</strong> — Диплом "Формула успеха" в конкурсе "Учитель года", 2012
             </div>
           </div>
-          <div class="teacher-achievement" data-teacher="mingazova">
-            <div class="teacher-photo-placeholder">📷</div>
+          
+          <div class="achievement-item">
+            <div class="teacher-mini-photo">У</div>
             <div class="achievement-text">
-              <strong>Мингазова Елена Викторовна</strong> - Лауреат конкурса "Учитель года-2013"
+              <strong>Мингазова Елена Викторовна</strong> — Лауреат конкурса "Учитель года-2013"
             </div>
           </div>
         </div>
       </div>
 
       <!-- §2 Новая веха -->
-      <div id="about-chapter1-2" class="subsection">
+      <div class="subsection-block">
         <h4 class="subsection-title">§ 2. Новая веха в истории школы</h4>
         
-        <!-- Директора с фото -->
-        <div class="directors-showcase">
-          <div class="director-card">
-            <div class="director-photo" data-director="makhmutov">
-              <!-- Фото: <img src="Images/director2.jpg"> -->
-              <div class="photo-badge">📸</div>
+        <div class="directors-duo">
+          <!-- Махмутов -->
+          <div class="director-mini-card">
+            <div class="director-mini-photo">
+              <!-- ФОТО: <img src="Images/makhmutov.jpg"> -->
+              <span>Д</span>
             </div>
             <h5>Махмутов Айзат Гамирович</h5>
-            <p class="director-years">2013-2017</p>
-            <p>Учитель географии, реализовал программу «Безбарьерная школа»</p>
-            <span class="award-tag">Благодарность главы НМР, 2015</span>
+            <p class="director-mini-years">2013-2017</p>
+            <p class="director-mini-desc">Учитель географии, программа «Безбарьерная школа»</p>
+            <span class="mini-award">Благодарность главы НМР, 2015</span>
           </div>
           
-          <div class="director-card">
-            <div class="director-photo" data-director="siraev">
-              <!-- Фото: <img src="Images/director3.jpg"> -->
-              <div class="photo-badge">📸</div>
+          <!-- Сираев -->
+          <div class="director-mini-card">
+            <div class="director-mini-photo">
+              <!-- ФОТО: <img src="Images/siraev.jpg"> -->
+              <span>Д</span>
             </div>
             <h5>Сираев Ильнар Рафаилович</h5>
-            <p class="director-years">2017 - настоящее время</p>
-            <p>Грант «Эко-школа», 1 место по подготовке к учебному году</p>
+            <p class="director-mini-years">2017 - н.в.</p>
+            <p class="director-mini-desc">Грант «Эко-школа», 1 место по подготовке</p>
+            <span class="mini-award">Грант «Эко-школа»</span>
           </div>
         </div>
 
-        <div class="stats-simple">
-          <div class="stat-simple-item">
-            <span class="stat-simple-number">31</span>
+        <div class="simple-stats">
+          <div class="simple-stat">
+            <span class="simple-stat-number">31</span>
             <span>выпуск</span>
           </div>
-          <div class="stat-simple-item">
-            <span class="stat-simple-number">32</span>
+          <div class="simple-stat">
+            <span class="simple-stat-number">32</span>
             <span>медалиста</span>
           </div>
         </div>
       </div>
 
-      <!-- §3 Ветераны - теперь с фото-плейсхолдерами -->
-      <div id="about-chapter1-3" class="subsection">
+      <!-- §3 Ветераны -->
+      <div class="subsection-block">
         <h4 class="subsection-title">§ 3. Наши ветераны</h4>
         
-        <div class="quote-block small">
+        <div class="small-quote">
           <p>«Искусство педагога состоит в том, чтобы проникать в самые далёкие галактики детского мира...» — Н.А. Добролюбов</p>
         </div>
 
-        <!-- Сетка ветеранов с местом для фото -->
-        <div class="veterans-grid-enhanced">
-          <!-- Каждый ветеран - карточка с местом под фото -->
-          <div class="veteran-card-enhanced" data-veteran="fedotov">
-            <div class="veteran-photo-box">
-              <!-- Сюда фото: <img src="Images/veterans/fedotov.jpg"> -->
-              <div class="photo-placeholder">👤</div>
+        <!-- Сетка ветеранов -->
+        <div class="veterans-grid-fixed">
+          <!-- Федотов -->
+          <div class="veteran-card-fixed">
+            <div class="veteran-photo-fixed">
+              <!-- ФОТО: <img src="Images/veterans/fedotov.jpg"> -->
+              <span>В</span>
             </div>
-            <div class="veteran-info">
+            <div class="veteran-content">
               <h5>Федотов Эрнест Кузьмич</h5>
-              <p class="veteran-subject">учитель технологии</p>
-              <p class="veteran-experience">48 лет стажа</p>
+              <p class="veteran-subject-fixed">учитель технологии</p>
+              <p class="veteran-experience-fixed">48 лет стажа</p>
             </div>
           </div>
 
-          <div class="veteran-card-enhanced" data-veteran="shoetova">
-            <div class="veteran-photo-box">
-              <div class="photo-placeholder">👤</div>
+          <!-- Шоетова -->
+          <div class="veteran-card-fixed">
+            <div class="veteran-photo-fixed">
+              <!-- ФОТО: <img src="Images/veterans/shoetova.jpg"> -->
+              <span>В</span>
             </div>
-            <div class="veteran-info">
+            <div class="veteran-content">
               <h5>Шоетова Любовь Петровна</h5>
-              <p class="veteran-subject">зам. директора по УР</p>
-              <p class="veteran-experience">35 лет стажа</p>
-              <span class="veteran-award">Почетный работник РФ</span>
+              <p class="veteran-subject-fixed">зам. директора по УР</p>
+              <p class="veteran-experience-fixed">35 лет стажа</p>
+              <span class="veteran-badge">Почетный работник РФ</span>
             </div>
           </div>
 
-          <div class="veteran-card-enhanced" data-veteran="valieva">
-            <div class="veteran-photo-box">
-              <div class="photo-placeholder">👤</div>
+          <!-- Валиева -->
+          <div class="veteran-card-fixed">
+            <div class="veteran-photo-fixed">
+              <!-- ФОТО: <img src="Images/veterans/valieva.jpg"> -->
+              <span>В</span>
             </div>
-            <div class="veteran-info">
+            <div class="veteran-content">
               <h5>Валиева Завзия Шагизяновна</h5>
-              <p class="veteran-subject">учитель химии</p>
-              <p class="veteran-experience">36 лет стажа</p>
+              <p class="veteran-subject-fixed">учитель химии</p>
+              <p class="veteran-experience-fixed">36 лет стажа</p>
             </div>
           </div>
 
-          <div class="veteran-card-enhanced" data-veteran="smirnova">
-            <div class="veteran-photo-box">
-              <div class="photo-placeholder">👤</div>
+          <!-- Смирнова -->
+          <div class="veteran-card-fixed">
+            <div class="veteran-photo-fixed">
+              <!-- ФОТО: <img src="Images/veterans/smirnova.jpg"> -->
+              <span>В</span>
             </div>
-            <div class="veteran-info">
+            <div class="veteran-content">
               <h5>Смирнова Валентина Николаевна</h5>
-              <p class="veteran-subject">учитель технологии</p>
-              <p class="veteran-experience">36 лет стажа</p>
+              <p class="veteran-subject-fixed">учитель технологии</p>
+              <p class="veteran-experience-fixed">36 лет стажа</p>
             </div>
           </div>
 
-          <div class="veteran-card-enhanced" data-veteran="novikova">
-            <div class="veteran-photo-box">
-              <div class="photo-placeholder">👤</div>
+          <!-- Новикова -->
+          <div class="veteran-card-fixed">
+            <div class="veteran-photo-fixed">
+              <!-- ФОТО: <img src="Images/veterans/novikova.jpg"> -->
+              <span>В</span>
             </div>
-            <div class="veteran-info">
+            <div class="veteran-content">
               <h5>Новикова Лидия Васильевна</h5>
-              <p class="veteran-subject">учитель русского языка</p>
-              <p class="veteran-experience">29 лет стажа</p>
+              <p class="veteran-subject-fixed">учитель русского языка</p>
+              <p class="veteran-experience-fixed">29 лет стажа</p>
             </div>
           </div>
 
-          <div class="veteran-card-enhanced" data-veteran="mitryashkina">
-            <div class="veteran-photo-box">
-              <div class="photo-placeholder">👤</div>
+          <!-- Митряшкина -->
+          <div class="veteran-card-fixed">
+            <div class="veteran-photo-fixed">
+              <!-- ФОТО: <img src="Images/veterans/mitryashkina.jpg"> -->
+              <span>В</span>
             </div>
-            <div class="veteran-info">
+            <div class="veteran-content">
               <h5>Митряшкина Надежда Михайловна</h5>
-              <p class="veteran-subject">учитель математики</p>
-              <p class="veteran-experience">34 года стажа</p>
+              <p class="veteran-subject-fixed">учитель математики</p>
+              <p class="veteran-experience-fixed">34 года стажа</p>
             </div>
           </div>
 
-          <!-- Добавь остальных ветеранов по тому же шаблону -->
+          <!-- Колпакова -->
+          <div class="veteran-card-fixed">
+            <div class="veteran-photo-fixed">
+              <!-- ФОТО: <img src="Images/veterans/kolpakova.jpg"> -->
+              <span>В</span>
+            </div>
+            <div class="veteran-content">
+              <h5>Колпакова Галина Федоровна</h5>
+              <p class="veteran-subject-fixed">учитель русского языка</p>
+              <p class="veteran-experience-fixed">49 лет стажа</p>
+            </div>
+          </div>
+
+          <!-- Мирсаитова -->
+          <div class="veteran-card-fixed">
+            <div class="veteran-photo-fixed">
+              <!-- ФОТО: <img src="Images/veterans/mirsaitova.jpg"> -->
+              <span>В</span>
+            </div>
+            <div class="veteran-content">
+              <h5>Мирсаитова Ильсияр Гарифовна</h5>
+              <p class="veteran-subject-fixed">учитель математики</p>
+              <p class="veteran-experience-fixed">42 года стажа</p>
+              <span class="veteran-badge">Почетный работник РФ</span>
+            </div>
+          </div>
+
+          <!-- Морозова -->
+          <div class="veteran-card-fixed">
+            <div class="veteran-photo-fixed">
+              <!-- ФОТО: <img src="Images/veterans/morozova.jpg"> -->
+              <span>В</span>
+            </div>
+            <div class="veteran-content">
+              <h5>Морозова Любовь Ивановна</h5>
+              <p class="veteran-subject-fixed">зам. директора по ВР</p>
+              <p class="veteran-experience-fixed">45 лет стажа</p>
+              <span class="veteran-badge">Отличник просвещения</span>
+            </div>
+          </div>
+
+          <!-- Туйкина -->
+          <div class="veteran-card-fixed">
+            <div class="veteran-photo-fixed">
+              <!-- ФОТО: <img src="Images/veterans/tuykina.jpg"> -->
+              <span>В</span>
+            </div>
+            <div class="veteran-content">
+              <h5>Туйкина Асия Миассаровна</h5>
+              <p class="veteran-subject-fixed">учитель математики</p>
+              <p class="veteran-experience-fixed">46 лет стажа</p>
+              <span class="veteran-badge">За заслуги в образовании</span>
+            </div>
+          </div>
+
+          <!-- Никонорова -->
+          <div class="veteran-card-fixed">
+            <div class="veteran-photo-fixed">
+              <!-- ФОТО: <img src="Images/veterans/nikonorova.jpg"> -->
+              <span>В</span>
+            </div>
+            <div class="veteran-content">
+              <h5>Никонорова Марина Владимировна</h5>
+              <p class="veteran-subject-fixed">учитель начальных классов</p>
+              <p class="veteran-experience-fixed">35 лет стажа</p>
+              <span class="veteran-badge">За заслуги в образовании</span>
+            </div>
+          </div>
+
+          <!-- Ахкиямова -->
+          <div class="veteran-card-fixed">
+            <div class="veteran-photo-fixed">
+              <!-- ФОТО: <img src="Images/veterans/akhkiyamova.jpg"> -->
+              <span>В</span>
+            </div>
+            <div class="veteran-content">
+              <h5>Ахкиямова Фяридя Биляловна</h5>
+              <p class="veteran-subject-fixed">зам. директора по УР</p>
+              <p class="veteran-experience-fixed">36 лет стажа</p>
+              <span class="veteran-badge">Почетный работник РФ</span>
+            </div>
+          </div>
+
+          <!-- Павлова -->
+          <div class="veteran-card-fixed">
+            <div class="veteran-photo-fixed">
+              <!-- ФОТО: <img src="Images/veterans/pavlova.jpg"> -->
+              <span>В</span>
+            </div>
+            <div class="veteran-content">
+              <h5>Павлова Тамара Васильевна</h5>
+              <p class="veteran-subject-fixed">учитель математики</p>
+              <p class="veteran-experience-fixed">45 лет стажа</p>
+              <span class="veteran-badge">Почетный работник РФ</span>
+            </div>
+          </div>
+
+          <!-- Крылова -->
+          <div class="veteran-card-fixed">
+            <div class="veteran-photo-fixed">
+              <!-- ФОТО: <img src="Images/veterans/krylova.jpg"> -->
+              <span>В</span>
+            </div>
+            <div class="veteran-content">
+              <h5>Крылова Людмила Александровна</h5>
+              <p class="veteran-subject-fixed">учитель иностранного языка</p>
+              <p class="veteran-experience-fixed">37 лет стажа</p>
+            </div>
+          </div>
+
+          <!-- Шишмагаева -->
+          <div class="veteran-card-fixed">
+            <div class="veteran-photo-fixed">
+              <!-- ФОТО: <img src="Images/veterans/shishmagaeva.jpg"> -->
+              <span>В</span>
+            </div>
+            <div class="veteran-content">
+              <h5>Шишмагаева Нина Николаевна</h5>
+              <p class="veteran-subject-fixed">учитель начальных классов</p>
+              <p class="veteran-experience-fixed">42 года стажа</p>
+              <span class="veteran-badge">За заслуги в образовании</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Заключение -->
-    <div id="about-conclusion" class="about-section">
-      <h3 class="section-title">📝 Заключение</h3>
-      <div class="conclusion-stats">
-        <div class="conclusion-stat-item">
-          <span class="conclusion-number">536</span>
+    <!-- ЗАКЛЮЧЕНИЕ -->
+    <div class="about-block">
+      <h3 class="block-title">Заключение</h3>
+      
+      <div class="conclusion-numbers">
+        <div class="number-box">
+          <span class="big-number">536</span>
           <span>учащихся</span>
         </div>
-        <div class="conclusion-stat-item">
-          <span class="conclusion-number">25</span>
+        <div class="number-box">
+          <span class="big-number">25</span>
           <span>классов</span>
         </div>
-        <div class="conclusion-stat-item">
-          <span class="conclusion-number">39</span>
+        <div class="number-box">
+          <span class="big-number">39</span>
           <span>педагогов</span>
         </div>
       </div>
-      <p class="conclusion-text">Школа имеет тенденцию к росту численности учащихся. Мы продолжаем писать историю нашей школы!</p>
+      
+      <p class="conclusion-message">Школа имеет тенденцию к росту численности учащихся. Мы продолжаем писать историю нашей школы!</p>
     </div>
   </div>
 </section>
@@ -443,6 +600,7 @@
 <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
