@@ -162,3 +162,15 @@ const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
 });
 document.querySelectorAll('.fade').forEach(f => observer.observe(f));
+
+// Функция для показа/скрытия полного списка наград
+function toggleAwards(btn) {
+    const fullList = btn.nextElementSibling;
+    if (fullList.style.display === 'none') {
+        fullList.style.display = 'block';
+        btn.textContent = '📜 Скрыть награды';
+    } else {
+        fullList.style.display = 'none';
+        btn.textContent = '📜 Все награды (7)';
+    }
+}
