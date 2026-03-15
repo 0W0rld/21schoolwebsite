@@ -1,12 +1,11 @@
-
-       // ================= ДАННЫЕ ГАЛЕРЕИ =================
+// ================= ДАННЫЕ ГАЛЕРЕИ =================
 const galleryData = {
     teachers: [
         { 
             name: "Давлетбаева Гульназ Ринатовна", 
             info: "Заместитель директора по воспитательной работе", 
-            years: "В школе: с 1998 года", 
-            img: "Images/teacher-davletbaeva.png",
+            years: "В школе: с 1998 года (28 лет)", 
+            img: "teacher-davletbaeva.png",
             details: {
                 born: "23 июля 1978 года, г. Нижнекамск",
                 education: "Педагогическое училище (учитель начальных классов), Набережночелнинский педагогический институт (учитель ИЗО)",
@@ -18,8 +17,8 @@ const galleryData = {
         { 
             name: "Рыцова Гульсирень Камиловна", 
             info: "Учитель информатики, математики и физики", 
-            years: "В школе: с 1996 года", 
-            img: "Images/teacher-rytsova.png",
+            years: "В школе: с 1996 года (33 года)", 
+            img: "teacher-rytsova.png",
             details: {
                 born: "20 ноября 1969 года, г. Нижнекамск",
                 education: "Елабужский педагогический институт (учитель информатики, математики и физики), Институт развития образования РТ",
@@ -30,45 +29,171 @@ const galleryData = {
             }
         },
         { 
-            name: "ФИО", 
-            info: "Учитель", 
-            years: "В школе: с ... года", 
-            img: "Images/te.png",
+            name: "Федотов Эрнест Кузьмич", 
+            info: "Учитель технологии", 
+            years: "Стаж: 48 лет", 
+            img: "teacher1.png",
             details: {
-                born: "",
-                education: "",
-                experience: "",
-                awards: "",
-                story: ""
+                experience: "48 лет",
+                story: "Ветеран педагогического труда"
+            }
+        },
+        { 
+            name: "Шоетова Любовь Петровна", 
+            info: "Заместитель директора по учебной работе", 
+            years: "Стаж: 35 лет", 
+            img: "teacher2.png",
+            details: {
+                awards: "Почетный работник общего образования РФ",
+                experience: "35 лет"
+            }
+        },
+        { 
+            name: "Валиева Завзия Шагизяновна", 
+            info: "Учитель химии", 
+            years: "Стаж: 36 лет", 
+            img: "teacher3.png",
+            details: {
+                experience: "36 лет"
+            }
+        },
+        { 
+            name: "Смирнова Валентина Николаевна", 
+            info: "Учитель технологии", 
+            years: "Стаж: 36 лет", 
+            img: "teacher4.png",
+            details: {
+                experience: "36 лет"
+            }
+        },
+        { 
+            name: "Новикова Лидия Васильевна", 
+            info: "Учитель русского языка и литературы", 
+            years: "Стаж: 29 лет", 
+            img: "teacher5.png",
+            details: {
+                experience: "29 лет"
+            }
+        },
+        { 
+            name: "Митряшкина Надежда Михайловна", 
+            info: "Учитель математики", 
+            years: "Стаж: 34 года", 
+            img: "teacher6.png",
+            details: {
+                experience: "34 года"
+            }
+        },
+        { 
+            name: "Колпакова Галина Федоровна", 
+            info: "Учитель русского языка и литературы", 
+            years: "Стаж: 49 лет", 
+            img: "teacher7.png",
+            details: {
+                experience: "49 лет"
+            }
+        },
+        { 
+            name: "Мирсаитова Ильсияр Гарифовна", 
+            info: "Учитель математики", 
+            years: "Стаж: 42 года", 
+            img: "teacher8.png",
+            details: {
+                awards: "Почетный работник общего образования РФ",
+                experience: "42 года"
+            }
+        },
+        { 
+            name: "Морозова Любовь Ивановна", 
+            info: "Заместитель директора по воспитательной работе", 
+            years: "Стаж: 45 лет", 
+            img: "teacher9.png",
+            details: {
+                awards: "Отличник народного просвещения, Почетный работник общего образования РФ",
+                experience: "45 лет"
+            }
+        },
+        { 
+            name: "Туйкина Асия Миассаровна", 
+            info: "Учитель математики", 
+            years: "Стаж: 46 лет", 
+            img: "teacher10.png",
+            details: {
+                awards: "За заслуги в образовании",
+                experience: "46 лет"
+            }
+        },
+        { 
+            name: "Никонорова Марина Владимировна", 
+            info: "Учитель начальных классов", 
+            years: "Стаж: 35 лет", 
+            img: "teacher11.png",
+            details: {
+                awards: "За заслуги в образовании",
+                experience: "35 лет"
+            }
+        },
+        { 
+            name: "Ахкиямова Фяридя Биляловна", 
+            info: "Заместитель директора по учебной работе", 
+            years: "Стаж: 36 лет", 
+            img: "teacher12.png",
+            details: {
+                awards: "Почетный работник общего образования РФ",
+                experience: "36 лет"
+            }
+        },
+        { 
+            name: "Павлова Тамара Васильевна", 
+            info: "Учитель математики", 
+            years: "Стаж: 45 лет", 
+            img: "teacher13.png",
+            details: {
+                awards: "Почетный работник общего образования РФ",
+                experience: "45 лет"
+            }
+        },
+        { 
+            name: "Крылова Людмила Александровна", 
+            info: "Учитель иностранного языка", 
+            years: "Стаж: 37 лет", 
+            img: "teacher14.png",
+            details: {
+                experience: "37 лет"
+            }
+        },
+        { 
+            name: "Шишмагаева Нина Николаевна", 
+            info: "Учитель начальных классов", 
+            years: "Стаж: 42 года", 
+            img: "teacher15.png",
+            details: {
+                awards: "За заслуги в образовании",
+                experience: "42 года"
             }
         }
-        // ... остальные учителя
     ],
     school: [
-        { name: "Главный вход", info: "Вид на фасад школы", years: "Фото: 2026", img: "Images/s1.jpg" },
-        { name: "Спортзал", info: "Площадка для соревнований", years: "Фото: 2025", img: "Images/s2.jpg" },
-        { name: "Библиотека", info: "Более 20 000 книг", years: "Фото: 2026", img: "Images/s3.jpg" },
-        { name: "Столовая", info: "Уютная зона обедов", years: "Фото: 2026", img: "Images/s4.jpg" },
-        { name: "Кабинет Физики", info: "Лабораторное оборудование", years: "Фото: 2025", img: "Images/s5.jpg" }
+        { name: "Главный вход", info: "Вид на фасад школы", years: "Фото: 2026", img: "s1.jpg" },
+        { name: "Спортзал", info: "Площадка для соревнований", years: "Фото: 2025", img: "s2.jpg" },
+        { name: "Библиотека", info: "Более 20 000 книг", years: "Фото: 2026", img: "s3.jpg" },
+        { name: "Столовая", info: "Уютная зона обедов", years: "Фото: 2026", img: "s4.jpg" },
+        { name: "Кабинет Физики", info: "Лабораторное оборудование", years: "Фото: 2025", img: "s5.jpg" }
     ]
 };
 
-// Функция открытия папки (обновленная)
+// Функция открытия папки
 function openFolder(type) {
     const overlay = document.getElementById('gallery-overlay');
     const title = document.getElementById('folder-title');
     const photoList = document.getElementById('photo-list');
-    const folderType = document.getElementById('folder-type'); // скрытое поле
 
     title.innerText = type === 'teachers' ? "Наши Учителя" : "Наша Школа";
     photoList.innerHTML = "";
-    
-    // Сохраняем тип папки для использования при клике
-    if (folderType) folderType.value = type;
 
     galleryData[type].forEach((item, index) => {
         photoList.innerHTML += `
-            <div class="photo-card" onclick="openTeacherDetails('${type}', ${index})">
+            <div class="photo-card" onclick="${type === 'teachers' ? `openTeacherDetails('${type}', ${index})` : ''}">
                 <img src="${item.img}" alt="Фото" onerror="this.src='https://via.placeholder.com/300x200?text=Нет+фото'">
                 <h4 style="color:#005fa3">${item.name}</h4>
                 <p style="font-size:14px; margin:5px 0;">${item.info}</p>
@@ -82,15 +207,15 @@ function openFolder(type) {
 
 // Функция открытия детальной информации об учителе
 function openTeacherDetails(type, index) {
-    if (type !== 'teachers') return; // Только для учителей
+    if (type !== 'teachers') return;
     
     const teacher = galleryData.teachers[index];
-    if (!teacher.details) return; // Если нет детальной информации
+    if (!teacher.details) return;
     
     const detailsOverlay = document.getElementById('teacher-details-overlay');
     const detailsContent = document.getElementById('teacher-details-content');
     
-    let awardsHtml = teacher.details.awards ? teacher.details.awards.split(',').map(a => `<li>${a.trim()}</li>`).join('') : '<li>Нет информации</li>';
+    let awardsHtml = teacher.details.awards ? teacher.details.awards.split(',').map(a => `<li>${a.trim()}</li>`).join('') : '';
     
     detailsContent.innerHTML = `
         <div class="teacher-details-card">
@@ -102,45 +227,12 @@ function openTeacherDetails(type, index) {
                 <p class="teacher-years">${teacher.years}</p>
             </div>
             <div class="teacher-details-body">
-                ${teacher.details.born ? `
-                <div class="detail-section">
-                    <h4>Дата и место рождения</h4>
-                    <p>${teacher.details.born}</p>
-                </div>
-                ` : ''}
-                
-                ${teacher.details.education ? `
-                <div class="detail-section">
-                    <h4>Образование</h4>
-                    <p>${teacher.details.education}</p>
-                </div>
-                ` : ''}
-                
-                <div class="detail-section">
-                    <h4>Педагогический стаж</h4>
-                    <p>${teacher.details.experience}</p>
-                </div>
-                
-                ${teacher.details.awards ? `
-                <div class="detail-section">
-                    <h4>Награды</h4>
-                    <ul class="awards-list">${awardsHtml}</ul>
-                </div>
-                ` : ''}
-                
-                ${teacher.details.hobbies ? `
-                <div class="detail-section">
-                    <h4>Увлечения</h4>
-                    <p>${teacher.details.hobbies}</p>
-                </div>
-                ` : ''}
-                
-                ${teacher.details.story ? `
-                <div class="detail-section story-section">
-                    <h4>Интересная история</h4>
-                    <p class="teacher-story">${teacher.details.story}</p>
-                </div>
-                ` : ''}
+                ${teacher.details.born ? `<div class="detail-section"><h4>Дата и место рождения</h4><p>${teacher.details.born}</p></div>` : ''}
+                ${teacher.details.education ? `<div class="detail-section"><h4>Образование</h4><p>${teacher.details.education}</p></div>` : ''}
+                <div class="detail-section"><h4>Педагогический стаж</h4><p>${teacher.details.experience}</p></div>
+                ${teacher.details.awards ? `<div class="detail-section"><h4>Награды</h4><ul class="awards-list">${awardsHtml}</ul></div>` : ''}
+                ${teacher.details.hobbies ? `<div class="detail-section"><h4>Увлечения</h4><p>${teacher.details.hobbies}</p></div>` : ''}
+                ${teacher.details.story ? `<div class="detail-section story-section"><h4>Интересная история</h4><p class="teacher-story">${teacher.details.story}</p></div>` : ''}
             </div>
         </div>
     `;
@@ -155,74 +247,117 @@ function closeTeacherDetails() {
 function closeFolder() {
     document.getElementById('gallery-overlay').style.display = 'none';
 }
-        { name: "Ф.И.О.", info: "Учитель Физкультуры", years: "В школе: с 2018 по 2026", img: "Images/t4.jpg" },
-        { name: "Ф.И.О.", info: "Учитель Биологии", years: "В школе: с 2012 по 2026", img: "Images/t5.jpg" }
-    ],
-    school: [
-        { name: "Главный вход", info: "Вид на фасад школы", years: "Фото: 2026", img: "Images/s1.jpg" },
-        { name: "Спортзал", info: "Площадка для соревнований", years: "Фото: 2025", img: "Images/s2.jpg" },
-        { name: "Библиотека", info: "Более 20 000 книг", years: "Фото: 2026", img: "Images/s3.jpg" },
-        { name: "Столовая", info: "Уютная зона обедов", years: "Фото: 2026", img: "Images/s4.jpg" },
-        { name: "Кабинет Физики", info: "Лабораторное оборудование", years: "Фото: 2025", img: "Images/s5.jpg" }
-    ]
-};
 
-function openFolder(type) {
-    const overlay = document.getElementById('gallery-overlay');
-    const title = document.getElementById('folder-title');
-    const photoList = document.getElementById('photo-list');
-
-    title.innerText = type === 'teachers' ? "Наши Учителя" : "Наша Школа";
-    photoList.innerHTML = "";
-
-    galleryData[type].forEach(item => {
-        photoList.innerHTML += `
-            <div class="photo-card">
-                <img src="${item.img}" alt="Фото" onerror="this.src='https://via.placeholder.com/300x200?text=Нет+фото'">
-                <h4 style="color:#005fa3">${item.name}</h4>
-                <p style="font-size:14px; margin:5px 0;">${item.info}</p>
-                <small style="opacity:0.6">${item.years}</small>
-            </div>
-        `;
-    });
-
-    overlay.style.display = 'flex';
-}
-
-function closeFolder() {
-    document.getElementById('gallery-overlay').style.display = 'none';
-}
-
-/* ================= БАЗА ВОПРОСОВ (4 на каждый случай) ================= */
+// ================= ВОПРОСЫ ПО ИСТОРИИ ШКОЛЫ =================
 const questions = [
-    // 7 КЛАСС - МАТЕМАТИКА
-    { grade: 7, subject: 'math', level: 'hard', q: "Чему равна сумма углов треугольника?", a: ["90°", "180°", "360°"], c: 1 },
-    { grade: 7, subject: 'math', level: 'easy', q: "Как называется результат сложения?", a: ["Сумма", "Разность", "Произведение"], c: 0 },
-    // 7 КЛАСС - РУССКИЙ
-    { grade: 7, subject: 'russian', level: 'hard', q: "В каком слове пишется НН?", a: ["Кожаный", "Стеклянный", "Гусиный"], c: 1 },
-    { grade: 7, subject: 'russian', level: 'easy', q: "Что изучает морфология?", a: ["Звуки", "Части речи", "Запятые"], c: 1 },
-    // 7 КЛАСС - ИСТОРИЯ
-    { grade: 7, subject: 'history', level: 'hard', q: "Кто был первым царём из династии Романовых?", a: ["Михаил Фёдорович", "Пётр I", "Иван Грозный"], c: 0 },
-    { grade: 7, subject: 'history', level: 'easy', q: "В каком году было Крещение Руси?", a: ["988", "1147", "1242"], c: 0 },
-    { grade: 7, subject: 'history', level: 'hard', q: "Какое событие 1480 года официально положило конец зависимости русских земель от Большой Орды?", a: ["Утрехтский Мир", "Ништадский Мир", "Вестфальский Мир"], c: 2 },
-    { grade: 7, subject: 'history', level: 'hard', q: "Как назывался первый в истории России общерусский свод законов, изданный Иваном III в 1497 году, который ввел правило «Юрьева дня»?", a: ["Русская Правда", "Судебник", "Соборное уложение"], c: 1 },
-    { grade: 7, subject: 'history', level: 'easy', q: "Кто был первым русским царем, официально венчавшимся на царство в 1547 году в Успенском соборе?", a: ["Иван IV (Грозный)", "Петр I", "Борис Годунов"], c: 0 },
-    { grade: 7, subject: 'history', level: 'easy', q: "Какое народное ополчение под руководством Кузьмы Минина и Дмитрия Пожарского освободило Москву от польских интервентов в 1612 году?", a: ["Первое ополчение", "Третье ополчение", "Второе ополчение"], c: 2 },
+    // ЛЕГКИЕ ВОПРОСЫ (для тех, кто пробежал по диагонали)
+    { grade: 'any', attention: 'low', interest: 'any', 
+      q: "В каком году открылась наша школа?", 
+      a: ["1985", "1986", "1987"], c: 1 },
     
-
-    // 8 КЛАСС - МАТЕМАТИКА
-    { grade: 8, subject: 'math', level: 'hard', q: "Решите: x² = 64. Чему равен x?", a: ["8", "8 и -8", "16"], c: 1 },
-    { grade: 8, subject: 'math', level: 'easy', q: "Чему равен корень из 121?", a: ["10", "11", "12"], c: 1 },
-    // 8 КЛАСС - РУССКИЙ
-    { grade: 8, subject: 'russian', level: 'hard', q: "Найдите безличное предложение:", a: ["Я иду домой.", "Вечереет.", "Мы поём."], c: 1 },
-    { grade: 8, subject: 'russian', level: 'easy', q: "Как пишутся частицы -то, -либо, -нибудь?", a: ["Раздельно", "Слитно", "Через дефис"], c: 2 },
-    // 8 КЛАСС - ИСТОРИЯ
-    { grade: 8, subject: 'history', level: 'hard', q: "В каком году произошла Бородинская битва?", a: ["1709", "1812", "1914"], c: 1 },
-    { grade: 8, subject: 'history', level: 'easy', q: "Кто победил в войне 1812 года?", a: ["Франция", "Россия", "Швеция"], c: 1 }
+    { grade: 'any', attention: 'low', interest: 'any', 
+      q: "Сколько учеников приняла школа 1 сентября 1986 года?", 
+      a: ["1242", "2242", "3242"], c: 1 },
+    
+    { grade: 'any', attention: 'low', interest: 'any', 
+      q: "Кто был первым директором школы?", 
+      a: ["Махмутов А.Г.", "Галявеев Н.Н.", "Сираев И.Р."], c: 1 },
+    
+    { grade: 'any', attention: 'low', interest: 'any', 
+      q: "Сколько лет исполнилось школе в 2016 году?", 
+      a: ["25 лет", "30 лет", "35 лет"], c: 1 },
+    
+    // СРЕДНИЕ ВОПРОСЫ (внимательно читал)
+    { grade: 'any', attention: 'medium', interest: 'any', 
+      q: "Сколько класс-комплектов было в школе в 1987 году?", 
+      a: ["50", "100", "150"], c: 1 },
+    
+    { grade: 'any', attention: 'medium', interest: 'any', 
+      q: "Как назывался клуб интернациональной дружбы в школе?", 
+      a: ["КИД", "Клуб дружбы", "Интерклуб"], c: 0 },
+    
+    { grade: 'any', attention: 'medium', interest: 'any', 
+      q: "Чье имя носил КИД?", 
+      a: ["Гагарина", "Саманты Смит", "Терешковой"], c: 1 },
+    
+    { grade: 'any', attention: 'medium', interest: 'any', 
+      q: "Кто руководил КИДом?", 
+      a: ["Кудрявцева Г.А.", "Латыпова Л.З.", "Шахмаева З.Л."], c: 0 },
+    
+    { grade: 'any', attention: 'medium', interest: 'any', 
+      q: "Какой завод шефствовал над школой?", 
+      a: ["Нижнекамскнефтехим", "Окись-этилен", "ТАНЕКО"], c: 1 },
+    
+    { grade: 'any', attention: 'medium', interest: 'any', 
+      q: "В каком году школа получила лицензию на коррекционные классы?", 
+      a: ["1995", "1998", "2000"], c: 1 },
+    
+    // СЛОЖНЫЕ ВОПРОСЫ (изучал каждую деталь)
+    { grade: 'any', attention: 'high', interest: 'any', 
+      q: "Какое постановление подписал И.Метшин в 2001 году?", 
+      a: ["№230", "№451а", "№253"], c: 1 },
+    
+    { grade: 'any', attention: 'high', interest: 'any', 
+      q: "Кто был комсоргом учительской комсомольской организации?", 
+      a: ["Ермолаева С.", "Шахмаева З.Л.", "Кудрявцева Г.А."], c: 1 },
+    
+    { grade: 'any', attention: 'high', interest: 'any', 
+      q: "Кто из выпускников геройски погиб в Чечне?", 
+      a: ["Миронов А.", "Ковшов В.", "Юнусов М."], c: 0 },
+    
+    { grade: 'any', attention: 'high', interest: 'any', 
+      q: "Сколько учителей работало в школе в 1987 году?", 
+      a: ["100", "145", "200"], c: 1 },
+    
+    { grade: 'any', attention: 'high', interest: 'any', 
+      q: "Какое название носила комсомольская организация после перестройки?", 
+      a: ["Совет школы", "Совет Старшеклассников", "Молодежный совет"], c: 1 },
+    
+    { grade: 'any', attention: 'high', interest: 'any', 
+      q: "В каком году ввели эксперимент «Школа полного дня»?", 
+      a: ["2005", "2006", "2007"], c: 1 },
+    
+    { grade: 'any', attention: 'high', interest: 'any', 
+      q: "Какое звание получила школа в 2010 году?", 
+      a: ["Школа года", "Школа здоровья", "Школа-гигант"], c: 1 },
+    
+    // ВОПРОСЫ ПО ИНТЕРЕСУ (для тех, кому было увлекательно)
+    { grade: 'any', attention: 'any', interest: 'fascinating', 
+      q: "Кто из учителей получил Грант «Лучший педагог в области ИКТ»?", 
+      a: ["Рыцова Г.К.", "Вахитова А.В.", "Мингазова Е.В."], c: 0 },
+    
+    { grade: 'any', attention: 'any', interest: 'fascinating', 
+      q: "Кто победил в конкурсе «Классный руководитель - 2017»?", 
+      a: ["Юнусов М.Р.", "Хасаншина З.З.", "Махмутов А.Г."], c: 0 },
+    
+    { grade: 'any', attention: 'any', interest: 'fascinating', 
+      q: "Сколько медалистов выпустила школа?", 
+      a: ["22", "32", "42"], c: 1 },
+    
+    { grade: 'any', attention: 'any', interest: 'fascinating', 
+      q: "Кто из ветеранов проработал в школе 49 лет?", 
+      a: ["Колпакова Г.Ф.", "Федотов Э.К.", "Мирсаитова И.Г."], c: 0 },
+    
+    // ВОПРОСЫ ПРО ВЕТЕРАНОВ
+    { grade: 'any', attention: 'medium', interest: 'normal', 
+      q: "Кто из учителей проработал в школе 48 лет?", 
+      a: ["Федотов Э.К.", "Шоетова Л.П.", "Валиева З.Ш."], c: 0 },
+    
+    { grade: 'any', attention: 'medium', interest: 'normal', 
+      q: "Кто награжден знаком «Почетный работник общего образования РФ»?", 
+      a: ["Шоетова Л.П.", "Смирнова В.Н.", "Новикова Л.В."], c: 0 },
+    
+    { grade: 'any', attention: 'high', interest: 'fascinating', 
+      q: "У кого из ветеранов стаж работы 46 лет?", 
+      a: ["Туйкина А.М.", "Морозова Л.И.", "Павлова Т.В."], c: 0 },
+    
+    { grade: 'any', attention: 'high', interest: 'fascinating', 
+      q: "Кто награжден знаком «За заслуги в образовании»?", 
+      a: ["Никонорова М.В.", "Ахкиямова Ф.Б.", "Оба варианта"], c: 2 }
 ];
 
-/* ================= ЛОГИКА ВИКТОРИНЫ ================= */
-let quizSet = { grade: null, level: null, subject: null };
+// ================= ЛОГИКА ВИКТОРИНЫ =================
+let quizSet = { grade: null, attention: null, interest: null };
 let currentPool = [];
 let qIndex = 0;
 
@@ -231,19 +366,24 @@ function setQuizOption(btn, type, val) {
     btn.classList.add('active');
     quizSet[type] = val;
 
-    if (quizSet.grade && quizSet.level && quizSet.subject) {
+    if (quizSet.grade && quizSet.attention && quizSet.interest) {
         currentPool = questions.filter(q => 
-            q.grade === quizSet.grade && 
-            q.subject === quizSet.subject && 
-            q.level === quizSet.level
+            (q.grade === quizSet.grade || q.grade === 'any') && 
+            (q.attention === quizSet.attention || q.attention === 'any') && 
+            (q.interest === quizSet.interest || q.interest === 'any')
         );
 
-        // Если точного совпадения уровня нет, берем все вопросы этого класса и предмета
-        if (currentPool.length === 0) {
-            currentPool = questions.filter(q => q.grade === quizSet.grade && q.subject === quizSet.subject);
+        if (currentPool.length < 3) {
+            let additionalPool = questions.filter(q => 
+                (q.grade === 'any') && 
+                (q.attention === 'any' || q.attention === quizSet.attention) && 
+                (q.interest === 'any' || q.interest === quizSet.interest)
+            );
+            currentPool = [...new Set([...currentPool, ...additionalPool])];
         }
 
         if (currentPool.length > 0) {
+            currentPool = shuffleArray(currentPool);
             setTimeout(() => {
                 document.getElementById('quiz-setup').style.display = 'none';
                 document.getElementById('quiz-main').style.display = 'block';
@@ -260,7 +400,7 @@ function renderQ() {
     const info = document.getElementById('quiz-info');
 
     if (qIndex >= currentPool.length) {
-        qBox.innerText = "Викторина завершена! Ты отлично справляешься!";
+        qBox.innerText = "Викторина завершена! Ты отлично знаешь историю школы!";
         optBox.innerHTML = "";
         info.innerText = "";
         return;
@@ -288,13 +428,21 @@ function renderQ() {
 }
 
 function resetQuiz() {
-    quizSet = { grade: null, level: null, subject: null };
+    quizSet = { grade: null, attention: null, interest: null };
     document.getElementById('quiz-setup').style.display = 'block';
     document.getElementById('quiz-main').style.display = 'none';
     document.querySelectorAll('.setup-btn').forEach(b => b.classList.remove('active'));
 }
 
-/* ================= НАВИГАЦИЯ ================= */
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+// ================= НАВИГАЦИЯ =================
 window.addEventListener("hashchange", () => {
     const hash = location.hash || "#home";
     document.querySelectorAll("section").forEach(s => s.style.display = "none");
@@ -318,9 +466,9 @@ function toggleAwards(btn) {
     const fullList = btn.nextElementSibling;
     if (fullList.style.display === 'none') {
         fullList.style.display = 'block';
-        btn.textContent = '📜 Скрыть награды';
+        btn.textContent = 'Скрыть награды';
     } else {
         fullList.style.display = 'none';
-        btn.textContent = '📜 Все награды (7)';
+        btn.textContent = 'Все награды (7)';
     }
 }
