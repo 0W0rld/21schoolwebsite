@@ -17,7 +17,7 @@
         <li><a href="#home">Главная</a></li>
         <li><a href="#about">О школе</a></li>
         <li><a href="#gallery">Галерея</a></li>
-        <li><a href="#quiz">Викторина по теме нашей школы</a></li>
+        <li><a href="#quiz">Викторина о школе</a></li>
       </ul>
     </nav>
   </div>
@@ -29,7 +29,7 @@
     <h1 class="school-title">Школа №21</h1>
     <div class="buttons">
       <a href="#gallery"><button>Фотогалерея</button></a>
-      <a href="#quiz"><button>Викторина по теме нашей школы</button></a>
+      <a href="#quiz"><button>Викторина о школе</button></a>
     </div>
     <div class="theme-card">
       <button id="themeToggle" class="theme-btn">☀️</button>
@@ -42,10 +42,20 @@
   <div class="card content-card fade">
     <h2>О нашей школе</h2>
     
-    <!-- ПРОСТОЕ ОГЛАВЛЕНИЕ СВЕРХУ (БЕЗ ШТОРКИ) -->
+    <!-- ПРОСТОЕ ОГЛАВЛЕНИЕ -->
+    <div class="simple-toc">
+      <h3>Содержание</h3>
+      <div class="toc-grid">
+        <div>Введение ................................ 3</div>
+        <div>Глава I. История школы ............. 6</div>
+        <div class="indent">§ 1. 1985 год ........................ 6</div>
+        <div class="indent">§ 2. Новая веха .................... 13</div>
+        <div class="indent">§ 3. Ветераны ....................... 16</div>
+        <div>Заключение ............................ 20</div>
+      </div>
+    </div>
 
-
-    ========== ВВЕДЕНИЕ ==========
+    <!-- ВВЕДЕНИЕ -->
     <div class="chapter-block">
       <h3 class="chapter-title">Введение</h3>
       
@@ -79,11 +89,11 @@
       </div>
     </div>
 
-    ========== ГЛАВА I ==========
+    <!-- ГЛАВА I -->
     <div class="chapter-block">
       <h3 class="chapter-title">Глава I. История МБОУ «СОШ № 21»</h3>
       
-      ===== § 1. 1985 год =====
+      <!-- § 1. 1985 год -->
       <div class="section-block">
         <h4 class="section-title">§ 1. С чего все начиналось.... 1985 год</h4>
         
@@ -273,7 +283,7 @@
         <p>Нургазиз Нургалеевич осуществляя эффективное руководство, добился значительных успехов в профессиональной, общественной деятельности. Он занимал должность Председателя Совета директоров, заслужил высокого общественного признания. Это Человек – «Золотое Сердце». На протяжении 27 лет являлся директором школы №21. Был отмечен многочисленными наградами.</p>
       </div>
 
-      ===== § 2. Новая веха =====
+      <!-- § 2. Новая веха -->
       <div class="section-block">
         <h4 class="section-title">§ 2. Новая веха в истории школы</h4>
         
@@ -318,7 +328,7 @@
         </div>
       </div>
 
-      ===== § 3. Ветераны (15 человек) =====
+      <!-- § 3. Ветераны -->
       <div class="section-block">
         <h4 class="section-title">§ 3. Наши ветераны</h4>
         
@@ -476,22 +486,13 @@
           </div>
         </div>
 
-        <p>В данный момент, на 1 сентября 2018 года, в школе обучается 536 учащихся, 25 класс-комплектов, 20 общеобразовательных классов ‒ 479 учащихся, 5 коррекционных классов ‒ 57 ученик. В коллективе работает 39 педагогических работников и 5 внешних совместителя. По изучению и анализу переписи микрорайона школа имеет тенденцию к росту численности учащихся</p>
+        <p>В данный момент, на 1 сентября 2025 года, в школе обучается 536 учащихся, 25 класс-комплектов, 20 общеобразовательных классов ‒ 479 учащихся, 5 коррекционных классов ‒ 57 ученик. В коллективе работает 39 педагогических работников и 5 внешних совместителя.</p>
+        <p>По изучению и анализу переписи микрорайона школа имеет тенденцию к росту численности учащихся</p>
       </div>
     </div>
+  </div>
+</section>
 
-    
-
-        <div class="text-block">
-          <p>В данный момент, на 1 сентября 2025 года, в школе обучается 536 учащихся, 25 класс-комплектов, 20 общеобразовательных классов ‒ 479 учащихся, 5 коррекционных классов ‒ 57 ученик. В коллективе работает 39 педагогических работников и 5 внешних совместителя.</p>
-          
-          <p>По изучению и анализу переписи микрорайона школа имеет тенденцию к росту численности учащихся</p>
-  
-  </div> <!-- ЗАКРЫТИЕ card content-card fade -->
-</section> <!-- ЗАКРЫТИЕ about -->
-   
-
-  
 <section id="gallery">
   <div class="card content-card fade">
     <h2>Галерея</h2>
@@ -508,48 +509,58 @@
   </div>
 </section>
 
+<!-- Оверлей для галереи -->
 <div id="gallery-overlay" class="overlay">
   <div class="card folder-content">
     <button class="reset-btn" onclick="closeFolder()">← Назад к выбору</button>
     <h2 id="folder-title" style="margin: 20px 0;"></h2>
-    <div id="photo-list" class="gallery-grid sub-grid">
-      </div>
+    <div id="photo-list" class="gallery-grid sub-grid"></div>
   </div>
 </div>
 
-  <!-- Оверлей для детальной информации об учителе -->
+<!-- Оверлей для детальной информации об учителе -->
 <div id="teacher-details-overlay" class="overlay" style="display: none;">
-    <div class="teacher-details-container">
-        <div id="teacher-details-content"></div>
-    </div>
+  <div class="teacher-details-container">
+    <div id="teacher-details-content"></div>
+  </div>
 </div>
 
 <section id="quiz">
   <div class="card content-card fade">
-    <h2>Умная Викторина</h2>
+    <h2>Викторина о школе</h2>
+    
     <div id="quiz-setup">
-      <p>Настройте вопросы под себя:</p>
+      <p class="quiz-desc">Проверь, насколько хорошо ты знаешь историю школы!</p>
+      
       <div class="setup-group">
+        <p>Выбери класс:</p>
         <button class="setup-btn" onclick="setQuizOption(this, 'grade', 7)">7 класс</button>
         <button class="setup-btn" onclick="setQuizOption(this, 'grade', 8)">8 класс</button>
+        <button class="setup-btn" onclick="setQuizOption(this, 'grade', 9)">9 класс</button>
+        <button class="setup-btn" onclick="setQuizOption(this, 'grade', 10)">10 класс</button>
+        <button class="setup-btn" onclick="setQuizOption(this, 'grade', 11)">11 класс</button>
       </div>
+      
       <div class="setup-group">
-        <button class="setup-btn" onclick="setQuizOption(this, 'level', 'hard')">Учусь на 4–5</button>
-        <button class="setup-btn" onclick="setQuizOption(this, 'level', 'easy')">Учусь на 2–3</button>
+        <p>Как внимательно читал?</p>
+        <button class="setup-btn" onclick="setQuizOption(this, 'attention', 'low')">📖 По диагонали</button>
+        <button class="setup-btn" onclick="setQuizOption(this, 'attention', 'medium')">👁️ Внимательно</button>
+        <button class="setup-btn" onclick="setQuizOption(this, 'attention', 'high')">🔍 Изучал детали</button>
       </div>
+      
       <div class="setup-group">
-        <button class="setup-btn" onclick="setQuizOption(this, 'subject', 'russian')">Русский</button>
-        <button class="setup-btn" onclick="setQuizOption(this, 'subject', 'history')">История</button>
-        <button class="setup-btn" onclick="setQuizOption(this, 'subject', 'math')">Математика</button>
+        <p>Насколько было интересно?</p>
+        <button class="setup-btn" onclick="setQuizOption(this, 'interest', 'boring')">😐 Так себе</button>
+        <button class="setup-btn" onclick="setQuizOption(this, 'interest', 'normal')">🙂 Нормально</button>
+        <button class="setup-btn" onclick="setQuizOption(this, 'interest', 'fascinating')">🔥 Очень интересно</button>
       </div>
     </div>
 
-    <div id="quiz-main" style="display:none; opacity: 1;">
-      <h3 id="quiz-question" style="margin-bottom:20px;"></h3>
-      <div id="options-box" class="quiz-options-container">
-        </div>
-      <p id="quiz-info" style="margin-top:15px; font-size: 0.9em; color: #666;"></p>
-      <button onclick="resetQuiz()" class="reset-btn" style="margin-top:20px;">Заново</button>
+    <div id="quiz-main" style="display:none;">
+      <h3 id="quiz-question"></h3>
+      <div id="options-box" class="quiz-options-container"></div>
+      <p id="quiz-info"></p>
+      <button onclick="resetQuiz()" class="reset-btn">Заново</button>
     </div>
   </div>
 </section>
@@ -557,12 +568,4 @@
 <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
 
