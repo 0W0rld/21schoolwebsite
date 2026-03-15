@@ -88,7 +88,7 @@ function openTeacherDetails(type, index) {
                 <div class="detail-section"><h4>Педагогический стаж</h4><p>${teacher.details.experience}</p></div>
                 ${teacher.details.awards ? `<div class="detail-section"><h4>Награды</h4><ul class="awards-list">${awardsHtml}</ul></div>` : ''}
                 ${teacher.details.hobbies ? `<div class="detail-section"><h4>Увлечения</h4><p>${teacher.details.hobbies}</p></div>` : ''}
-                ${teacher.details.story ? `<div class="detail-section story-section"><h4>Интересная история</h4><p class="teacher-story">${teacher.details.story}</p></div>` : ''}
+                ${teacher.details.story ? `<div class="detail-section story-section"><h4>История</h4><p class="teacher-story">${teacher.details.story}</p></div>` : ''}
             </div>
         </div>
     `;
