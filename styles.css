@@ -227,4 +227,149 @@ body.dark .subsection-block {
     background: white;
     border-radius: 30px;
     padding: 30px;
-    position: relative
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+body.dark .teacher-details-card {
+    background: #1e293b;
+    color: white;
+}
+
+.close-details-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.close-details-btn:hover {
+    background: #f0f0f0;
+    color: #005fa3;
+}
+
+.teacher-details-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #005fa3;
+}
+
+.teacher-details-header img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #005fa3;
+    margin-bottom: 20px;
+}
+
+.teacher-details-header h2 {
+    color: #005fa3;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.teacher-position {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.teacher-years {
+    font-size: 16px;
+    color: #00b347;
+    font-weight: 600;
+}
+
+.teacher-details-body {
+    text-align: left;
+}
+
+.detail-section {
+    margin-bottom: 25px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 15px;
+}
+
+body.dark .detail-section {
+    background: #334155;
+}
+
+.detail-section h4 {
+    color: #005fa3;
+    margin-bottom: 10px;
+    font-size: 18px;
+    border-left: 4px solid #005fa3;
+    padding-left: 10px;
+}
+
+.awards-list {
+    list-style-type: disc;
+    padding-left: 25px;
+}
+
+.awards-list li {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.story-section {
+    background: #fff9e6;
+    border-left: 4px solid #ffd966;
+}
+
+body.dark .story-section {
+    background: #2d2b1f;
+}
+
+.teacher-story {
+    font-style: italic;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+/* ===== ТЕМНАЯ ТЕМА (дополнительно) ===== */
+body.dark .photo-block {
+    background: #334155;
+}
+
+body.dark .veteran-item {
+    background: #334155;
+}
+
+body.dark .quote-text {
+    background: #2d3748;
+}
+
+/* ===== АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ ===== */
+@media (max-width: 768px) {
+    .veteran-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .veteran-photo {
+        margin: 0 auto;
+    }
+    
+    .teacher-details-header img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .teacher-details-header h2 {
+        font-size: 22px;
+    }
+}
