@@ -1,10 +1,160 @@
-/* ================= ДАННЫЕ ГАЛЕРЕИ ================= */
-// Убедись, что файлы Images/t1.jpg и т.д. существуют!
+
+       // ================= ДАННЫЕ ГАЛЕРЕИ =================
 const galleryData = {
     teachers: [
-        { name: "Ф.И.О.", info: "Учитель Русского языка", years: "В школе: с 2010 по 2026", img: "Images/t1.jpg" },
-        { name: "Ф.И.О.", info: "Учитель Математики", years: "В школе: с 2005 по 2026", img: "Images/t2.jpg" },
-        { name: "Ф.И.О.", info: "Учитель Истории", years: "В школе: с 2015 по 2026", img: "Images/t3.jpg" },
+        { 
+            name: "Давлетбаева Гульназ Ринатовна", 
+            info: "Заместитель директора по воспитательной работе", 
+            years: "В школе: с 1998 года", 
+            img: "Images/teacher-davletbaeva.png",
+            details: {
+                born: "23 июля 1978 года, г. Нижнекамск",
+                education: "Педагогическое училище (учитель начальных классов), Набережночелнинский педагогический институт (учитель ИЗО)",
+                experience: "28 лет",
+                awards: "Грамоты Городского управления образования, Нижнекамского района Республики Татарстан",
+                story: "Работа заместителем директора по ВР – это не только праздники и творчество, но и огромная ответственность. Самое ценное в работе – моменты, когда через годы узнаёшь, что твои слова или поступки сыграли важную роль в судьбе ученика. Однажды позвонила знакомая и передала трубку женщине, которая благодарила за сына, закончившего школу 5 лет назад. Оказывается, какой-то разговор с ним, сказанные вовремя слова помогли ему в жизни. Такие моменты доказывают: работа учителя - самая прекрасная, ведь от нас зависит, каким вырастет человек."
+            }
+        },
+        { 
+            name: "Рыцова Гульсирень Камиловна", 
+            info: "Учитель информатики, математики и физики", 
+            years: "В школе: с 1996 года", 
+            img: "Images/teacher-rytsova.png",
+            details: {
+                born: "20 ноября 1969 года, г. Нижнекамск",
+                education: "Елабужский педагогический институт (учитель информатики, математики и физики), Институт развития образования РТ",
+                experience: "33 года",
+                awards: "Почётная грамота Министерства образования и науки РТ (16.05.2022), Почётная грамота Татарской Республиканской организации Профсоюза образования (05.04.2023)",
+                hobbies: "Больше всего нравится шитьё. Шью разные вещи. Также есть огород, где люблю проводить время.",
+                story: "В школе работает с 1996 года. В профессию попала случайно - пошла поступать вместе с подругами. За годы работы было много тёплых моментов. Однажды в день рождения ученики приготовили сюрприз - большой торт. Пришлось снять их с уроков и пойти всем классом домой. Девочки накрывали на стол, мальчики украшали комнату, доставали из погреба компоты. Сидели все вместе, пили компоты, ели торт - это было замечательно! Особенно запомнился ученик Савелий Хомяков из необеспеченной семьи, который после учёбы подрабатывал в магазине, чтобы помочь бабушке."
+            }
+        },
+        { 
+            name: "ФИО", 
+            info: "Учитель", 
+            years: "В школе: с ... года", 
+            img: "Images/te.png",
+            details: {
+                born: "",
+                education: "",
+                experience: "",
+                awards: "",
+                story: ""
+            }
+        }
+        // ... остальные учителя
+    ],
+    school: [
+        { name: "Главный вход", info: "Вид на фасад школы", years: "Фото: 2026", img: "Images/s1.jpg" },
+        { name: "Спортзал", info: "Площадка для соревнований", years: "Фото: 2025", img: "Images/s2.jpg" },
+        { name: "Библиотека", info: "Более 20 000 книг", years: "Фото: 2026", img: "Images/s3.jpg" },
+        { name: "Столовая", info: "Уютная зона обедов", years: "Фото: 2026", img: "Images/s4.jpg" },
+        { name: "Кабинет Физики", info: "Лабораторное оборудование", years: "Фото: 2025", img: "Images/s5.jpg" }
+    ]
+};
+
+// Функция открытия папки (обновленная)
+function openFolder(type) {
+    const overlay = document.getElementById('gallery-overlay');
+    const title = document.getElementById('folder-title');
+    const photoList = document.getElementById('photo-list');
+    const folderType = document.getElementById('folder-type'); // скрытое поле
+
+    title.innerText = type === 'teachers' ? "Наши Учителя" : "Наша Школа";
+    photoList.innerHTML = "";
+    
+    // Сохраняем тип папки для использования при клике
+    if (folderType) folderType.value = type;
+
+    galleryData[type].forEach((item, index) => {
+        photoList.innerHTML += `
+            <div class="photo-card" onclick="openTeacherDetails('${type}', ${index})">
+                <img src="${item.img}" alt="Фото" onerror="this.src='https://via.placeholder.com/300x200?text=Нет+фото'">
+                <h4 style="color:#005fa3">${item.name}</h4>
+                <p style="font-size:14px; margin:5px 0;">${item.info}</p>
+                <small style="opacity:0.6">${item.years}</small>
+            </div>
+        `;
+    });
+
+    overlay.style.display = 'flex';
+}
+
+// Функция открытия детальной информации об учителе
+function openTeacherDetails(type, index) {
+    if (type !== 'teachers') return; // Только для учителей
+    
+    const teacher = galleryData.teachers[index];
+    if (!teacher.details) return; // Если нет детальной информации
+    
+    const detailsOverlay = document.getElementById('teacher-details-overlay');
+    const detailsContent = document.getElementById('teacher-details-content');
+    
+    let awardsHtml = teacher.details.awards ? teacher.details.awards.split(',').map(a => `<li>${a.trim()}</li>`).join('') : '<li>Нет информации</li>';
+    
+    detailsContent.innerHTML = `
+        <div class="teacher-details-card">
+            <button class="close-details-btn" onclick="closeTeacherDetails()">×</button>
+            <div class="teacher-details-header">
+                <img src="${teacher.img}" alt="${teacher.name}" onerror="this.src='https://via.placeholder.com/150?text=Фото'">
+                <h2>${teacher.name}</h2>
+                <p class="teacher-position">${teacher.info}</p>
+                <p class="teacher-years">${teacher.years}</p>
+            </div>
+            <div class="teacher-details-body">
+                ${teacher.details.born ? `
+                <div class="detail-section">
+                    <h4>Дата и место рождения</h4>
+                    <p>${teacher.details.born}</p>
+                </div>
+                ` : ''}
+                
+                ${teacher.details.education ? `
+                <div class="detail-section">
+                    <h4>Образование</h4>
+                    <p>${teacher.details.education}</p>
+                </div>
+                ` : ''}
+                
+                <div class="detail-section">
+                    <h4>Педагогический стаж</h4>
+                    <p>${teacher.details.experience}</p>
+                </div>
+                
+                ${teacher.details.awards ? `
+                <div class="detail-section">
+                    <h4>Награды</h4>
+                    <ul class="awards-list">${awardsHtml}</ul>
+                </div>
+                ` : ''}
+                
+                ${teacher.details.hobbies ? `
+                <div class="detail-section">
+                    <h4>Увлечения</h4>
+                    <p>${teacher.details.hobbies}</p>
+                </div>
+                ` : ''}
+                
+                ${teacher.details.story ? `
+                <div class="detail-section story-section">
+                    <h4>Интересная история</h4>
+                    <p class="teacher-story">${teacher.details.story}</p>
+                </div>
+                ` : ''}
+            </div>
+        </div>
+    `;
+    
+    detailsOverlay.style.display = 'flex';
+}
+
+function closeTeacherDetails() {
+    document.getElementById('teacher-details-overlay').style.display = 'none';
+}
+
+function closeFolder() {
+    document.getElementById('gallery-overlay').style.display = 'none';
+}
         { name: "Ф.И.О.", info: "Учитель Физкультуры", years: "В школе: с 2018 по 2026", img: "Images/t4.jpg" },
         { name: "Ф.И.О.", info: "Учитель Биологии", years: "В школе: с 2012 по 2026", img: "Images/t5.jpg" }
     ],
