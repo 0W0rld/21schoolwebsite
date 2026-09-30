@@ -1,485 +1,217 @@
-/* ===== БАЗА ===== */
-*{ margin:0; padding:0; box-sizing:border-box; user-select:none; font-family:'Poppins',sans-serif; scroll-behavior: smooth; }
-body{ min-height:100vh; background:linear-gradient(135deg,#e0f7fa,#cfd8dc); color:#003366; transition: 0.5s; }
+/* ===== БАЗА И ПЕРЕМЕННЫЕ ===== */
+:root {
+  --primary: #005fa3;
+  --bg-gradient: linear-gradient(135deg, #e0f7fa, #cfd8dc);
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-border: rgba(255, 255, 255, 0.5);
+  --text-main: #003366;
+  --text-muted: #666;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 25px -3px rgba(0, 95, 163, 0.12);
+}
+
+body.dark {
+  --primary: #38bdf8;
+  --bg-gradient: linear-gradient(135deg, #0a1120, #132238);
+  --card-bg: rgba(30, 41, 59, 0.6);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 10px 25px -3px rgba(0, 0, 0, 0.5);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  transition: background 0.5s ease, color 0.5s ease;
+}
 
 /* ===== НАВИГАЦИЯ ===== */
-header{ position:sticky; top:0; z-index:1000; background:#005fa3; padding:10px 20px; border-radius:0 0 15px 15px; }
-.nav-container{ display:flex; flex-direction:column; align-items:center; }
-.logo{ font-weight:800; font-size:22px; color:white; }
-nav ul{ list-style:none; display:flex; gap:10px; margin-top:5px; }
-nav a{ color:white; text-decoration:none; font-weight:600; padding:6px 12px; border-radius:8px; }
+header {
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(0, 95, 163, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 10px 20px;
+  border-radius: 0 0 15px 15px;
+}
+.nav-container { display: flex; flex-direction: column; align-items: center; }
+.header-top { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 900px; }
+.logo { font-weight: 800; font-size: 22px; color: white; }
+.menu-burger { display: none; background: none; border: none; color: white; font-size: 28px; cursor: pointer; }
+
+nav ul { list-style: none; display: flex; gap: 10px; margin-top: 5px; }
+nav a { color: white; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 8px; transition: 0.3s; }
 nav a:hover { background: rgba(255,255,255,0.2); }
 
-/* ===== СЕКЦИИ ===== */
-section{ display:none; min-height:calc(100vh - 90px); justify-content:center; align-items:center; padding: 20px 0; }
-#home{ display:flex; }
+/* ===== СЕКЦИИ И РОУТИНГ ===== */
+section {
+  display: none;
+  min-height: calc(100vh - 90px);
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+section.active-section {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-/* ===== КАРТОЧКИ ===== */
-.card{ background:rgba(255,255,255,0.95); padding:30px; border-radius:20px; max-width:900px; width:90%; box-shadow:0 10px 30px rgba(0,0,0,0.1); text-align:center; }
-.theme-btn { width:60px; height:60px; border-radius:50%; border:none; background:#005fa3; color:white; font-size:25px; cursor:pointer; margin-top:10px; }
-.buttons button { width:200px; padding:12px; margin:10px; border:none; border-radius:12px; background:#005fa3; color:white; cursor:pointer; font-weight:600; }
+/* ===== КАРТОЧКИ (Glassmorphism) ===== */
+.card, .veteran-card, .chapter-block, .detail-section {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow);
+  color: var(--text-main);
+  border-radius: 24px;
+}
 
-/* ===== ГАЛЕРЕЯ (Папки и Фото) ===== */
-.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px; }
-.folder-type { background: white; padding: 30px; border-radius: 15px; border: 2px dashed #005fa3; cursor: pointer; transition: 0.3s; }
-.folder-type:hover { transform: translateY(-5px); background: #eef8ff; border-style: solid; }
+.card { padding: 40px; max-width: 900px; width: 100%; text-align: center; }
+.school-emblem { font-size: 50px; margin-bottom: 10px; }
+.school-title { font-size: 2.5rem; margin-bottom: 20px; color: var(--primary); }
+
+.theme-card { margin-top: 30px; }
+.theme-btn { width: 50px; height: 50px; border-radius: 50%; border: none; background: var(--primary); color: white; font-size: 20px; cursor: pointer; transition: 0.3s; }
+.theme-btn:hover { transform: scale(1.1); }
+
+/* ===== КНОПКИ ===== */
+.buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+.buttons button, .reset-btn {
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.buttons a:first-child button, .reset-btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 95, 163, 0.3);
+}
+.buttons a:last-child button {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+.buttons button:active, .reset-btn:active { transform: scale(0.96); }
+
+/* ===== ТАЙМЛАЙН ===== */
+.timeline {
+  position: relative;
+  margin: 40px 0;
+  padding-left: 30px;
+  border-left: 3px solid var(--primary);
+  text-align: left;
+}
+.timeline-item { position: relative; margin-bottom: 30px; }
+.timeline-dot {
+  position: absolute;
+  left: -40px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  background: var(--bg-gradient);
+  border: 4px solid var(--primary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 95, 163, 0.4);
+}
+.timeline-content h4 { color: var(--primary); margin-bottom: 8px; font-size: 20px; }
+.timeline-content p { color: var(--text-main); line-height: 1.7; margin-bottom: 15px; }
+
+/* ===== ФОТО БЛОКИ ===== */
+.photo-block { margin: 25px 0; text-align: center; }
+.photo-block img { max-width: 100%; height: auto; border-radius: 10px; margin-bottom: 10px; }
+.photo-caption { font-size: 14px; color: var(--text-muted); font-style: italic; }
+
+/* ===== ВЕТЕРАНЫ ===== */
+.veterans-intro { background: var(--primary); color: white; padding: 25px; border-radius: 20px; margin-bottom: 30px; font-size: 16px; line-height: 1.6; }
+.veterans-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; }
+.veteran-card { overflow: hidden; transition: 0.3s; cursor: pointer; }
+.veteran-card:hover { transform: translateY(-8px); border-color: var(--primary); }
+.veteran-card-photo { height: 200px; overflow: hidden; background: #f0f0f0; }
+.veteran-card-photo img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.veteran-card:hover .veteran-card-photo img { transform: scale(1.05); }
+.veteran-card-info { padding: 20px; text-align: center; }
+.veteran-card-info h3 { color: var(--primary); margin-bottom: 10px; font-size: 18px; }
+.veteran-subject { color: var(--text-muted); font-size: 14px; margin-bottom: 5px; }
+.veteran-exp, .veteran-award {
+  display: inline-block; padding: 5px 15px; background: rgba(0, 95, 163, 0.1);
+  color: var(--primary); border-radius: 20px; font-size: 12px; font-weight: 600; margin-top: 5px;
+}
+body.dark .veteran-exp, body.dark .veteran-award { background: rgba(56, 189, 248, 0.15); }
+
+/* ===== ГАЛЕРЕЯ ===== */
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
+.folder-type { background: var(--card-bg); padding: 30px; border-radius: 15px; border: 2px solid var(--primary); cursor: pointer; transition: 0.3s; }
+.folder-type:hover { transform: translateY(-5px); background: rgba(0, 95, 163, 0.05); }
 .folder-icon { font-size: 50px; margin-bottom: 10px; }
 
-.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; display: none; justify-content: center; align-items: center; overflow-y: auto; }
-.folder-content { max-height: 90vh; overflow-y: auto; text-align: center; }
+/* ===== ОВЕРЛЕИ (Модальные окна) ===== */
+.overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(5px);
+  z-index: 2000; display: flex; justify-content: center; align-items: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+  overflow-y: auto; padding: 20px;
+}
+.overlay.visible { opacity: 1; pointer-events: auto; }
+.folder-content, .teacher-details-card {
+  transform: scale(0.9); transition: transform 0.3s ease; max-height: 90vh; overflow-y: auto; width: 100%;
+}
+.overlay.visible .folder-content, .overlay.visible .teacher-details-card { transform: scale(1); }
 
-.photo-card { background: white; padding: 15px; border-radius: 15px; border: 1px solid #ddd; text-align: left; cursor: pointer; transition: 0.3s; }
-.photo-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,95,163,0.2); }
-.photo-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; background: #eee; }
+.photo-card { background: var(--card-bg); padding: 15px; border-radius: 15px; border: 1px solid var(--card-border); text-align: left; cursor: pointer; transition: 0.3s; }
+.photo-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+.photo-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; }
+
+/* Детали учителя */
+.teacher-details-container { width: 100%; max-width: 800px; }
+.teacher-details-card { position: relative; padding: 30px; }
+.close-details-btn {
+  position: absolute; top: 15px; right: 20px; font-size: 35px;
+  background: none; border: none; cursor: pointer; color: var(--text-muted); transition: 0.3s;
+}
+.close-details-btn:hover { color: var(--primary); }
+.teacher-details-header { text-align: center; margin-bottom: 25px; border-bottom: 2px solid var(--primary); padding-bottom: 20px; }
+.teacher-details-header img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary); margin-bottom: 15px; }
+.detail-section { padding: 15px; margin-bottom: 20px; border-radius: 15px; }
+.detail-section h4 { color: var(--primary); margin-bottom: 10px; border-left: 4px solid var(--primary); padding-left: 10px; }
+.story-section { background: rgba(255, 217, 102, 0.1); border-left: 4px solid #ffd966; }
+body.dark .story-section { background: rgba(255, 217, 102, 0.05); }
 
 /* ===== ВИКТОРИНА ===== */
 .setup-group { margin: 15px 0; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-.setup-btn { padding: 10px 15px; border: 2px solid #005fa3; background: transparent; color: #005fa3; border-radius: 10px; cursor: pointer; font-weight: 600; }
-.setup-btn.active { background: #00b347; color: white; border-color: #00b347; }
+.setup-group p { font-weight: 600; color: var(--primary); width: 100%; }
+.setup-btn { padding: 10px 15px; border: 2px solid var(--primary); background: transparent; color: var(--text-main); border-radius: 10px; cursor: pointer; font-weight: 600; }
+.setup-btn.active { background: var(--primary); color: white; }
 
-.quiz-option { display: flex; align-items: center; gap: 10px; padding: 15px; background: white; border-radius: 15px; cursor: pointer; border: 2px solid #ddd; margin-bottom: 10px; transition: 0.3s; }
-.quiz-option:hover { border-color: #005fa3; background: #f0f7ff; }
-.option-circle { width: 20px; height: 20px; border: 2px solid #005fa3; border-radius: 50%; flex-shrink: 0; }
+.quiz-option { display: flex; align-items: center; gap: 10px; padding: 15px; background: var(--card-bg); border-radius: 15px; cursor: pointer; border: 2px solid var(--card-border); margin-bottom: 10px; transition: 0.3s; }
+.quiz-option:hover { border-color: var(--primary); }
+.option-circle { width: 20px; height: 20px; border: 2px solid var(--primary); border-radius: 50%; flex-shrink: 0; }
 .option-circle.correct { background: #00b347; border-color: #00b347; }
 .option-circle.wrong { background: #d90000; border-color: #d90000; }
 
-.reset-btn { background: #005fa3; color: white; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; }
-
-/* ===== ТЕМЫ ===== */
-body.dark { background: #0f172a; color: #f1f5f9; }
-body.dark .card { background: #1e293b; color: white; }
-body.dark .quiz-option { background: #334155; border-color: #475569; }
-
-/* ===== АНИМАЦИЯ ===== */
-.fade { opacity:0; transform:translateY(20px); transition:0.6s; }
-.fade.show { opacity:1; transform:translateY(0); }
-
-/* ===== ПРОСТОЕ ОГЛАВЛЕНИЕ ===== */
-.simple-toc {
-    background: linear-gradient(135deg, #005fa3 0%, #003366 100%);
-    color: white;
-    padding: 25px;
-    border-radius: 20px;
-    margin-bottom: 30px;
-}
-
-.simple-toc h3 {
-    color: white;
-    font-size: 24px;
-    margin-bottom: 20px;
-    border-bottom: 2px solid rgba(255,255,255,0.3);
-    padding-bottom: 10px;
-}
-
-.toc-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.toc-grid .indent {
-    margin-left: 25px;
-}
-
-/* ===== ГЛАВЫ И РАЗДЕЛЫ ===== */
-.chapter-block {
-    margin: 40px 0;
-    padding: 25px;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 25px;
-}
-
-body.dark .chapter-block {
-    background: rgba(30, 41, 59, 0.7);
-}
-
-.chapter-title {
-    color: #005fa3;
-    font-size: 26px;
-    margin-bottom: 25px;
-    padding-bottom: 10px;
-    border-bottom: 3px solid #005fa3;
-    display: inline-block;
-}
-
-body.dark .chapter-title {
-    color: #60a5fa;
-    border-bottom-color: #60a5fa;
-}
-
-.section-block {
-    margin: 30px 0 30px 20px;
-    padding: 25px;
-    background: white;
-    border-radius: 20px;
-    border-left: 5px solid #005fa3;
-}
-
-body.dark .section-block {
-    background: #334155;
-    border-left-color: #60a5fa;
-}
-
-.section-title {
-    color: #005fa3;
-    font-size: 22px;
-    margin-bottom: 20px;
-}
-
-.subsection-block {
-    margin: 20px 0;
-    padding: 15px;
-    background: #f8f9fa;
-    border-radius: 15px;
-}
-
-body.dark .subsection-block {
-    background: #2d3748;
-}
-
-.text-block {
-    line-height: 1.8;
-    margin: 20px 0;
-}
-
-.text-block p {
-    margin: 15px 0;
-}
-
-/* ===== ФОТО БЛОКИ ===== */
-.photo-block {
-    margin: 25px 0;
-    text-align: center;
-    background: #f8f9fa;
-    padding: 20px;
-    border-radius: 15px;
-}
-
-.photo-block img {
-    max-width: 100%;
-    max-height: 300px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.photo-caption {
-    font-size: 14px;
-    color: #666;
-    font-style: italic;
-}
-
-/* ===== ВЕТЕРАНЫ ===== */
-.veteran-item {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    background: white;
-    padding: 15px;
-    border-radius: 15px;
-    margin: 15px 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.veteran-photo {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    flex-shrink: 0;
-    border: 3px solid #005fa3;
-}
-
-.veteran-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.veteran-info {
-    flex: 1;
-}
-
-.veteran-info p {
-    margin: 0;
-    line-height: 1.5;
-}
-
-/* ===== ЦИТАТЫ ===== */
-.quote-text {
-    font-style: italic;
-    padding: 20px;
-    background: #f0f7ff;
-    border-radius: 15px;
-    margin: 25px 0;
-    border-left: 4px solid #005fa3;
-}
-
-/* ===== ДЕТАЛЬНАЯ ИНФОРМАЦИЯ ОБ УЧИТЕЛЕ ===== */
-.teacher-details-container {
-    width: 90%;
-    max-width: 800px;
-    max-height: 90vh;
-    overflow-y: auto;
-    background: transparent;
-}
-
-.teacher-details-card {
-    background: white;
-    border-radius: 30px;
-    padding: 30px;
-    position: relative;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
-
-body.dark .teacher-details-card {
-    background: #1e293b;
-    color: white;
-}
-
-.close-details-btn {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    font-size: 40px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #666;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    border-radius: 50%;
-    transition: 0.3s;
-}
-
-.close-details-btn:hover {
-    background: #f0f0f0;
-    color: #005fa3;
-}
-
-.teacher-details-header {
-    text-align: center;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #005fa3;
-}
-
-.teacher-details-header img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid #005fa3;
-    margin-bottom: 20px;
-}
-
-.teacher-details-header h2 {
-    color: #005fa3;
-    margin-bottom: 10px;
-    font-size: 28px;
-}
-
-.teacher-position {
-    font-size: 18px;
-    color: #666;
-    margin-bottom: 5px;
-}
-
-.teacher-years {
-    font-size: 16px;
-    color: #00b347;
-    font-weight: 600;
-}
-
-.teacher-details-body {
-    text-align: left;
-}
-
-.detail-section {
-    margin-bottom: 25px;
-    padding: 15px;
-    background: #f8f9fa;
-    border-radius: 15px;
-}
-
-body.dark .detail-section {
-    background: #334155;
-}
-
-.detail-section h4 {
-    color: #005fa3;
-    margin-bottom: 10px;
-    font-size: 18px;
-    border-left: 4px solid #005fa3;
-    padding-left: 10px;
-}
-
-.awards-list {
-    list-style-type: disc;
-    padding-left: 25px;
-}
-
-.awards-list li {
-    margin: 8px 0;
-    line-height: 1.5;
-}
-
-.story-section {
-    background: #fff9e6;
-    border-left: 4px solid #ffd966;
-}
-
-body.dark .story-section {
-    background: #2d2b1f;
-}
-
-.teacher-story {
-    font-style: italic;
-    line-height: 1.8;
-    font-size: 16px;
-}
-
-/* ===== ТЕМНАЯ ТЕМА (дополнительно) ===== */
-body.dark .photo-block {
-    background: #334155;
-}
-
-body.dark .veteran-item {
-    background: #334155;
-}
-
-body.dark .quote-text {
-    background: #2d3748;
-}
-
-/* ===== АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ ===== */
+/* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
 @media (max-width: 768px) {
-    .veteran-item {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .veteran-photo {
-        margin: 0 auto;
-    }
-    
-    .teacher-details-header img {
-        width: 120px;
-        height: 120px;
-    }
-    
-    .teacher-details-header h2 {
-        font-size: 22px;
-    }
-}
-/* ===== НОВАЯ ВКЛАДКА ВЕТЕРАНЫ ===== */
-#veterans {
-    display: none;
-}
-
-.veterans-intro {
-    background: linear-gradient(135deg, #005fa3 0%, #003366 100%);
-    color: white;
-    padding: 30px;
-    border-radius: 20px;
-    margin-bottom: 30px;
-    font-size: 18px;
-    line-height: 1.6;
-    text-align: center;
-}
-
-.veterans-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
-}
-
-.veteran-card {
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-}
-
-.veteran-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,95,163,0.2);
-}
-
-.veteran-card-photo {
-    height: 200px;
-    overflow: hidden;
-    background: #f0f0f0;
-}
-
-.veteran-card-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s;
-}
-
-.veteran-card:hover .veteran-card-photo img {
-    transform: scale(1.05);
-}
-
-.veteran-card-info {
-    padding: 20px;
-    text-align: center;
-}
-
-.veteran-card-info h3 {
-    color: #005fa3;
-    margin-bottom: 10px;
-    font-size: 18px;
-}
-
-.veteran-subject {
-    color: #666;
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-
-.veteran-exp {
-    font-weight: 600;
-    color: #00b347;
-    margin-bottom: 10px;
-}
-
-.veteran-award {
-    display: inline-block;
-    background: #f0f7ff;
-    color: #005fa3;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-body.dark .veteran-card {
-    background: #334155;
-}
-
-body.dark .veteran-subject {
-    color: #aaa;
-}
-
-/* Обновление стилей для викторины (без эмодзи) */
-#quiz .setup-btn {
-    padding: 10px 20px;
-    font-size: 15px;
-}
-
-#quiz .setup-group p {
-    margin-bottom: 10px;
-    font-weight: 600;
-    color: #005fa3;
-}
-
-body.dark #quiz .setup-group p {
-    color: #60a5fa;
+  header { padding: 12px 16px; }
+  .menu-burger { display: block; }
+  nav ul { display: none; flex-direction: column; width: 100%; margin-top: 15px; text-align: center; gap: 8px; }
+  nav ul.open { display: flex; }
+  nav a { display: block; padding: 10px; background: rgba(255, 255, 255, 0.1); }
+  
+  .card { padding: 25px 15px; border-radius: 16px; }
+  .school-title { font-size: 2rem; }
+  .buttons button { width: 100%; margin: 5px 0; }
+  
+  .veterans-grid, .gallery-grid { grid-template-columns: 1fr; }
+  .photo-block img { max-height: 250px; }
+  .timeline { margin: 20px 0; padding-left: 20px; }
+  .timeline-dot { left: -30px; width: 14px; height: 14px; }
 }
