@@ -17,7 +17,7 @@ const galleryData = {
     { 
       name: "Рыцова Гульсирень Камиловна", 
       info: "Учитель информатики, математики и физики", 
-      years: "В школе: 30 лет (с 1996 г.)", // ИСПРАВЛЕНА МАТЕМАТИКА
+      years: "В школе: 30 лет (с 1996 г.)", 
       img: "teacher-rytsova.png",
       details: {
         born: "20 ноября 1969 года, г. Нижнекамск",
@@ -43,7 +43,7 @@ const galleryData = {
     { 
       name: "Ахкиямова Фяридя Биляловна", 
       info: "Заместитель директора по учебной работе", 
-      years: "В школе: 40 лет (с 1986 г.)", // ИСПРАВЛЕНА МАТЕМАТИКА
+      years: "В школе: 40 лет (с 1986 г.)", 
       img: "teacher-akhkiyamova.png",
       details: {
         born: "26 ноября 1955 года, Пензенская область",
@@ -74,7 +74,6 @@ const galleryData = {
   ]
 };
 
-// Данные для ветеранов
 const veteransData = {
   shumkina: galleryData.teachers[2].details,
   olga: galleryData.teachers[4].details
@@ -100,6 +99,7 @@ function openFolder(type) {
     `;
   });
   overlay.classList.add('visible');
+  document.body.classList.add('modal-open'); // Блокируем скролл страницы
 }
 
 function openTeacherDetails(type, index) {
@@ -112,7 +112,6 @@ function openTeacherDetails(type, index) {
 function openVeteranDetails(id) {
   const details = veteransData[id];
   if (!details) return;
-  // Находим базовую инфу из galleryData чтобы взять имя и фото
   const baseTeacher = galleryData.teachers.find(t => t.details === details);
   if (baseTeacher) buildTeacherModal(baseTeacher);
 }
@@ -142,10 +141,12 @@ function buildTeacherModal(teacher) {
     </div>
   `;
   overlay.classList.add('visible');
+  document.body.classList.add('modal-open');
 }
 
 function closeModal(id) {
   document.getElementById(id).classList.remove('visible');
+  document.body.classList.remove('modal-open'); // Возвращаем скролл
 }
 function closeFolder() { closeModal('gallery-overlay'); }
 
@@ -230,6 +231,10 @@ function handleNavigation() {
     target.style.display = "flex";
     setTimeout(() => target.classList.add("active-section"), 20);
   }
+
+  // При переходе по ссылке автоматически закрываем мобильную шторку
+  const navList = document.querySelector("nav ul");
+  if (navList) navList.classList.remove("open");
 }
 
 window.addEventListener("hashchange", handleNavigation);
