@@ -11,14 +11,17 @@
 
 <header>
   <div class="nav-container">
-    <div class="logo">Школа №21</div>
+    <div class="header-top">
+      <div class="logo">Школа №21</div>
+      <button class="menu-burger" onclick="toggleMobileMenu()">☰</button>
+    </div>
     <nav>
       <ul>
-        <li><a href="#home">Главная</a></li>
-        <li><a href="#about">О школе</a></li>
-        <li><a href="#veterans">Ветераны</a></li>
-        <li><a href="#gallery">Галерея</a></li>
-        <li><a href="#quiz">Викторина</a></li>
+        <li><a href="#home" onclick="toggleMobileMenu()">Главная</a></li>
+        <li><a href="#about" onclick="toggleMobileMenu()">О школе</a></li>
+        <li><a href="#veterans" onclick="toggleMobileMenu()">Ветераны</a></li>
+        <li><a href="#gallery" onclick="toggleMobileMenu()">Галерея</a></li>
+        <li><a href="#quiz" onclick="toggleMobileMenu()">Викторина</a></li>
       </ul>
     </nav>
   </div>
@@ -26,7 +29,7 @@
 
 <section id="home">
   <div class="card home-card">
-    <div class="arrows">⬆ ⬆ ⬆</div>
+    <div class="school-emblem">🏫</div>
     <h1 class="school-title">Школа №21</h1>
     <div class="buttons">
       <a href="#gallery"><button>Фотогалерея</button></a>
@@ -39,7 +42,7 @@
   </div>
 </section>
 
-<!-- ===== О ШКОЛЕ (без ветеранов) ===== -->
+<!-- ===== О ШКОЛЕ ===== -->
 <section id="about">
   <div class="card content-card fade">
     <h2>О нашей школе</h2>
@@ -52,72 +55,75 @@
         <p>Меня зовут Екатерина. В этой школе я учусь с первого класса, сейчас я в 10 классе. За всё это время я вспоминаю только самое хорошее и светлое.</p>
       </div>
       
-      <h4 class="subsection-title">Как всё начиналось</h4>
-      
-      <p>24 апреля 1986 года исполком Нижнекамского городского Совета принял решение №230 об открытии школы №21. 1 сентября 1986 года школа на улице Мурадьяна 18А приняла 2242 ученика.</p>
+      <!-- ТАЙМЛАЙН ИСТОРИИ -->
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4 class="subsection-title">24 апреля 1986</h4>
+            <p>Исполком Нижнекамского городского Совета принял решение №230 об открытии школы №21. 1 сентября 1986 года школа на улице Мурадьяна 18А приняла 2242 ученика.</p>
+            <div class="photo-block">
+              <img src="doc1.png" alt="Решение исполкома" onerror="this.style.display='none'">
+              <p class="photo-caption">Решение исполкома №230 от 24.04.1986</p>
+            </div>
+            <p>Первым директором стал Галявеев Нургазиз Нургалеевич, который руководил школой 27 лет.</p>
+            <div class="photo-block">
+              <img src="director1.png" alt="Галявеев Н.Н." onerror="this.style.display='none'">
+              <p class="photo-caption">Галявеев Нургазиз Нургалеевич (1986-2013)</p>
+            </div>
+          </div>
+        </div>
 
-      <div class="photo-block">
-        <img src="doc1.png" alt="Решение исполкома" onerror="this.style.display='none'">
-        <p class="photo-caption">Решение исполкома №230 от 24.04.1986</p>
-      </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4 class="subsection-title">Сентябрь 1986</h4>
+            <p>Состоялось первое комсомольское собрание. Комсомольцы школы ездили в "Долину смерти", создали клуб интернациональной дружбы имени Саманты Смит (КИД), который стал победителем среди КИДов города и республики.</p>
+            <div class="photo-block">
+              <img src="history1.png" alt="Комсомольское Знамя" onerror="this.style.display='none'">
+              <p class="photo-caption">Вручение Комсомольского Знамени, 1987 г.</p>
+            </div>
+          </div>
+        </div>
 
-      <p>Первым директором стал Галявеев Нургазиз Нургалеевич, который руководил школой 27 лет.</p>
-
-      <div class="photo-block">
-        <img src="director1.png" alt="Галявеев Н.Н." onerror="this.style.display='none'">
-        <p class="photo-caption">Галявеев Нургазиз Нургалеевич (1986-2013)</p>
-      </div>
-
-      <h4 class="subsection-title">Комсомольская юность школы</h4>
-      
-      <p>В сентябре 1986 года состоялось первое комсомольское собрание. Комсомольцы школы ездили в "Долину смерти", создали клуб интернациональной дружбы имени Саманты Смит (КИД), который стал победителем среди КИДов города и республики.</p>
-
-      <div class="photo-block">
-        <img src="history1.png" alt="Комсомольское Знамя" onerror="this.style.display='none'">
-        <p class="photo-caption">Вручение Комсомольского Знамени, 1987 г.</p>
-      </div>
-
-      <h4 class="subsection-title">Новые страницы истории</h4>
-      
-      <p>В 1998 году школа получила лицензию на коррекционные классы. В 2006 году начали эксперимент "Школа полного дня". В 2010 году школа получила звание "Школа, содействующая здоровью".</p>
-
-      <div class="photo-block">
-        <img src="school10.png" alt="Зарядка" onerror="this.style.display='none'">
-        <p class="photo-caption">Утренняя зарядка в школе</p>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4 class="subsection-title">Новые страницы (1998 - 2010)</h4>
+            <p>В 1998 году школа получила лицензию на коррекционные классы. В 2006 году начали эксперимент "Школа полного дня". В 2010 году школа получила звание "Школа, содействующая здоровью".</p>
+            <div class="photo-block">
+              <img src="school10.png" alt="Зарядка" onerror="this.style.display='none'">
+              <p class="photo-caption">Утренняя зарядка в школе</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <h4 class="subsection-title">Наши директора</h4>
-      
       <p><strong>Галявеев Нургазиз Нургалеевич</strong> (1986-2013) - основатель школы.</p>
       <p><strong>Махмутов Айзат Гамирович</strong> (2013-2017) - реализовал программу "Безбарьерная школа".</p>
-      
       <div class="photo-block">
         <img src="director2.png" alt="Махмутов А.Г." onerror="this.style.display='none'">
         <p class="photo-caption">Махмутов Айзат Гамирович</p>
       </div>
-      
       <p><strong>Сираев Ильнар Рафаилович</strong> (2017 - настоящее время) - получил Грант "Эко-школа".</p>
-
       <div class="photo-block">
         <img src="director3.png" alt="Сираев И.Р." onerror="this.style.display='none'">
         <p class="photo-caption">Сираев Ильнар Рафаилович</p>
       </div>
 
       <h4 class="subsection-title">Наши достижения</h4>
-      
       <p>За годы работы школа сделала 31 выпуск. Среди выпускников - 32 медалиста.</p>
-
       <div class="photo-block">
         <img src="event2.png" alt="Первый выпуск" onerror="this.style.display='none'">
         <p class="photo-caption">Первый выпуск школы, 1987 год</p>
       </div>
-
       <p>Сегодня в школе обучается 536 учащихся, работает 39 педагогов.</p>
     </div>
   </div>
 </section>
 
-<!-- ===== ВЕТЕРАНЫ (новая вкладка) ===== -->
+<!-- ===== ВЕТЕРАНЫ ===== -->
 <section id="veterans">
   <div class="card content-card fade">
     <h2>Наши ветераны</h2>
@@ -163,161 +169,35 @@
           <p class="veteran-exp">стаж 36 лет</p>
         </div>
       </div>
-
-      <!-- Смирнова Валентина Николаевна -->
-      <div class="veteran-card">
+      
+      <!-- Шумкина Нина Павловна (с кликом) -->
+      <div class="veteran-card" onclick="openVeteranDetails('shumkina')">
         <div class="veteran-card-photo">
-          <img src="teacher4.png" alt="Смирнова В.Н." onerror="this.src='https://via.placeholder.com/150?text=Фото'">
+          <img src="teacher-shumkina.png" alt="Шумкина Н.П." onerror="this.src='https://via.placeholder.com/150?text=Фото'">
         </div>
         <div class="veteran-card-info">
-          <h3>Смирнова Валентина Николаевна</h3>
-          <p class="veteran-subject">учитель технологии</p>
-          <p class="veteran-exp">стаж 36 лет</p>
+          <h3>Шумкина Нина Павловна</h3>
+          <p class="veteran-subject">учитель</p>
+          <p class="veteran-exp">в школе с 1995 года</p>
         </div>
       </div>
 
-      <!-- Новикова Лидия Васильевна -->
-      <div class="veteran-card">
+      <!-- Ольга Геннадьевна (с кликом) -->
+      <div class="veteran-card" onclick="openVeteranDetails('olga')">
         <div class="veteran-card-photo">
-          <img src="teacher5.png" alt="Новикова Л.В." onerror="this.src='https://via.placeholder.com/150?text=Фото'">
+          <img src="teacher-olga.png" alt="Ольга Геннадьевна" onerror="this.src='https://via.placeholder.com/150?text=Фото'">
         </div>
         <div class="veteran-card-info">
-          <h3>Новикова Лидия Васильевна</h3>
-          <p class="veteran-subject">учитель русского языка</p>
-          <p class="veteran-exp">стаж 29 лет</p>
+          <h3>Ольга Геннадьевна</h3>
+          <p class="veteran-subject">педагог</p>
+          <p class="veteran-exp">стаж 30 лет</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
 
-      <!-- Митряшкина Надежда Михайловна -->
-      <div class="veteran-card">
-        <div class="veteran-card-photo">
-          <img src="teacher6.png" alt="Митряшкина Н.М." onerror="this.src='https://via.placeholder.com/150?text=Фото'">
-        </div>
-        <div class="veteran-card-info">
-          <h3>Митряшкина Надежда Михайловна</h3>
-          <p class="veteran-subject">учитель математики</p>
-          <p class="veteran-exp">стаж 34 года</p>
-        </div>
-      </div>
-
-      <!-- Колпакова Галина Федоровна -->
-      <div class="veteran-card">
-        <div class="veteran-card-photo">
-          <img src="teacher7.png" alt="Колпакова Г.Ф." onerror="this.src='https://via.placeholder.com/150?text=Фото'">
-        </div>
-        <div class="veteran-card-info">
-          <h3>Колпакова Галина Федоровна</h3>
-          <p class="veteran-subject">учитель русского языка</p>
-          <p class="veteran-exp">стаж 49 лет</p>
-        </div>
-      </div>
-
-      <!-- Мирсаитова Ильсияр Гарифовна -->
-      <div class="veteran-card">
-        <div class="veteran-card-photo">
-          <img src="teacher8.png" alt="Мирсаитова И.Г." onerror="this.src='https://via.placeholder.com/150?text=Фото'">
-        </div>
-        <div class="veteran-card-info">
-          <h3>Мирсаитова Ильсияр Гарифовна</h3>
-          <p class="veteran-subject">учитель математики</p>
-          <p class="veteran-exp">стаж 42 года</p>
-          <p class="veteran-award">Почетный работник РФ</p>
-        </div>
-      </div>
-
-      <!-- Морозова Любовь Ивановна -->
-      <div class="veteran-card">
-        <div class="veteran-card-photo">
-          <img src="teacher9.png" alt="Морозова Л.И." onerror="this.src='https://via.placeholder.com/150?text=Фото'">
-        </div>
-        <div class="veteran-card-info">
-          <h3>Морозова Любовь Ивановна</h3>
-          <p class="veteran-subject">зам. директора по ВР</p>
-          <p class="veteran-exp">стаж 45 лет</p>
-          <p class="veteran-award">Отличник просвещения</p>
-        </div>
-      </div>
-
-      <!-- Туйкина Асия Миассаровна -->
-      <div class="veteran-card">
-        <div class="veteran-card-photo">
-          <img src="teacher10.png" alt="Туйкина А.М." onerror="this.src='https://via.placeholder.com/150?text=Фото'">
-        </div>
-        <div class="veteran-card-info">
-          <h3>Туйкина Асия Миассаровна</h3>
-          <p class="veteran-subject">учитель математики</p>
-          <p class="veteran-exp">стаж 46 лет</p>
-          <p class="veteran-award">За заслуги в образовании</p>
-        </div>
-      </div>
-
-      <!-- Никонорова Марина Владимировна -->
-      <div class="veteran-card">
-        <div class="veteran-card-photo">
-          <img src="teacher11.png" alt="Никонорова М.В." onerror="this.src='https://via.placeholder.com/150?text=Фото'">
-        </div>
-        <div class="veteran-card-info">
-          <h3>Никонорова Марина Владимировна</h3>
-          <p class="veteran-subject">учитель начальных классов</p>
-          <p class="veteran-exp">стаж 35 лет</p>
-          <p class="veteran-award">За заслуги в образовании</p>
-        </div>
-      </div>
-
-      <!-- Ахкиямова Фяридя Биляловна -->
-      <div class="veteran-card">
-        <div class="veteran-card-photo">
-          <img src="teacher12.png" alt="Ахкиямова Ф.Б." onerror="this.src='https://via.placeholder.com/150?text=Фото'">
-        </div>
-        <div class="veteran-card-info">
-          <h3>Ахкиямова Фяридя Биляловна</h3>
-          <p class="veteran-subject">зам. директора по УР</p>
-          <p class="veteran-exp">стаж 36 лет</p>
-          <p class="veteran-award">Почетный работник РФ</p>
-        </div>
-      </div>
-
-      <!-- Павлова Тамара Васильевна -->
-      <div class="veteran-card">
-        <div class="veteran-card-photo">
-          <img src="teacher13.png" alt="Павлова Т.В." onerror="this.src='https://via.placeholder.com/150?text=Фото'">
-        </div>
-        <div class="veteran-card-info">
-          <h3>Павлова Тамара Васильевна</h3>
-          <p class="veteran-subject">учитель математики</p>
-          <p class="veteran-exp">стаж 45 лет</p>
-          <p class="veteran-award">Почетный работник РФ</p>
-        </div>
-      </div>
-
-      <!-- Крылова Людмила Александровна -->
-      <div class="veteran-card">
-        <div class="veteran-card-photo">
-          <img src="teacher14.png" alt="Крылова Л.А." onerror="this.src='https://via.placeholder.com/150?text=Фото'">
-        </div>
-        <div class="veteran-card-info">
-          <h3>Крылова Людмила Александровна</h3>
-          <p class="veteran-subject">учитель иностранного языка</p>
-          <p class="veteran-exp">стаж 37 лет</p>
-        </div>
-      </div>
-
-      <!-- Шишмагаева Нина Николаевна -->
-      <div class="veteran-card">
-        <div class="veteran-card-photo">
-          <img src="teacher15.png" alt="Шишмагаева Н.Н." onerror="this.src='https://via.placeholder.com/150?text=Фото'">
-        </div>
-        <div class="veteran-card-info">
-          <h3>Шишмагаева Нина Николаевна</h3>
-          <p class="veteran-subject">учитель начальных классов</p>
-          <p class="veteran-exp">стаж 42 года</p>
-          <p class="veteran-award">За заслуги в образовании</p>
-        </div>
-      </div>
-     </div>
-    </section>
-
-<!-- ===== ГАЛЕРЕЯ (с новыми учителями) ===== -->
+<!-- ===== ГАЛЕРЕЯ ===== -->
 <section id="gallery">
   <div class="card content-card fade">
     <h2>Галерея</h2>
@@ -337,20 +217,20 @@
 <!-- Оверлей для галереи -->
 <div id="gallery-overlay" class="overlay">
   <div class="card folder-content">
-    <button class="reset-btn" onclick="closeFolder()">← Назад к выбору</button>
-    <h2 id="folder-title" style="margin: 20px 0;"></h2>
+    <button class="reset-btn" onclick="closeFolder()" style="margin-bottom: 20px;">← Назад к выбору</button>
+    <h2 id="folder-title" style="margin-bottom: 20px;"></h2>
     <div id="photo-list" class="gallery-grid sub-grid"></div>
   </div>
 </div>
 
 <!-- Оверлей для детальной информации об учителе -->
-<div id="teacher-details-overlay" class="overlay" style="display: none;">
+<div id="teacher-details-overlay" class="overlay">
   <div class="teacher-details-container">
     <div id="teacher-details-content"></div>
   </div>
 </div>
 
-<!-- ===== ВИКТОРИНА (упрощенная) ===== -->
+<!-- ===== ВИКТОРИНА ===== -->
 <section id="quiz">
   <div class="card content-card fade">
     <h2>Викторина о школе</h2>
