@@ -4,8 +4,8 @@
   --bg-gradient: linear-gradient(135deg, #e0f7fa, #cfd8dc);
   --card-bg: rgba(255, 255, 255, 0.75);
   --card-border: rgba(255, 255, 255, 0.5);
-  --text-main: #003366;
-  --text-muted: #666;
+  --text-main: #1e293b; /* ЗАМЕНИЛ: глубокий темно-серый вместо синего для идеальной читаемости */
+  --text-muted: #64748b;
   --img-fallback: rgba(0, 0, 0, 0.05);
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 25px -3px rgba(0, 95, 163, 0.12);
 }
@@ -15,7 +15,7 @@ body.dark {
   --bg-gradient: linear-gradient(135deg, #0a1120, #132238);
   --card-bg: rgba(30, 41, 59, 0.6);
   --card-border: rgba(255, 255, 255, 0.08);
-  --text-main: #ffffff;
+  --text-main: #f8fafc; /* В темной теме текст белый */
   --text-muted: #94a3b8;
   --img-fallback: rgba(255, 255, 255, 0.05);
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 10px 25px -3px rgba(0, 0, 0, 0.5);
@@ -102,7 +102,7 @@ section.active-section { opacity: 1; transform: translateY(0); }
 .timeline-content h4 { color: var(--primary); margin-bottom: 8px; font-size: 20px; }
 .timeline-content p { color: var(--text-main); line-height: 1.7; margin-bottom: 15px; }
 
-/* ===== ФОТО БЛОКИ (БЕЗ ДЕРГАНИЙ) ===== */
+/* ===== ФОТО БЛОКИ ===== */
 .photo-block { margin: 25px 0; text-align: center; }
 .photo-block img { 
   width: 100%; max-width: 400px; height: 250px; 
@@ -177,21 +177,27 @@ body.dark .veteran-exp, body.dark .veteran-award { background: rgba(56, 189, 248
 .close-details-btn:hover { color: var(--primary); }
 .teacher-details-header { text-align: center; margin-bottom: 25px; border-bottom: 2px solid var(--primary); padding-bottom: 20px; }
 .teacher-details-header img { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary); margin-bottom: 15px; background: var(--img-fallback); }
-.detail-section { padding: 15px; margin-bottom: 20px; border-radius: 15px; text-align: left; }
-.detail-section h4 { color: var(--primary); margin-bottom: 10px; border-left: 4px solid var(--primary); padding-left: 10px; }
+.detail-section { padding: 20px; margin-bottom: 20px; border-radius: 15px; text-align: left; }
+.detail-section h4 { color: var(--primary); margin-bottom: 12px; border-left: 4px solid var(--primary); padding-left: 12px; }
 
-/* СТИЛИ ИСТОРИИ */
+/* ===== ИСПРАВЛЕННЫЕ СТИЛИ ИСТОРИИ (БЕЛЫЙ ТЕКСТ НА ТЕМНОМ ФОНЕ) ===== */
 .story-section { 
-  background: rgba(255, 217, 102, 0.15); 
-  border-left: 4px solid #ffd966; 
+  background: rgba(0, 51, 102, 0.85); /* Темно-синий фон блока в светлой теме */
+  border-left: 4px solid #ffd966; /* Желтая контрастная линия */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 body.dark .story-section { 
-  background: rgba(255, 217, 102, 0.08); 
+  background: rgba(15, 23, 42, 0.7); /* Фон для темной темы */
+}
+.story-section h4 {
+  color: #ffd966; /* Заголовок "История" делаем желтым, чтобы он не терялся */
+  border-left: none; /* Убираем дублирующуюся линию у заголовка */
+  padding-left: 0;
 }
 .teacher-story {
-  color: var(--text-main); 
-  font-style: normal; 
-  line-height: 1.6;
+  color: #ffffff; /* Текст ИДЕАЛЬНО БЕЛЫЙ */
+  font-style: italic; 
+  line-height: 1.7;
   font-size: 15px;
 }
 
