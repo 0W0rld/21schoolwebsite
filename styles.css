@@ -102,14 +102,12 @@ section.active-section { opacity: 1; transform: translateY(0); }
 .timeline-content h4 { color: var(--primary); margin-bottom: 8px; font-size: 20px; }
 .timeline-content p { color: var(--text-main); line-height: 1.7; margin-bottom: 15px; }
 
-/* ===== ФОТО БЛОКИ (БЕЗ ДЕРГАНИЙ) ===== */
+/* ===== ФОТО БЛОКИ ===== */
 .photo-block { margin: 25px 0; text-align: center; }
 .photo-block img { 
   width: 100%; 
   max-width: 400px; 
-  height: 250px; 
-  object-fit: cover; 
-  object-position: top; /* <--- ВОТ ЭТА СТРОЧКА СПАСЕТ ЛИЦА */
+  height: auto; /* Автоматическая высота вернет оригинальные пропорции */
   border-radius: 10px; 
   margin: 0 auto 10px; 
   display: block;
