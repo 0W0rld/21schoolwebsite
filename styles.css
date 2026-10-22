@@ -102,14 +102,19 @@ section.active-section { opacity: 1; transform: translateY(0); }
 .timeline-content h4 { color: var(--primary); margin-bottom: 8px; font-size: 20px; }
 .timeline-content p { color: var(--text-main); line-height: 1.7; margin-bottom: 15px; }
 
-/* ===== ФОТО БЛОКИ ===== */
+/* ===== ФОТО БЛОКИ (БЕЗ ДЕРГАНИЙ) ===== */
 .photo-block { margin: 25px 0; text-align: center; }
 .photo-block img { 
-  width: 100%; max-width: 400px; height: 250px; 
-  object-fit: cover; border-radius: 10px; margin: 0 auto 10px; display: block;
+  width: 100%; 
+  max-width: 400px; 
+  height: 250px; 
+  object-fit: cover; 
+  object-position: top; /* <--- ВОТ ЭТА СТРОЧКА СПАСЕТ ЛИЦА */
+  border-radius: 10px; 
+  margin: 0 auto 10px; 
+  display: block;
   background-color: var(--img-fallback);
 }
-.photo-caption { font-size: 14px; color: var(--text-muted); font-style: italic; }
 
 /* ===== ВЕТЕРАНЫ ===== */
 .veterans-intro { background: var(--primary); color: white; padding: 25px; border-radius: 20px; margin-bottom: 30px; font-size: 16px; line-height: 1.6; }
